@@ -1,6 +1,9 @@
 package forrogue.map;
 
 import charva.awt.Dimension;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -10,8 +13,7 @@ public class Hub {
     char[][] matrix;
 
     public Hub(){
-        ClassLoader classLoader = getClass().getClassLoader();
-        Scanner f = new Scanner(classLoader.getResource("hub.map").getFile());
+        Scanner f = new Scanner(getClass().getClassLoader().getResourceAsStream("hub.map"));
         this.setMatrix(f);
     }
 
