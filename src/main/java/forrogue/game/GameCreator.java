@@ -81,17 +81,13 @@ public class GameCreator extends JFrame{
                         switch(eForm.getSelected()) {
 
                             case "Create":
-                                try {
-                                    long seed = 84164654154L;
-                                    Player player = new Player("Provençal Le Gaulois", "Male", "Type1", new Point(-1,-1));
-                                    player.getInventory().add(new Sword());
-                                    player.getInventory().add(new IronShield());
-                                    GameEngine gEngine = new GameEngine(player, seed, "filename.save");
-                                    GameWindow gui = new GameWindow("RogueLike", gEngine);
-                                    gEngine.setGameWindow(gui);
-                                } catch (FileNotFoundException e) {
-                                    e.printStackTrace();
-                                }
+                                long seed = 84164654154L;
+                                Player player = new Player("Provençal Le Gaulois", "Male", "Type1", new Point(-1,-1));
+                                player.getInventory().add(new Sword());
+                                player.getInventory().add(new IronShield());
+                                GameEngine gEngine = new GameEngine(player, seed, "filename.save");
+                                GameWindow gui = new GameWindow("RogueLike", gEngine);
+                                gEngine.setGameWindow(gui);
                                 break;
 
                             case "Exit":

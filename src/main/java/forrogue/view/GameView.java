@@ -22,6 +22,7 @@ import charva.awt.Component;
 import charva.awt.Dimension;
 import charva.awt.Point;
 import charva.awt.Toolkit;
+import forrogue.GameObject;
 import forrogue.map.Map;
 
 /**
@@ -55,9 +56,9 @@ public class GameView extends Component{
         Point mem_p = this.term.getCursor();
         this.term.drawBox(_origin, dimension);
         int max = 0;
-        char[][] matrix = this.map.getMatrix();
+        Object[][] matrix = this.map.getMatrix();
 
-        for (char[] aMatrix : matrix) if (aMatrix.length > max) max = aMatrix.length;
+        for (Object[] aMatrix : matrix) if (aMatrix.length > max) max = aMatrix.length;
 
         int cx = (this.dimension.width-max)/2;
         int cy = (this.dimension.height-matrix.length)/2;
@@ -65,7 +66,13 @@ public class GameView extends Component{
         for(int y = 0; y < matrix.length; y++){
             for(int x = 0; x < matrix[y].length; x++){
                 this.term.setCursor(x+cx, y+cy);
-                this.term.addChar(matrix[y][x], 0, 0);
+                if(matrix[y][x] != null) { // TODO : Vérifier pourquoi ça fait null
+                    if (matrix[y][x] instanceof GameObject) {
+                        this.term.addChar(((GameObject) matrix[y][x]).getSkin(), 0, 0);
+                    } else {
+                        this.term.addChar(((char) matrix[y][x]), 0, 0);
+                    }
+                }
             }
         }
 

@@ -17,10 +17,22 @@
  */
 package forrogue;
 
+import forrogue.game.GameConstant;
+
 /**
  *
  * @author tama
  */
-public class Chest extends Inventory{
-    
+public class Chest extends GameObject{
+
+    /**
+     *
+     * @param level Correspond à la qualité des items dans le coffre. C'est tout simplement la difficulté du donjon qui gère ça.
+     */
+
+    public Chest(int level){
+        this.setSkin(GameConstant.SKIN_CHEST);
+    }
+
+
 }

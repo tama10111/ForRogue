@@ -7,6 +7,7 @@ package forrogue.character;
 
 import charva.awt.Point;
 import forrogue.Inventory;
+import forrogue.game.GameConstant;
 
 /**
  *
@@ -20,5 +21,6 @@ public class Player extends Character {
         this.setGender(gender);
         this.setType(type);
         this.setPosition(position);
+        this.setSkin(GameConstant.SKIN_PLAYER); // TODO : Permettre au joueur de set un skin dans le GameCreator;
     }
 }

@@ -20,25 +20,49 @@ package forrogue.map;
 
 import charva.awt.Dimension;
 
+import forrogue.Chest;
+import forrogue.GameObject;
+import forrogue.character.ennemy.Berserker;
+import forrogue.game.GameConstant;
+
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
-import java.util.Vector;
 
 /**
  *
  * @author tama
  */
-class Dungeon {
+
+class Dungeon extends GameObject {
     
     private Dimension dimension;
-    private char[][] matrix;
+    private Object[][] matrix;
+    private int difficulty;
 
-    public Dungeon(String pathname){
-        Scanner f = new Scanner(pathname);
+    public Dungeon(int difficulty, Hub hub, Random random){
 
-    }
+        /**
+         * Chercher dans les ressources aléatoirement
+         * La difficulté déterminera le dossier
+         * Un nombre aléatoire déterminera le fichier
+         */
 
-    private void setMatrix(Scanner f){
+        if(difficulty == 0){
+            this.setSkin(GameConstant.SKIN_DUNGEON_0);
+        }
+
+        if(difficulty == 1){
+            this.setSkin(GameConstant.SKIN_DUNGEON_1);
+        }
+
+        if(difficulty == 2){
+            this.setSkin(GameConstant.SKIN_DUNGEON_2);
+        }
+
+        Scanner f = new Scanner(getClass().getClassLoader().getResourceAsStream("dungeon_test.map"));
+        this.difficulty = difficulty;
+
         ArrayList<String> lines = new ArrayList();
         int max = 0, i = 0, j;
         while(f.hasNextLine()) {
@@ -48,13 +72,64 @@ class Dungeon {
         }
 
         this.dimension = new Dimension(max, lines.size());
-        this.matrix = new char[lines.size()][max];
+        this.matrix = new Object[lines.size()][max];
 
         i = j = 0;
         for(String str : lines){
             for(char c : str.toCharArray()){
-                this.matrix[i][j] = c;
-                j++;
+                switch(c){
+
+                    case GameConstant.SKIN_WALL :
+                        this.matrix[i][j] = GameConstant.SKIN_WALL;
+                        break;
+
+                    case GameConstant.SKIN_VOID :
+                        this.matrix[i][j] = GameConstant.SKIN_VOID;
+                        break;
+
+                    case GameConstant.ENNEMY :
+                        this.matrix[i][j] = new Berserker();
+                        /*
+                        int r = random.nextInt();
+
+                        if(this.difficulty == 0){
+
+                        }
+
+                        if(this.difficulty == 1){
+
+                        }
+
+                        if(this.difficulty == 2){
+
+                        }*/
+
+                        break;
+
+                    case GameConstant.SKIN_HUB :
+                        this.matrix[i][j] = hub;
+                        break;
+
+                    case GameConstant.SKIN_CHEST :
+                        this.matrix[i][j] = new Chest(this.difficulty);
+                        break;
+
+                    case GameConstant.DUNGEON_PLAYER_POS :
+                        this.matrix[i][j] = GameConstant.DUNGEON_PLAYER_POS;
+                        break;
+
+                    case '\n' :
+                        this.matrix[i][j] = ' ';
+                        break;
+
+                    case ' ' :
+                        this.matrix[i][j] = ' ';
+                        break;
+
+                    default:
+                        this.matrix[i][j] = '?';
+                        break;
+                } j++;
             } i++; j = 0;
         }
     }
@@ -63,7 +138,11 @@ class Dungeon {
         return this.dimension;
     }
 
-    public char[][] getMatrix(){
+    public Object[][] getMatrix(){
         return this.matrix;
+    }
+
+    public int getDifficulty(){
+        return this.difficulty;
     }
 }

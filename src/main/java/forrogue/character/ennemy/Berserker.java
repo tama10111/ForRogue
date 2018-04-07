@@ -17,6 +17,7 @@ public class Berserker extends Assassin{
         this.setDefense(0);
         this.setName("Berseker");
         this.setGender("Male");
+        this.setSkin('B'); // Pour mes tests (tama)
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }
     

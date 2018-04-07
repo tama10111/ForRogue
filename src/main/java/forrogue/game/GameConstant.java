@@ -23,39 +23,43 @@ package forrogue.game;
  */
 public class GameConstant {
 
+    public static final char ENNEMY = 'E';
     public static char[] ENNEMIES = {'K', 'H', 'S'};
-
 
     /* WEAPONS SKINS */
 
-    public static char SKIN_SWORD = '|';
-    public static char SKIN_DOUBLESHORTSWORD = '/';
-    public static char SKIN_DOUBLEHANDEDSWORD = '\\';
-    public static char SKIN_MACE = ']';
-    public static char SKIN_TRIDENT = '+';
-    public static char SKIN_HALBERD = 'µ';
+    public static final char SKIN_SWORD = '|';
+    public static final char SKIN_DOUBLESHORTSWORD = '/';
+    public static final char SKIN_DOUBLEHANDEDSWORD = '\\';
+    public static final char SKIN_MACE = ']';
+    public static final char SKIN_TRIDENT = '+';
+    public static final char SKIN_HALBERD = 'µ';
 
     /* PROTECTIONS SKINS */
 
-    public static char SKIN_CHAINMAIL = ':';
-    public static char SKIN_IRONSHIELD = '§';
-    public static char SKIN_PLATEARMOR = ';';
-    public static char SKIN_WOODSHIELD = '&';
+    public static final char SKIN_CHAINMAIL = ':';
+    public static final char SKIN_IRONSHIELD = '§';
+    public static final char SKIN_PLATEARMOR = ';';
+    public static final char SKIN_WOODSHIELD = '&';
 
     /* POTIONS SKINS */
-    public static char SKIN_SMALLPOTION = '°';
-    public static char SKIN_LARGEPOTION = 'ø';
+    public static final char SKIN_SMALLPOTION = '°';
+    public static final char SKIN_LARGEPOTION = 'ø';
 
 
     /* OTHER SKINS */
 
-    public static char SKIN_WALL = '#';
-    public static char SKIN_PLAYER = 'P';
-    public static char SKIN_CHEST = '=';
-    public static char SKIN_VOID = '.';
+    public static final char SKIN_WALL = '#';
+    public static final char SKIN_PLAYER = 'Ö';
+    public static final char SKIN_CHEST = '=';
+    public static final char SKIN_VOID = '.';
+    public static final char SKIN_DUNGEON_0 = '0';
+    public static final char SKIN_DUNGEON_1 = '1';
+    public static final char SKIN_DUNGEON_2 = '2';
+    public static final char SKIN_HUB = '<';
+    public static final char DUNGEON_PLAYER_POS = 'P';
 
 
     
-    public static String market = "\\________/ ________\n" + "|  _oo_  | |Market|\n" + "|   /\\   |    ||\n";
-    public static String home;
+    public static final String market = "\\________/ ________\n" + "|  _oo_  | |Market|\n" + "|   /\\   |    ||\n";
 }

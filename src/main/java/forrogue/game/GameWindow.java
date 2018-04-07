@@ -35,8 +35,10 @@ import forrogue.view.CommandPrompt;
 import forrogue.view.GameView;
 import forrogue.view.InventoryView;
 
+import java.io.Serializable;
 
-public class GameWindow extends JFrame{
+
+public class GameWindow extends JFrame implements Serializable {
             
     private final InventoryView iView;
     private final CommandPrompt cmd;

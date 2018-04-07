@@ -21,7 +21,7 @@ public abstract class Character extends GameObject {
     private String type;
     private String name;
 
-    private Point position;
+    private Point position; // TODO : Virer ça et remplacer location par position dans GameObject
     
     private int hp;
     private int max_hp;

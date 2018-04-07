@@ -26,17 +26,7 @@ import forrogue.game.GameConstant;
  */
 public class Home {
     
-    public Home(){
-        Toolkit term = Toolkit.getDefaultToolkit();
-        int x = 0; int y = 0;
-        for(int i = 0; i<GameConstant.home.length(); i++){
-            if(GameConstant.home.charAt(i) == '\n'){
-                x = 0; y++;
-            } else{
-                term.addChar(GameConstant.home.charAt(i),0,0);
-                y++;
-            }
-        }       
+    public Home() {
     }
     
 }
