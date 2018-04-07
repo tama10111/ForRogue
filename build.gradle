@@ -1,0 +1,36 @@
+group 'ForRogueGroup'
+version '1.0'
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceCompatibility = 1.8
+mainClassName = 'forrogue.Main'
+
+if (!hasProperty('mainClass')) {
+    ext.mainClass = 'forrogue.Main'
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile fileTree('libs')
+}
+
+jar {
+
+    dependencies {
+        compile fileTree('./libs')
+    }
+
+    manifest {
+        attributes("Main-Class": 'forrogue.Main')
+    }
+
+    destinationDir = file('./jar')
+    archiveName = new File('ForRogue.jar')
+}

@@ -1,0 +1,2 @@
+#!/bin/sh
+java -jar -Djava.library.path="libs" ./jar/ForRogue.jar
