@@ -25,7 +25,10 @@ import forrogue.GameObject;
 import forrogue.character.ennemy.Berserker;
 import forrogue.game.GameConstant;
 
+import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -48,24 +51,48 @@ class Dungeon extends GameObject {
          * Un nombre aléatoire déterminera le fichier
          */
 
+        String path;
+        int r;
+        int mod;
+
+        // TODO : Trouver un moyen de ne pas hardcoder le nombre de fichiers
+
         if(difficulty == 0){
+            r = random.nextInt();
+            mod = 11;//Objects.requireNonNull(new File("src/main/resources/easy/").listFiles()).length;
+            path = "easy/"+Integer.toString((r%(mod-1))+1)+".map";
             this.setSkin(GameConstant.SKIN_DUNGEON_0);
         }
 
-        if(difficulty == 1){
+        else if(difficulty == 1){
+            r = random.nextInt();
+            mod = 6;//Objects.requireNonNull(new File("src/main/resources/intermediate/").listFiles()).length;
+            path = "intermediate/"+Integer.toString((r%(mod-1))+1)+".map";
             this.setSkin(GameConstant.SKIN_DUNGEON_1);
         }
 
-        if(difficulty == 2){
+        else if(difficulty == 2){
+            r = random.nextInt();
+            mod = 7;//Objects.requireNonNull(new File("src/main/resources/hard/").listFiles()).length;
+            path = "hard/"+Integer.toString((r%(mod-1))+1)+".map";
             this.setSkin(GameConstant.SKIN_DUNGEON_2);
         }
 
-        Scanner f = new Scanner(getClass().getClassLoader().getResourceAsStream("dungeon_test.map"));
+        else{
+            path = "dungeon_failure.map";
+        }
+
+        InputStream stream = getClass().getClassLoader().getResourceAsStream(path);
+        if(stream == null){ // TODO : Comprendre cette merde
+            stream = getClass().getClassLoader().getResourceAsStream("dungeon_failure.map");
+        }
+
+        Scanner f = new Scanner(stream);
         this.difficulty = difficulty;
 
         ArrayList<String> lines = new ArrayList();
         int max = 0, i = 0, j;
-        while(f.hasNextLine()) {
+        while(f.hasNextLine()){
             lines.add(f.nextLine());
             if (lines.get(i).length() > max) max = lines.get(i).length();
             i++;
