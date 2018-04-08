@@ -8,6 +8,9 @@ package forrogue.character;
 import charva.awt.Point;
 import forrogue.GameObject;
 import forrogue.Inventory;
+import forrogue.item.protection.Protection;
+import forrogue.item.weapon.Mace;
+import forrogue.item.weapon.Weapon;
 
 /**
  *
@@ -15,14 +18,21 @@ import forrogue.Inventory;
  */
 public abstract class Character extends GameObject {
     
+
+    // OBJECTS HELD
+
     private Inventory inventory;
+    private Weapon weapon;
+    private Protection protection;
+
+    // SOME INFORMATIONS
 
     private String gender;
     private String type;
     private String name;
 
-    private Point position; // TODO : Virer ça et remplacer location par position dans GameObject
-    
+    // STATS
+
     private int hp;
     private int max_hp;
     private int attack;
@@ -59,14 +69,6 @@ public abstract class Character extends GameObject {
 
     public void setType(String type){
         this.type = type;
-    }
-
-    public Point getPosition(){
-        return this.position;
-    }
-
-    public void setPosition(Point playerPosition){
-        this.position = playerPosition;
     }
 
     public int getDefense() {
@@ -110,16 +112,27 @@ public abstract class Character extends GameObject {
     }
 
     public void move(Point move) {
-        this.position.x += move.x;
-        this.position.y += move.y;
+        this.getPosition().x += move.x;
+        this.getPosition().y += move.y;
     }
 
     public void attack(Character ennemy){
-
+        if(this.holdWeapon()){
+            this.weapon.use(ennemy);
+        }
     }
 
     public void receiveDamages(int damages){
         this.setHp(this.getHp() - damages + this.getDefense());
     }
 
+    public boolean holdWeapon() {
+        if(this.weapon != null){
+            return true;
+        } return false;
+    }
+
+    protected void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
 }

@@ -51,7 +51,7 @@ class Dungeon extends GameObject {
          * Un nombre aléatoire déterminera le fichier
          */
 
-        String path;
+        String path = null;
         int r;
         int mod;
 
@@ -76,10 +76,6 @@ class Dungeon extends GameObject {
             mod = 7;//Objects.requireNonNull(new File("src/main/resources/hard/").listFiles()).length;
             path = "hard/"+Integer.toString((r%(mod-1))+1)+".map";
             this.setSkin(GameConstant.SKIN_DUNGEON_2);
-        }
-
-        else{
-            path = "dungeon_failure.map";
         }
 
         InputStream stream = getClass().getClassLoader().getResourceAsStream(path);

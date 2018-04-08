@@ -3,16 +3,10 @@ package forrogue;
 import forrogue.game.GameCreator;
 import forrogue.game.GameEngine;
 import forrogue.game.GameWindow;
-import forrogue.character.ennemy.Berserker;
-import forrogue.map.Hub;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Enumeration;
-import java.util.Objects;
-import java.util.Random;
 
 /**
  *
@@ -25,7 +19,7 @@ public class Main {
      * @param args the command line arguments
      */
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
 
         FileReader saveFile = null;
 

@@ -21,6 +21,7 @@ package forrogue.map;
 import charva.awt.Point;
 import forrogue.GameObject;
 import forrogue.character.Player;
+import forrogue.character.ennemy.Ennemy;
 import forrogue.game.GameConstant;
 import forrogue.game.GameEngine;
 
@@ -70,6 +71,13 @@ public class Map {
         else if(target instanceof  Hub){
             this.setMatrix(((Hub) target).getMatrix());
             this.setPlayerPosition();
+        }
+
+        else if(target instanceof Ennemy){
+            gEngine.getPlayer().attack((Ennemy) target);
+            if(((Ennemy) target).getHp() <= 0){
+                this.matrix[coord_player.y + move.y][coord_player.x + move.x] = GameConstant.SKIN_VOID;
+            }
         }
     }
 

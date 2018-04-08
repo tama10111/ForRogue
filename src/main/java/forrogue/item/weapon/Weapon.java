@@ -13,8 +13,9 @@ import forrogue.item.Item;
  * @author user
  */
 public abstract class Weapon extends Item {
-    int power;
-    int speed_malus;
+
+    private int power;
+    private int speed_malus;
 
     public Weapon(String name, char skin, int power, int speed_malus){
         super(name, skin);

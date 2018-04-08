@@ -28,7 +28,7 @@ public abstract class GameObject {
 
     private String name;
     private char skin;
-    private Point location;
+    private Point position;
 
     public char getSkin(){
         return this.skin;
@@ -38,12 +38,12 @@ public abstract class GameObject {
         this.skin = new_skin;
     }
 
-    public Point getLocation(){
-        return this.location;
+    public Point getPosition(){
+        return this.position;
     }
 
-    public void setLocation(Point new_location){
-        this.location = new_location;
+    public void setPosition(Point playerPosition){
+        this.position = playerPosition;
     }
 
     public String getName(){

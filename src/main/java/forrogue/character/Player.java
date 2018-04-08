@@ -8,6 +8,7 @@ package forrogue.character;
 import charva.awt.Point;
 import forrogue.Inventory;
 import forrogue.game.GameConstant;
+import forrogue.item.weapon.Mace;
 
 /**
  *
@@ -16,6 +17,7 @@ import forrogue.game.GameConstant;
 public class Player extends Character {
 
     public Player(String name, String gender, String type, Point position) {
+        this.setWeapon(new Mace()); // TODO : Pour mes tests
         this.setInventory(new Inventory());
         this.setName(name);
         this.setGender(gender);
