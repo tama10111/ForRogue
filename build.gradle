@@ -18,19 +18,20 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
-    compile fileTree('libs')
+    compile files('./libs/charva.jar')
+    compile files('./libs/commons-logging.jar')
+    compile files('./libs/commons-logging-api.jar')
 }
 
 jar {
 
-    dependencies {
-        compile fileTree('./libs')
-    }
-
-    manifest {
-        attributes("Main-Class": 'forrogue.Main')
-    }
-
     destinationDir = file('./jar')
     archiveName = new File('ForRogue.jar')
+
+    manifest {
+        attributes(
+                "Main-Class": 'forrogue.Main',
+                "Class-Path": configurations.compile.collect { it.getName() }.join(' ')
+        )
+    }
 }

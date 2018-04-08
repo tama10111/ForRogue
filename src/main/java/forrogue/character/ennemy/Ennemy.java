@@ -44,8 +44,14 @@ public abstract class Ennemy extends Character {
         
     }
     
-    private int pathFinder(){
+    private Point pathFinder(Point p){
         //TO IMPLEMENT//
-        return 0;
+        return p;
+    }
+
+    public Point findPath(){
+        Point p = new Point(0,0);
+        //TO IMPLEMENT//
+        return p;
     }
 }

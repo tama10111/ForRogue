@@ -36,29 +36,29 @@ import java.io.Serializable;
 
 
 public class GameWindow extends JFrame implements Serializable {
-            
+
     private final InventoryView iView;
     private final CommandPrompt cmd;
     private final GameEngine gEngine;
     private final GameView gView;
     //private final StatView sView;
-    
+
     public GameWindow(String title, GameEngine gEngine){
 
         super(title+" -- TAB to switch between panels");
-        
+
         Container mCont = this.getContentPane();
         mCont.setBackground(Color.black);
         mCont.setForeground(Color.green);
 
         this.gEngine = gEngine;
-        
+
         JPanel iPanel = new JPanel();
         iPanel.setBorder(new TitledBorder("Inventory"));
-        this.iView = new InventoryView(gEngine.getPlayer().getInventory(), this._term.getScreenRows()-2);  
+        this.iView = new InventoryView(gEngine.getPlayer().getInventory(), this._term.getScreenRows()-2);
         this.iView.setHeight(this._term.getScreenRows()-2);
         iPanel.add(this.iView);
-        
+
         JPanel cPanel = new JPanel();
         cPanel.setBorder(new TitledBorder("Command -- ENTER to execute"));
         this.cmd = new CommandPrompt(this, "", this._term.getScreenColumns()-4);
@@ -74,7 +74,7 @@ public class GameWindow extends JFrame implements Serializable {
         mCont.add(cPanel, BorderLayout.SOUTH);
 
         this.pack();
-        this.setVisible(true);        
+        this.setVisible(true);
         validate();
         this.gView.draw();
 
