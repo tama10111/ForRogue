@@ -65,7 +65,7 @@ public class InventoryView extends JScrollPane {
             public void keyTyped(KeyEvent ke) {
                 switch(ke.getKeyCode()){
                     case KeyEvent.VK_ENTER :
-                        // IMPLEMENT AN ITEM VIEW//
+                        // TODO : Implémenter l'utilisation des items
                         break;
                 }
 

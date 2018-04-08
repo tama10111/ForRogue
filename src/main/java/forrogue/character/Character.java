@@ -9,6 +9,8 @@ import charva.awt.Point;
 import forrogue.GameObject;
 import forrogue.Inventory;
 import forrogue.item.protection.Protection;
+import forrogue.item.protection.UnderWear;
+import forrogue.item.weapon.Hand;
 import forrogue.item.weapon.Mace;
 import forrogue.item.weapon.Weapon;
 
@@ -117,22 +119,42 @@ public abstract class Character extends GameObject {
     }
 
     public void attack(Character ennemy){
-        if(this.holdWeapon()){
-            this.weapon.use(ennemy);
-        }
+        ennemy.receiveDamages(this.attack);
     }
 
     public void receiveDamages(int damages){
         this.setHp(this.getHp() - damages + this.getDefense());
     }
 
-    public boolean holdWeapon() {
-        if(this.weapon != null){
-            return true;
-        } return false;
+    public Weapon getWeapon() {
+        return this.weapon;
     }
 
-    protected void setWeapon(Weapon weapon) {
+    public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
+        this.attack += weapon.getAttack();
+        this.speed += weapon.getSpeed();
+    }
+
+    public void unsetWeapon(){
+        this.attack -= this.weapon.getAttack();
+        this.speed -= this.weapon.getSpeed();
+        this.weapon = new Hand();
+    }
+
+    public Protection getProtection(){
+        return this.protection;
+    }
+
+    public void setProtection(Protection protection){
+        this.protection = protection;
+        this.defense += protection.getDefense();
+        this.speed += protection.getSpeed();
+    }
+
+    public void unsetProtection(){
+        this.defense -= this.protection.getDefense();
+        this.speed -= this.protection.getSpeed();
+        this.protection = new UnderWear();
     }
 }

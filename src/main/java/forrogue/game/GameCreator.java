@@ -51,6 +51,9 @@ public class GameCreator extends JFrame{
     public GameCreator() {
         super("GameCreator -- TAB to switch between panels -- ENTER to select value");                
 
+        this.setBackground(Color.black);
+        this.setForeground(Color.green);
+
         Vector<String> gV = new Vector<>();
         gV.add("Male"); gV.add("Female");
         Form gForm = new Form(gV);

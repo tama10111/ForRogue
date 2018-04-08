@@ -6,6 +6,7 @@
 package forrogue.item.protection;
 
 import forrogue.character.Character;
+import forrogue.character.Player;
 import forrogue.item.Item;
 
 /**
@@ -14,18 +15,9 @@ import forrogue.item.Item;
  */
 public abstract class Protection extends Item {
 
-    private int defense;
-    private int speed_malus;
-
-    public Protection(String name, char skin, int defense, int speed_malus){
+    public Protection(String name, char skin, int defense, int speed){
         super(name, skin);
-        this.defense = defense;
-        this.speed_malus = speed_malus;
-    }
-
-    @Override
-    public void use(Character user) {
-        this.defense = this.defense;
-
+        this.setDefense(defense);
+        this.setSpeed(speed);
     }
 }

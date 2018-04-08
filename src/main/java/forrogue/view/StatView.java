@@ -18,21 +18,27 @@
 package forrogue.view;
 
 import charva.awt.BorderLayout;
+import charva.awt.Dimension;
 import charvax.swing.JLabel;
 import charvax.swing.JPanel;
-import forrogue.character.Character;
+import forrogue.character.Player;
 
 /**
  *
  * @author tama
  */
-class StatView extends JPanel{
+public class StatView extends JPanel{
 
-    public StatView(Character player) {
+    Player player;
+
+    public StatView(Player player, Dimension dimension) {
+        this.player = player;
+
         this.setLayout(new BorderLayout());
-        this.add(new JLabel("Name : "+player.getName()+"\n"));
-        this.add(new JLabel("Gender : "+player.getGender()+"\n"));
-        this.add(new JLabel("Class : "+player.getType()+"\n"));
+        this.setHeight(dimension.height);
+        this.setWidth(dimension.width);
+
+        //this.add(new JLabel("Name : "+player.getName()+"\n"));
     }
     
 }

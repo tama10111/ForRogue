@@ -23,6 +23,8 @@ import charva.awt.Dimension;
 import charva.awt.Point;
 import charva.awt.Toolkit;
 import forrogue.GameObject;
+import forrogue.character.Player;
+import forrogue.game.GameEngine;
 import forrogue.map.Map;
 
 /**
@@ -34,11 +36,11 @@ public class GameView extends Component{
 
     private Dimension dimension;
     private Toolkit term;
-    private Map map;
+    private GameEngine gEngine;
 
-    public GameView(Dimension dimension, Point origin, Map map) {
+    public GameView(Dimension dimension, Point origin, GameEngine gEngine) {
         this.dimension = dimension;
-        this.map = map;
+        this.gEngine = gEngine;
         this._origin = origin;
         this.term = Toolkit.getDefaultToolkit();
         this._visible = true;
@@ -56,7 +58,7 @@ public class GameView extends Component{
         Point mem_p = this.term.getCursor();
         this.term.drawBox(_origin, dimension);
         int max = 0;
-        Object[][] matrix = this.map.getMatrix();
+        Object[][] matrix = this.gEngine.getMap().getMatrix();
 
         for (Object[] aMatrix : matrix) if (aMatrix.length > max) max = aMatrix.length;
 
@@ -75,6 +77,28 @@ public class GameView extends Component{
                 }
             }
         }
+
+        Player player = this.gEngine.getPlayer();
+
+        String stat = String.format("HP : %s / ATK : %s / DEF : %s / SPD : %s",
+                player.getHp(),
+                player.getAttack(),
+                player.getDefense(),
+                player.getSpeed()
+        );
+
+        String equip = String.format("Weapon : [%c] %s / Protection : [%c] %s",
+                player.getWeapon().getSkin(),
+                player.getWeapon().getName(),
+                player.getProtection().getSkin(),
+                player.getProtection().getName()
+        );
+
+        this.term.setCursor(this._origin.x + 2, this._origin.y + this.dimension.height - 3);
+        this.term.addString(stat, 0, 0);
+
+        this.term.setCursor(this._origin.x + 2, this._origin.y + this.dimension.height - 2);
+        this.term.addString(equip, 0, 0);
 
         this.term.setCursor(mem_p);
         this.term.redrawWin();

@@ -24,16 +24,13 @@
 
 package forrogue.game;
 
-import charva.awt.BorderLayout;
-import charva.awt.Container;
-import charva.awt.Dimension;
-import charva.awt.Point;
+import charva.awt.*;
+
 import charvax.swing.JFrame;
 import charvax.swing.JPanel;
 import charvax.swing.border.TitledBorder;
-import forrogue.view.CommandPrompt;
-import forrogue.view.GameView;
-import forrogue.view.InventoryView;
+
+import forrogue.view.*;
 
 import java.io.Serializable;
 
@@ -44,13 +41,16 @@ public class GameWindow extends JFrame implements Serializable {
     private final CommandPrompt cmd;
     private final GameEngine gEngine;
     private final GameView gView;
+    //private final StatView sView;
     
     public GameWindow(String title, GameEngine gEngine){
 
         super(title+" -- TAB to switch between panels");
         
         Container mCont = this.getContentPane();
-        
+        mCont.setBackground(Color.black);
+        mCont.setForeground(Color.green);
+
         this.gEngine = gEngine;
         
         JPanel iPanel = new JPanel();
@@ -63,12 +63,12 @@ public class GameWindow extends JFrame implements Serializable {
         cPanel.setBorder(new TitledBorder("Command -- ENTER to execute"));
         this.cmd = new CommandPrompt(this, "", this._term.getScreenColumns()-4);
         cPanel.add(this.cmd);
-        
+
         Dimension dimension = new Dimension();
         dimension.height = this._term.getScreenRows()-7;
         dimension.width = this._term.getScreenColumns()-this.iView.getWidth()-3;
-        this.gView = new GameView(dimension, new Point(3,3), gEngine.getMap());
-        
+        this.gView = new GameView(dimension, new Point(3,3), gEngine);
+
         mCont.add(gView);
         mCont.add(iPanel, BorderLayout.EAST);
         mCont.add(cPanel, BorderLayout.SOUTH);

@@ -22,7 +22,7 @@ public abstract class Potion extends Item {
         this.capacity=capacity;
     }
 
-    @Override
+    @Override // TODO : À voir comment on gère l'utilisation des Items dans InventoryView
     public void use(Character character){
         if(this.capacity + character.getHp() >= character.getMaxHp()){
             character.setHp(character.getMaxHp());

@@ -74,9 +74,22 @@ public class Map {
         }
 
         else if(target instanceof Ennemy){
-            gEngine.getPlayer().attack((Ennemy) target);
-            if(((Ennemy) target).getHp() <= 0){
+            Ennemy ennemy = (Ennemy) target;
+
+            if(ennemy.getSpeed() > gEngine.getPlayer().getSpeed()){
+                ennemy.attack(gEngine.getPlayer());
+                gEngine.getPlayer().attack(ennemy);
+            } else{
+                gEngine.getPlayer().attack(ennemy);
+                ennemy.attack(gEngine.getPlayer());
+            }
+
+            if(ennemy.getHp() <= 0){
                 this.matrix[coord_player.y + move.y][coord_player.x + move.x] = GameConstant.SKIN_VOID;
+            }
+
+            if(gEngine.getPlayer().getHp() <= 0){
+                // TODO : Prévoir le cas où le joueur meurt
             }
         }
     }
