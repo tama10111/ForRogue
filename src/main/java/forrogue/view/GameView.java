@@ -22,10 +22,10 @@ import charva.awt.Component;
 import charva.awt.Dimension;
 import charva.awt.Point;
 import charva.awt.Toolkit;
+
 import forrogue.GameObject;
 import forrogue.character.Player;
 import forrogue.game.GameEngine;
-import forrogue.map.Map;
 
 /**
  *
@@ -93,6 +93,15 @@ public class GameView extends Component{
                 player.getProtection().getSkin(),
                 player.getProtection().getName()
         );
+
+        String name = String.format("[%s - %s] %s",
+                player.getSkin(),
+                player.getGender().charAt(0),
+                player.getName()
+        );
+
+        this.term.setCursor(this._origin.x + 2, this._origin.y + this.dimension.height - 4);
+        this.term.addString(name, 0, 0);
 
         this.term.setCursor(this._origin.x + 2, this._origin.y + this.dimension.height - 3);
         this.term.addString(stat, 0, 0);

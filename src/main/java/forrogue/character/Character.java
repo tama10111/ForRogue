@@ -123,7 +123,9 @@ public abstract class Character extends GameObject {
     }
 
     public void receiveDamages(int damages){
-        this.setHp(this.getHp() - damages + this.getDefense());
+        if(this.getDefense() - damages < 0){
+            this.setHp(this.getHp() + this.getDefense() - damages );
+        }
     }
 
     public Weapon getWeapon() {

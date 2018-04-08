@@ -19,7 +19,6 @@ package forrogue.game;
 
 import charva.awt.Point;
 import forrogue.character.Player;
-import forrogue.character.Character;
 import forrogue.map.Hub;
 import forrogue.map.Map;
 
@@ -115,7 +114,11 @@ public class GameEngine implements Serializable {
         this.map.movePlayer(move);
     }
 
-    public void setGameWindow(GameWindow gWindow){
+    public void sendUpdateInventorySignal() {
+        this.gWindow.updateInventory();
+    }
+
+    public void setGameWindow(GameWindow gWindow) {
         this.gWindow = gWindow;
     }
 }

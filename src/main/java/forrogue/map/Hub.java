@@ -68,6 +68,10 @@ public class Hub extends GameObject {
 
                         break;
 
+                    case GameConstant.SKIN_CHEST :
+                        this.matrix[i][j] = new Chest(0);
+                        break;
+
                     case GameConstant.SKIN_DUNGEON_0 :
                         this.matrix[i][j] = new Dungeon(0, this, this.gEngine.getRandom());
                         break;

@@ -27,7 +27,6 @@ public class Main {
             try {
                 saveFile = new FileReader(args[0]);
                 GameEngine gEngine = new GameEngine(saveFile);
-                GameWindow gui = new GameWindow("RogueLike", gEngine);
             } catch (FileNotFoundException ex) {
                 System.out.println("File "+args[0]+" not found !");
                 System.exit(1);

@@ -30,6 +30,9 @@ import charvax.swing.JFrame;
 import charvax.swing.JPanel;
 import charvax.swing.border.TitledBorder;
 
+import forrogue.character.Player;
+import forrogue.item.protection.IronShield;
+import forrogue.item.weapon.Sword;
 import forrogue.view.*;
 
 import java.io.Serializable;
@@ -41,17 +44,22 @@ public class GameWindow extends JFrame implements Serializable {
     private final CommandPrompt cmd;
     private final GameEngine gEngine;
     private final GameView gView;
-    //private final StatView sView;
 
-    public GameWindow(String title, GameEngine gEngine){
+    public GameWindow(String title){
 
         super(title+" -- TAB to switch between panels");
-
         Container mCont = this.getContentPane();
         mCont.setBackground(Color.black);
         mCont.setForeground(Color.green);
 
-        this.gEngine = gEngine;
+        long seed = 84164654154L;
+        Player player = new Player("Provençal Le Gaulois", "Male", "Type1", new Point(-1,-1));
+        player.getInventory().add(new Sword());
+        player.getInventory().add(new IronShield());
+
+
+        this.gEngine = new GameEngine(player, seed, "filename.save");
+        this.gEngine.setGameWindow(this);
 
         JPanel iPanel = new JPanel();
         iPanel.setBorder(new TitledBorder("Inventory"));
@@ -77,7 +85,6 @@ public class GameWindow extends JFrame implements Serializable {
         this.setVisible(true);
         validate();
         this.gView.draw();
-
     }
 
     public void sendMovePlayerSignal(Point move){
@@ -86,5 +93,9 @@ public class GameWindow extends JFrame implements Serializable {
 
     public void refreshMap() {
         this.gView.refreshMap();
+    }
+
+    public void updateInventory() {
+        this.iView.updateInventory();
     }
 }

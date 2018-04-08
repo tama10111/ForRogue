@@ -19,6 +19,7 @@
 package forrogue;
 
 import charva.awt.Point;
+import forrogue.item.Item;
 
 /**
  *

@@ -18,12 +18,20 @@
 package forrogue;
 
 import forrogue.game.GameConstant;
+import forrogue.item.Item;
+import forrogue.item.protection.*;
+import forrogue.item.weapon.*;
+import forrogue.item.potion.*;
+
+import java.util.Vector;
 
 /**
  *
  * @author tama
  */
 public class Chest extends GameObject{
+
+    Inventory inventory;
 
     /**
      *
@@ -32,7 +40,14 @@ public class Chest extends GameObject{
 
     public Chest(int level){
         this.setSkin(GameConstant.SKIN_CHEST);
+        this.inventory = new Inventory();
+        this.inventory.add(new Sword());
+        this.inventory.add(new IronShield());
+        this.inventory.add(new LargePotion());
     }
 
+    public Vector<Item> getChestContent(){
+        return this.inventory.getItemList();
+    }
 
 }

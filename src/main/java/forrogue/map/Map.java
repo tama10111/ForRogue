@@ -19,13 +19,13 @@
 package forrogue.map;
 
 import charva.awt.Point;
+import forrogue.Chest;
 import forrogue.GameObject;
 import forrogue.character.Player;
 import forrogue.character.ennemy.Ennemy;
 import forrogue.game.GameConstant;
 import forrogue.game.GameEngine;
-
-import java.util.Random;
+import forrogue.item.Item;
 
 /**
  *
@@ -42,10 +42,6 @@ public class Map {
         this.matrix = gEngine.getHub().getMatrix();
     }
 
-    public Object[][] getMatrix(){
-        return this.matrix;
-    }
-
     public void movePlayer(Point move) {
 
         Point coord_player = this.gEngine.getPlayer().getPosition();
@@ -56,8 +52,7 @@ public class Map {
             if((char) target == GameConstant.SKIN_VOID) {
                 this.matrix[coord_player.y][coord_player.x] = GameConstant.SKIN_VOID;
                 this.matrix[coord_player.y + move.y][coord_player.x + move.x] = GameConstant.SKIN_PLAYER;
-                this.gEngine.getPlayer().getPosition().x += move.x;
-                this.gEngine.getPlayer().getPosition().y += move.y;
+                this.gEngine.getPlayer().move(move);
             }
         }
 
@@ -92,6 +87,15 @@ public class Map {
                 // TODO : Prévoir le cas où le joueur meurt
             }
         }
+
+        else if(target instanceof Chest){
+            Player player = gEngine.getPlayer();
+            for(Item item : ((Chest) target).getChestContent()){
+                player.getInventory().add(item);
+            }
+            this.matrix[coord_player.y + move.y][coord_player.x + move.x] = GameConstant.SKIN_VOID;
+            this.gEngine.sendUpdateInventorySignal();
+        }
     }
 
     public Point getPlayerPosition() {
@@ -120,6 +124,10 @@ public class Map {
                 }
             } y++; x = 0;
         }
+    }
+
+    public Object[][] getMatrix(){
+        return this.matrix;
     }
 
     public void setMatrix(Object[][] matrix){

@@ -37,11 +37,13 @@ import java.util.Enumeration;
 public class InventoryView extends JScrollPane {
 
     private JList list;
+    private Inventory inventory;
     
     public InventoryView(Inventory inventory, int rows) {
         
         this.setLayout(new BorderLayout());
 
+        this.inventory = inventory;
         this.list = new JList();
         this.list.setListData(inventory.getItemList());
         this.list.setVisibleRowCount(rows-5);
@@ -79,7 +81,7 @@ public class InventoryView extends JScrollPane {
     public void setMaxRow(int maxrow){
         this.list.setVisibleRowCount(maxrow);
         this.setHeight(maxrow+2);
-    }        
+    }
 
     
     @Override
@@ -104,5 +106,9 @@ public class InventoryView extends JScrollPane {
                     break;
             }
         }
+    }
+
+    public void updateInventory() {
+        this.list.setListData(this.inventory.getItemList());
     }
 }

@@ -20,11 +20,17 @@ package forrogue.view;
 import charva.awt.Component;
 import charva.awt.Point;
 import charva.awt.Toolkit;
+import charva.awt.event.AWTEvent;
+import charva.awt.event.ActionEvent;
+import charva.awt.event.KeyEvent;
+import charva.awt.event.KeyListener;
 import charvax.swing.JOptionPane;
 import static charvax.swing.JOptionPane.YES_NO_OPTION;
 import static charvax.swing.JOptionPane.YES_OPTION;
 import charvax.swing.JTextField;
 import forrogue.game.GameWindow;
+
+import java.util.Enumeration;
 
 /**
  *
@@ -62,14 +68,13 @@ public class CommandPrompt extends JTextField{
     private void build() {
         this.addActionListener(ae -> {
             String cmd = ((JTextField) ae.getSource()).getText();
-            if("quit".equals(cmd)){
+            if("quit".equals(cmd) || "qquuiitt".equals(cmd)){
                 if(JOptionPane.showConfirmDialog((Component) ae.getSource(), "Do you want to save ?", "EXIT", YES_NO_OPTION) == YES_OPTION){
                 //SAVE//
                 }
                 Toolkit.getDefaultToolkit().close();
                 System.exit(0);
             }
-
             else if("up".equals(cmd)){
                 ((CommandPrompt) ae.getSource()).gWindow.sendMovePlayerSignal(new Point(0,-1));
                 ((CommandPrompt) ae.getSource()).gWindow.refreshMap();
@@ -98,5 +103,29 @@ public class CommandPrompt extends JTextField{
                 while(JOptionPane.showConfirmDialog((Component) ae.getSource(), "This command doesn't exist. Are you dumb ?", "UNKNOWN COMMAND", YES_NO_OPTION) != YES_OPTION);
             }
         });
+    }
+
+    @Override
+    public void processKeyEvent(KeyEvent ke_) {
+        int key = ke_.getKeyCode();
+        if (key == KeyEvent.VK_LEFT){
+            this.gWindow.sendMovePlayerSignal(new Point(-1, 0));
+            this.gWindow.refreshMap();
+            this.setText("");
+        } else if (key == KeyEvent.VK_RIGHT){
+            this.gWindow.sendMovePlayerSignal(new Point(1, 0));
+            this.gWindow.refreshMap();
+            this.setText("");
+        } else if (ke_.getKeyCode() == KeyEvent.VK_UP) {
+            this.gWindow.sendMovePlayerSignal(new Point(0, -1));
+            this.gWindow.refreshMap();
+            this.setText("");
+        } else if (ke_.getKeyCode() == KeyEvent.VK_DOWN) {
+            this.gWindow.sendMovePlayerSignal(new Point(0, 1));
+            this.gWindow.refreshMap();
+            this.setText("");
+        } else{
+            super.processKeyEvent(ke_);
+        }
     }
 }
