@@ -45,16 +45,10 @@ public class GameWindow extends JFrame implements Serializable {
     private final GameEngine gEngine;
     private final GameView gView;
 
-    public GameWindow(String title){
+    public GameWindow(String title, Player player, long seed){
 
         super(title+" -- TAB to switch between panels");
         Container mCont = this.getContentPane();
-
-        long seed = 84164654154L;
-        Player player = new Player("Provençal Le Gaulois", "Male", "Type1", new Point(-1,-1));
-        player.getInventory().add(new Sword());
-        player.getInventory().add(new IronShield());
-
 
         this.gEngine = new GameEngine(player, seed, "filename.save");
         this.gEngine.setGameWindow(this);

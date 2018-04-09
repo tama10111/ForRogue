@@ -4,6 +4,7 @@ import charva.awt.Dimension;
 import forrogue.Chest;
 import forrogue.GameObject;
 import forrogue.character.ennemy.Berserker;
+import forrogue.character.friendly.QuestMan;
 import forrogue.game.GameConstant;
 import forrogue.game.GameEngine;
 
@@ -51,7 +52,7 @@ public class Hub extends GameObject {
 
                     case GameConstant.ENNEMY :
                         this.matrix[i][j] = new Berserker();
-                        /*
+                        /* TODO : Faire spawn selon difficulté
                         int r = random.nextInt();
 
                         if(this.difficulty == 0){
@@ -86,6 +87,10 @@ public class Hub extends GameObject {
 
                     case GameConstant.DUNGEON_PLAYER_POS :
                         this.matrix[i][j] = GameConstant.DUNGEON_PLAYER_POS;
+                        break;
+
+                    case GameConstant.SKIN_QUESTMAN :
+                        this.matrix[i][j] = new QuestMan(gEngine.getRandom().nextInt());
                         break;
 
                     case '\n' :

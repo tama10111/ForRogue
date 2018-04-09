@@ -76,11 +76,10 @@ public class InventoryView extends JScrollPane {
             public void keyTyped(KeyEvent ke) {
                 switch(ke.getKeyCode()){
                     case KeyEvent.VK_ENTER :
-                        if(JOptionPane.showConfirmDialog((Component) ((InventoryView)((JViewport)((JList) ke.getSource()).getParent()).getParent()).gWindow.getCommandPrompt(), "Use this object ?", "", YES_NO_OPTION) == YES_OPTION){
-                            JList list = (JList) ke.getSource();
+                        if(JOptionPane.showConfirmDialog((Component) gWindow.getCommandPrompt(), "Use this object ?", "", YES_NO_OPTION) == YES_OPTION){
                             Item item = (Item) list.getSelectedValue();
-                            item.use(((InventoryView)(((JViewport) list.getParent()).getParent())).gWindow.getGameEngine().getPlayer());
-                            ((InventoryView)(((JViewport) list.getParent()).getParent())).updateInventory();
+                            item.use(gWindow.getGameEngine().getPlayer());
+                            gWindow.updateInventory();
                         };
                         break;
                 }

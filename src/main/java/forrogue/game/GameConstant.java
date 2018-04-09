@@ -52,7 +52,7 @@ public class GameConstant {
     /* OTHER SKINS */
 
     public static final char SKIN_WALL = '#';
-    public static final char SKIN_PLAYER = 'Ö';
+    public static char SKIN_PLAYER;
     public static final char SKIN_CHEST = '=';
     public static final char SKIN_VOID = '.';
     public static final char SKIN_DUNGEON_0 = '0';
@@ -62,6 +62,8 @@ public class GameConstant {
     public static final char DUNGEON_PLAYER_POS = 'P';
 
 
-    
-    public static final String market = "\\________/ ________\n" + "|  _oo_  | |Market|\n" + "|   /\\   |    ||\n";
+    public static final char SKIN_QUESTMAN = 'Q';
+    public static final String STRING_QUESTMAN_0 = "\\________/ ________";
+    public static final String STRING_QUESTMAN_1 = "|  _oo_  | |Market|";
+    public static final String STRING_QUESTMAN_2 = "|   /\\   |    ||";
 }

@@ -80,6 +80,16 @@ public class GameView extends Component{
 
         Player player = this.gEngine.getPlayer();
 
+        String gems = String.format("Wht : %s / Blk : %s / Blu : %s / Grn : %s / Ylw : %s / Red : %s",
+                player.getGems().get("white"),
+                player.getGems().get("black"),
+                player.getGems().get("blue"),
+                player.getGems().get("green"),
+                player.getGems().get("yellow"),
+                player.getGems().get("red")
+                );
+
+
         String stat = String.format("HP : %s / ATK : %s / DEF : %s / SPD : %s",
                 player.getHp(),
                 player.getAttack(),
@@ -100,14 +110,17 @@ public class GameView extends Component{
                 player.getName()
         );
 
-        this.term.setCursor(this._origin.x + 2, this._origin.y + this.dimension.height - 4);
+        this.term.setCursor(this._origin.x + 2, this._origin.y + this.dimension.height - 5);
         this.term.addString(name, 0, 0);
+
+        this.term.setCursor(this._origin.x + 2, this._origin.y + this.dimension.height - 4);
+        this.term.addString(equip, 0, 0);
 
         this.term.setCursor(this._origin.x + 2, this._origin.y + this.dimension.height - 3);
         this.term.addString(stat, 0, 0);
 
         this.term.setCursor(this._origin.x + 2, this._origin.y + this.dimension.height - 2);
-        this.term.addString(equip, 0, 0);
+        this.term.addString(gems, 0, 0);
 
         this.term.setCursor(mem_p);
         this.term.redrawWin();

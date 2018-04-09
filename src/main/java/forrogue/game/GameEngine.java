@@ -125,4 +125,8 @@ public class GameEngine implements Serializable {
     public GameWindow getGameWindow() {
         return this.gWindow;
     }
+
+    public int getRandomNumber() {
+        return Math.abs(this.random.nextInt());
+    }
 }

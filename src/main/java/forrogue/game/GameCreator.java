@@ -19,6 +19,7 @@ package forrogue.game;
 
 import charva.awt.BorderLayout;
 import charva.awt.Color;
+import charva.awt.Point;
 import charva.awt.event.KeyEvent;
 import charva.awt.event.KeyListener;
 import charvax.swing.JFrame;
@@ -28,6 +29,7 @@ import charvax.swing.JScrollPane;
 import charvax.swing.JTextField;
 import charvax.swing.border.LineBorder;
 import charvax.swing.border.TitledBorder;
+import forrogue.character.Player;
 
 import java.util.Vector;
 
@@ -46,7 +48,124 @@ public class GameCreator extends JFrame{
         super("GameCreator -- TAB to switch between panels -- ENTER to select value");                
 
         Vector<String> gV = new Vector<>();
-        gV.add("Male"); gV.add("Female");
+
+        //DID YOU JUST ASSUME MY GENDER ?!
+        gV.add("Abimegende");
+        gV.add("Adamasgende");
+        gV.add("Aerogende");
+        gV.add("Aesthetigende");
+        gV.add("Affectugende");
+        gV.add("Agende");
+        gV.add("Agenderflu");
+        gV.add("Alexigende");
+        gV.add("Aliusgende");
+        gV.add("Amaregende");
+        gV.add("Ambigende");
+        gV.add("Ambone");
+        gV.add("Amicagende");
+        gV.add("Androgyn");
+        gV.add("Anesigende");
+        gV.add("Angenita");
+        gV.add("Anogende");
+        gV.add("Anongende");
+        gV.add("Antegende");
+        gV.add("Anxiegende");
+        gV.add("Apagende");
+        gV.add("Apconsugende");
+        gV.add("Astergende");
+        gV.add("Astralgende");
+        gV.add("Autigende");
+        gV.add("Autogende");
+        gV.add("Axigende");
+        gV.add("Bigende");
+        gV.add("Biogende");
+        gV.add("Blurgende");
+        gV.add("Boyflu");
+        gV.add("Burstgende");
+        gV.add("Caelgende");
+        gV.add("Cassgende");
+        gV.add("Cassflu");
+        gV.add("Cavusgende");
+        gV.add("Cendgende");
+        gV.add("Ceteroflui");
+        gV.add("Ceterogende");
+        gV.add("Cisgende");
+        gV.add("Cloudgende");
+        gV.add("Collgende");
+        gV.add("Colorgende");
+        gV.add("Commogende");
+        gV.add("Condigende");
+        gV.add("Deliciagende");
+        gV.add("Demiflui");
+        gV.add("Demiflu");
+        gV.add("Demigende");
+        gV.add("Domgende");
+        gV.add("Duragende");
+        gV.add("Egogende");
+        gV.add("Epicen");
+        gV.add("Espigende");
+        gV.add("Exgende");
+        gV.add("Existigende");
+        gV.add("Female");
+        gV.add("Femflui");
+        gV.add("Femgende");
+        gV.add("Fluidflu");
+        gV.add("Gemigende");
+        gV.add("Genderblan");
+        gV.add("Genderflo");
+        gV.add("Genderflui");
+        gV.add("Genderflu");
+        gV.add("Genderfuz");
+        gV.add("Genderpun");
+        gV.add("Genderquee");
+        gV.add("Genderwitche");
+        gV.add("Girlflu");
+        gV.add("Glassgende");
+        gV.add("Glimragende");
+        gV.add("Greygende");
+        gV.add("Gyragende");
+        gV.add("Healgende");
+        gV.add("Heliogende");
+        gV.add("Hemigende");
+        gV.add("Horogende");
+        gV.add("Hydrogende");
+        gV.add("Imperigende");
+        gV.add("Intergende");
+        gV.add("Juxer");
+        gV.add("Libragende");
+        gV.add("Male");
+        gV.add("Magigende");
+        gV.add("Mascflui");
+        gV.add("Mascgende");
+        gV.add("Maveriqu");
+        gV.add("Mirrorgende");
+        gV.add("Molligende");
+        gV.add("Multigende");
+        gV.add("Nanogende");
+        gV.add("Neutroi");
+        gV.add("Neutra");
+        gV.add("Nonbinar");
+        gV.add("Omnigende");
+        gV.add("Oneirogende");
+        gV.add("Pangende");
+        gV.add("Paragende");
+        gV.add("Perigende");
+        gV.add("Polygende");
+        gV.add("Proxvi");
+        gV.add("Quoigende");
+        gV.add("Subgende");
+        gV.add("Surgende");
+        gV.add("Systemgende");
+        gV.add("Tragende");
+        gV.add("Transgende");
+        gV.add("Transneutra");
+        gV.add("Trigende");
+        gV.add("Vapogende");
+        gV.add("Venngende");
+        gV.add("Verangende");
+        gV.add("Vibragende");
+        gV.add("Vocigende");
+
         Form gForm = new Form(gV);
         JPanel gPanel = new JPanel();
         gPanel.setBorder(new TitledBorder("Gender"));
@@ -62,44 +181,21 @@ public class GameCreator extends JFrame{
         Vector<String> eV = new Vector<>();
         eV.add("Create"); eV.add("Exit");
         Form eForm = new Form(eV);
-        
-        eForm.addKeyListener(new KeyListener(){
-        
-            @Override
-            public void keyTyped(KeyEvent ke) {
-                switch(ke.getKeyCode()){
-                    case KeyEvent.VK_ENTER :
-                        
-                        eForm.getList().processKeyEvent(ke);
-
-                        switch(eForm.getSelected()) {
-
-                            case "Create":
-                                GameWindow gWindow = new GameWindow("ForRogue");
-                                break;
-
-                            case "Exit":
-                                System.exit(0);
-                                break;
-
-                        }
-                    break;
-                }
-            }
-
-            @Override
-            public void keyPressed(KeyEvent ke) {}
-
-            @Override
-            public void keyReleased(KeyEvent ke) {}
-            
-        });
-        
         JPanel ePanel = new JPanel();
-        ePanel.setBorder(new LineBorder(Color.green));
+        ePanel.setBorder(new LineBorder(null));
         ePanel.add(eForm);
-        
-        
+
+        Vector<String> skV = new Vector<>();
+        skV.add("Ä"); skV.add("Â");
+        skV.add("Ö"); skV.add("Ô");
+        skV.add("Ü"); skV.add("Û");
+        skV.add("Ÿ"); skV.add("Ŷ");
+        Form skForm = new Form(skV);
+        JPanel skPanel = new JPanel();
+        skPanel.setBorder(new TitledBorder("Skin"));
+        skPanel.add(skForm);
+
+
         JTextField seedField = new JTextField("84164654154");
         JPanel sPanel = new JPanel();
         sPanel.setBorder(new TitledBorder("Seed"));
@@ -115,11 +211,54 @@ public class GameCreator extends JFrame{
         pPanel.setBorder(new TitledBorder("Player name"));
         pPanel.add(playerNameField);
 
+
+        eForm.addKeyListener(new KeyListener(){
+
+            @Override
+            public void keyTyped(KeyEvent ke) {
+                switch(ke.getKeyCode()){
+                    case KeyEvent.VK_ENTER :
+
+                        eForm.getList().processKeyEvent(ke);
+
+                        switch(eForm.getSelected()) {
+
+                            /**
+                             * TODO : Rajouter fileNameField quand la save sera ok
+                             * TODO : Gérer le cas où l'utilisateur ne saisi rien
+                             */
+
+                            case "Create":
+                                GameWindow gWindow = new GameWindow(
+                                        "ForRogue",
+                                        new Player(playerNameField.getText(), gForm.getSelected(), cForm.getSelected(), new Point(0,0), skForm.getSelected().charAt(0)),
+                                        Long.parseLong(seedField.getText())
+                                );
+                                break;
+
+                            case "Exit":
+                                System.exit(0);
+                                break;
+
+                        }
+                        break;
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent ke) {}
+
+            @Override
+            public void keyReleased(KeyEvent ke) {}
+
+        });
+
         
         JPanel centerPanel = new JPanel();
         centerPanel.add(fPanel, BorderLayout.NORTH);
         centerPanel.add(sPanel, BorderLayout.SOUTH);
         centerPanel.add(pPanel, BorderLayout.WEST);
+        centerPanel.add(skPanel, BorderLayout.EAST);
         
         
         this.getContentPane().add(gPanel, BorderLayout.WEST);

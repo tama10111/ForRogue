@@ -57,29 +57,27 @@ class Dungeon extends GameObject {
 
         if(difficulty == 0){
             r = random.nextInt();
-            mod = 11;//Objects.requireNonNull(new File("src/main/resources/easy/").listFiles()).length;
-            path = "easy/"+Long.toString((r%mod)+1)+".map";
+            mod = 11;
+            path = "easy/"+Long.toString(Math.abs((r%mod)+1))+".map";
             this.setSkin(GameConstant.SKIN_DUNGEON_0);
         }
 
         else if(difficulty == 1){
             r = random.nextInt();
-            mod = 6;//Objects.requireNonNull(new File("src/main/resources/intermediate/").listFiles()).length;
-            path = "intermediate/"+Long.toString((r%mod)+1)+".map";
+            mod = 6;
+            path = "intermediate/"+Long.toString(Math.abs((r%mod)+1))+".map";
             this.setSkin(GameConstant.SKIN_DUNGEON_1);
         }
 
         else if(difficulty == 2){
             r = random.nextInt();
-            mod = 7;//Objects.requireNonNull(new File("src/main/resources/hard/").listFiles()).length;
-            path = "hard/"+Long.toString((r%mod)+1)+".map";
+            mod = 7;
+            path = "hard/"+Long.toString(Math.abs((r%mod)+1))+".map";
             this.setSkin(GameConstant.SKIN_DUNGEON_2);
         }
 
         InputStream stream = getClass().getClassLoader().getResourceAsStream(path);
-        if(stream == null){ // TODO : Comprendre cette merde
-            System.out.println(path);
-            System.exit(0);
+        if(stream == null){
             stream = getClass().getClassLoader().getResourceAsStream("dungeon_failure.map");
         }
 

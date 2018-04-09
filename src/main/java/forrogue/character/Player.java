@@ -12,15 +12,29 @@ import forrogue.game.GameConstant;
 import forrogue.item.protection.UnderWear;
 import forrogue.item.weapon.Hand;
 
+import java.util.HashMap;
+
 /**
  *
  * @author tama
  */
 public class Player extends Character {
 
-    public Player(String name, String gender, String type, Point position) {
+    HashMap<String, Integer> gems;
 
-        // TODO : À virer - Pour mes tests
+    public Player(String name, String gender, String type, Point position, char skin) {
+
+        GameConstant.SKIN_PLAYER = skin;
+
+        this.gems = new HashMap<String, Integer>();
+        this.gems.put("white", 0);
+        this.gems.put("black", 0);
+        this.gems.put("blue", 1); // TODO : Remettre à zéro - test
+        this.gems.put("green", 0);
+        this.gems.put("yellow", 0);
+        this.gems.put("red", 0);
+
+        // TODO : À virer - test
         this.setWeapon(new Hand());
         this.setProtection(new UnderWear());
 
@@ -33,10 +47,19 @@ public class Player extends Character {
         this.setSpeed(999);
 
         this.setInventory(new Inventory());
+
         this.setName(name);
         this.setGender(gender);
         this.setType(type);
         this.setPosition(position);
-        this.setSkin(GameConstant.SKIN_PLAYER); // TODO : Permettre au joueur de set un skin dans le GameCreator ou associer un skin à un type;
+        this.setSkin(skin);
+    }
+
+    public HashMap<String,Integer> getGems() {
+        return this.gems;
+    }
+
+    public void addGems(String color, int i) {
+        this.gems.replace(color, this.gems.get(color) + i);
     }
 }

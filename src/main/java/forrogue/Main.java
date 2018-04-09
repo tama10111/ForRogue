@@ -2,11 +2,9 @@ package forrogue;
 
 import forrogue.game.GameCreator;
 import forrogue.game.GameEngine;
-import forrogue.game.GameWindow;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 
 /**
  *

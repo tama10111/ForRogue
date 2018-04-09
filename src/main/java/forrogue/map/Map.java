@@ -18,14 +18,21 @@
 
 package forrogue.map;
 
+import charva.awt.Component;
 import charva.awt.Point;
+import charvax.swing.JOptionPane;
 import forrogue.Chest;
 import forrogue.GameObject;
 import forrogue.character.Player;
 import forrogue.character.ennemy.Ennemy;
+import forrogue.character.friendly.QuestMan;
 import forrogue.game.GameConstant;
 import forrogue.game.GameEngine;
 import forrogue.item.Item;
+import forrogue.item.quest.Gem;
+
+import static charvax.swing.JOptionPane.YES_NO_OPTION;
+import static charvax.swing.JOptionPane.YES_OPTION;
 
 /**
  *
@@ -83,6 +90,10 @@ public class Map {
 
             if(ennemy.getHp() <= 0){
                 this.matrix[coord_player.y + move.y][coord_player.x + move.x] = GameConstant.SKIN_VOID;
+                this.gEngine.getPlayer().addGems(
+                        Gem.values()[this.gEngine.getRandomNumber()%Gem.values().length].getColor(),
+                        this.gEngine.getRandomNumber()%5+1
+                );
             }
 
             if(gEngine.getPlayer().getHp() <= 0){
@@ -97,6 +108,61 @@ public class Map {
             }
             this.matrix[coord_player.y + move.y][coord_player.x + move.x] = GameConstant.SKIN_VOID;
             this.gEngine.sendUpdateInventorySignal();
+        }
+
+        else if(target instanceof QuestMan){
+
+            QuestMan questMan = (QuestMan) target;
+
+            Object[] objString = {
+                    GameConstant.STRING_QUESTMAN_0,
+                    GameConstant.STRING_QUESTMAN_1,
+                    GameConstant.STRING_QUESTMAN_2,
+                    " ",
+                    String.format("Hey ! I need %s %s gem.", questMan.getQuestQuantity(), questMan.getQuestItem()),
+                    "Have any ?"
+            };
+
+            int resp = JOptionPane.showConfirmDialog(
+                    (Component) gEngine.getGameWindow().getCommandPrompt(),
+                    objString,
+                    "The QuestMan",
+                    YES_NO_OPTION);
+
+            if(resp == YES_OPTION){
+                objString[4] = "Thanks bro !";
+                objString[5] = "Here is your reward";
+                if(questMan.checkPlayerGems(this.gEngine.getPlayer().getInventory(), this.gEngine.getPlayer().getGems())){
+                    JOptionPane.showMessageDialog(
+                            (Component) gEngine.getGameWindow().getCommandPrompt(),
+                            objString,
+                            "The Quest Man",
+                            0
+                    );
+                    questMan.generateQuest(Math.abs(this.gEngine.getRandom().nextInt()));
+                    gEngine.getGameWindow().updateInventory();
+
+                } else{
+                    objString[4] = "Haha u suck";
+                    objString[5] = "GTFO xD";
+
+                    JOptionPane.showMessageDialog(
+                            (Component) gEngine.getGameWindow().getCommandPrompt(),
+                            objString,
+                            "The Quest Man",
+                            0
+                    );
+                }
+            } else{
+                objString[4] = "Oh...";
+                objString[5] = "Come back when you want !";
+                JOptionPane.showMessageDialog(
+                        (Component) gEngine.getGameWindow().getCommandPrompt(),
+                        objString,
+                        "The Quest Man",
+                        0
+                );
+            }
         }
     }
 
@@ -135,5 +201,7 @@ public class Map {
     public void setMatrix(Object[][] matrix){
         this.matrix = matrix;
     }
+
+
 
 }
