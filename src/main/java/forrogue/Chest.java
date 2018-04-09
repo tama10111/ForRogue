@@ -17,10 +17,37 @@
  */
 package forrogue;
 
+import forrogue.game.GameConstant;
+import forrogue.item.Item;
+import forrogue.item.protection.*;
+import forrogue.item.weapon.*;
+import forrogue.item.potion.*;
+
+import java.util.Vector;
+
 /**
  *
  * @author tama
  */
-public class Chest extends Inventory{
-    
+public class Chest extends GameObject{
+
+    Inventory inventory;
+
+    /**
+     *
+     * @param level Correspond à la qualité des items dans le coffre. C'est tout simplement la difficulté du donjon qui gère ça.
+     */
+
+    public Chest(int level){
+        this.setSkin(GameConstant.SKIN_CHEST);
+        this.inventory = new Inventory();
+        this.inventory.add(new Sword());
+        this.inventory.add(new IronShield());
+        this.inventory.add(new LargePotion());
+    }
+
+    public Vector<Item> getChestContent(){
+        return this.inventory.getItemList();
+    }
+
 }

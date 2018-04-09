@@ -13,22 +13,15 @@ import forrogue.item.Item;
  * @author user
  */
 public abstract class Weapon extends Item {
-    int power;
-    int speed;
-    public Weapon(String name, char skin, int power, int speed){
+
+    public Weapon(String name, char skin, int attack, int speed){
         super(name, skin);
-        this.power=power;
-        this.speed= speed;
+        this.setAttack(attack);
+        this.setSpeed(speed);
     }
 
     @Override
     public void use(Character character){
-        character.receiveDamages(this.power);
+        character.setWeapon(this);
     }
-
-
-
-
-
-
 }

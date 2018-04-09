@@ -19,7 +19,13 @@
 package forrogue.map;
 
 import charva.awt.Point;
+import forrogue.Chest;
+import forrogue.GameObject;
+import forrogue.character.Player;
+import forrogue.character.ennemy.Ennemy;
 import forrogue.game.GameConstant;
+import forrogue.game.GameEngine;
+import forrogue.item.Item;
 
 /**
  *
@@ -28,41 +34,105 @@ import forrogue.game.GameConstant;
 
 public class Map {
 
-    private char[][] matrix;
-    private long seed;
-    
-    public Map(long seed, char[][] matrix){
-        this.seed = seed;
-        this.matrix = matrix;
+    private Object[][] matrix;
+    private GameEngine gEngine;
+
+    public Map(GameEngine gEngine){
+        this.gEngine = gEngine;
+        this.matrix = gEngine.getHub().getMatrix();
     }
 
-    public char[][] getMatrix(){
-        return this.matrix;
-    }
+    public void movePlayer(Point move) {
 
-    public boolean movePlayer(Point move, Point coord_player) {
-        if(this.matrix[coord_player.y+move.y][coord_player.x+move.x] == GameConstant.SKIN_VOID){
-            this.matrix[coord_player.y][coord_player.x] = GameConstant.SKIN_VOID;
-            this.matrix[coord_player.y+move.y][coord_player.x+move.x] = GameConstant.SKIN_PLAYER;
-            return true;
+        Point coord_player = this.gEngine.getPlayer().getPosition();
+
+        Object target = this.matrix[coord_player.y+move.y][coord_player.x+move.x];
+
+        if(!(target instanceof GameObject)){
+            if((char) target == GameConstant.SKIN_VOID) {
+                this.matrix[coord_player.y][coord_player.x] = GameConstant.SKIN_VOID;
+                this.matrix[coord_player.y + move.y][coord_player.x + move.x] = GameConstant.SKIN_PLAYER;
+                this.gEngine.getPlayer().move(move);
+            }
         }
 
-        else return false;
+        else if(target instanceof Dungeon){
+            this.matrix[coord_player.y][coord_player.x] = GameConstant.DUNGEON_PLAYER_POS;
+            this.matrix[coord_player.y + move.y][coord_player.x + move.x] = new Dungeon(((Dungeon) target).getDifficulty(), gEngine.getHub(), gEngine.getRandom());
+            this.setMatrix(((Dungeon) target).getMatrix());
+            this.setPlayerPosition();
+            this.gEngine.getGameWindow().getGameView().repaint();
+        }
+
+        else if(target instanceof  Hub){
+            this.setMatrix(((Hub) target).getMatrix());
+            this.setPlayerPosition();
+            this.gEngine.getGameWindow().getGameView().repaint();
+        }
+
+        else if(target instanceof Ennemy){
+            Ennemy ennemy = (Ennemy) target;
+
+            if(ennemy.getSpeed() > gEngine.getPlayer().getSpeed()){
+                ennemy.attack(gEngine.getPlayer());
+                gEngine.getPlayer().attack(ennemy);
+            } else{
+                gEngine.getPlayer().attack(ennemy);
+                ennemy.attack(gEngine.getPlayer());
+            }
+
+            if(ennemy.getHp() <= 0){
+                this.matrix[coord_player.y + move.y][coord_player.x + move.x] = GameConstant.SKIN_VOID;
+            }
+
+            if(gEngine.getPlayer().getHp() <= 0){
+                // TODO : Prévoir le cas où le joueur meurt
+            }
+        }
+
+        else if(target instanceof Chest){
+            Player player = gEngine.getPlayer();
+            for(Item item : ((Chest) target).getChestContent()){
+                player.getInventory().add(item);
+            }
+            this.matrix[coord_player.y + move.y][coord_player.x + move.x] = GameConstant.SKIN_VOID;
+            this.gEngine.sendUpdateInventorySignal();
+        }
     }
 
     public Point getPlayerPosition() {
         int x = 0, y = 0;
-        for(char[] line : this.matrix){
-            for(char c : line){
-                if(c == GameConstant.SKIN_PLAYER){
+        for(Object[] line : this.matrix){
+            for(Object o : line){
+                if(o.getClass() == Player.class){
                     return new Point(x, y);
-                }
-                x++;
+                } x++;
             } y++; x = 0;
         } return new Point(-1,-1);
     }
 
-    public void setMatrix(char[][] matrix){
+    public void setPlayerPosition(){
+        int x = 0, y = 0;
+        for(Object[] line : this.matrix){
+            for(Object o : line){
+                if(o != null) { // TODO : Vérifier pourquoi ça fait null
+                    if (!(o instanceof GameObject)) {
+                        if (((char) o) == GameConstant.DUNGEON_PLAYER_POS) {
+                            this.gEngine.getPlayer().setPosition(new Point(x, y));
+                            this.matrix[y][x] = this.gEngine.getPlayer();
+                        }
+                    }
+                    x++;
+                }
+            } y++; x = 0;
+        }
+    }
+
+    public Object[][] getMatrix(){
+        return this.matrix;
+    }
+
+    public void setMatrix(Object[][] matrix){
         this.matrix = matrix;
     }
 

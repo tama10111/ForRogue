@@ -22,7 +22,10 @@ import charva.awt.Component;
 import charva.awt.Dimension;
 import charva.awt.Point;
 import charva.awt.Toolkit;
-import forrogue.map.Map;
+
+import forrogue.GameObject;
+import forrogue.character.Player;
+import forrogue.game.GameEngine;
 
 /**
  *
@@ -33,14 +36,15 @@ public class GameView extends Component{
 
     private Dimension dimension;
     private Toolkit term;
-    private Map map;
+    private GameEngine gEngine;
 
-    public GameView(Dimension dimension, Point origin, Map map) {
+    public GameView(Dimension dimension, Point origin, GameEngine gEngine) {
         this.dimension = dimension;
-        this.map = map;
+        this.gEngine = gEngine;
         this._origin = origin;
         this.term = Toolkit.getDefaultToolkit();
         this._visible = true;
+        this.term.drawBox(_origin, dimension);
     }
 
 
@@ -53,11 +57,10 @@ public class GameView extends Component{
     public void draw() {
 
         Point mem_p = this.term.getCursor();
-        this.term.drawBox(_origin, dimension);
         int max = 0;
-        char[][] matrix = this.map.getMatrix();
+        Object[][] matrix = this.gEngine.getMap().getMatrix();
 
-        for (char[] aMatrix : matrix) if (aMatrix.length > max) max = aMatrix.length;
+        for (Object[] aMatrix : matrix) if (aMatrix.length > max) max = aMatrix.length;
 
         int cx = (this.dimension.width-max)/2;
         int cy = (this.dimension.height-matrix.length)/2;
@@ -65,9 +68,46 @@ public class GameView extends Component{
         for(int y = 0; y < matrix.length; y++){
             for(int x = 0; x < matrix[y].length; x++){
                 this.term.setCursor(x+cx, y+cy);
-                this.term.addChar(matrix[y][x], 0, 0);
+                if(matrix[y][x] != null) { // TODO : Vérifier pourquoi ça fait null
+                    if (matrix[y][x] instanceof GameObject) {
+                        this.term.addChar(((GameObject) matrix[y][x]).getSkin(), 0, 0);
+                    } else {
+                        this.term.addChar(((char) matrix[y][x]), 0, 0);
+                    }
+                }
             }
         }
+
+        Player player = this.gEngine.getPlayer();
+
+        String stat = String.format("HP : %s / ATK : %s / DEF : %s / SPD : %s",
+                player.getHp(),
+                player.getAttack(),
+                player.getDefense(),
+                player.getSpeed()
+        );
+
+        String equip = String.format("Weapon : [%c] %s / Protection : [%c] %s",
+                player.getWeapon().getSkin(),
+                player.getWeapon().getName(),
+                player.getProtection().getSkin(),
+                player.getProtection().getName()
+        );
+
+        String name = String.format("[%s - %s] %s",
+                player.getSkin(),
+                player.getGender().charAt(0),
+                player.getName()
+        );
+
+        this.term.setCursor(this._origin.x + 2, this._origin.y + this.dimension.height - 4);
+        this.term.addString(name, 0, 0);
+
+        this.term.setCursor(this._origin.x + 2, this._origin.y + this.dimension.height - 3);
+        this.term.addString(stat, 0, 0);
+
+        this.term.setCursor(this._origin.x + 2, this._origin.y + this.dimension.height - 2);
+        this.term.addString(equip, 0, 0);
 
         this.term.setCursor(mem_p);
         this.term.redrawWin();
@@ -100,5 +140,33 @@ public class GameView extends Component{
 
     public void refreshMap() {
         this.draw();
+    }
+
+    public void clearMap(){
+        Point mem_p = this.term.getCursor();
+        Object[][] matrix = this.gEngine.getMap().getMatrix();
+        int width = 0;
+        for(Object[] line : matrix){
+            if(line.length > width) width = line.length;
+        }
+        int height = matrix.length;
+
+        for(int y = 0; y<height; y++){
+            for(int x = 0; x<width; x++){
+                this.term.setCursor(x,y);
+                this.term.addChar(' ', 0, 0);
+            }
+        }
+
+        this.term.setCursor(mem_p);
+        this.term.redrawWin();
+        this.term.sync();
+    }
+
+    public void addChar(int x, int y, char c){
+        Point mem_p = this.term.getCursor();
+        this.term.setCursor(x, y);
+        this.term.addChar(c,0,0);
+        this.term.setCursor(mem_p);
     }
 }

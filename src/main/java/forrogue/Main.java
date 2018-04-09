@@ -6,6 +6,7 @@ import forrogue.game.GameWindow;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 
 /**
  *
@@ -17,27 +18,21 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    
+
     public static void main(String[] args){
 
         FileReader saveFile = null;
-        
-        for(int i = 0; i<args.length; i++){
-            if(args[i].equals("-f")){
-                try {
-                    saveFile = new FileReader(args[i+1]);
-                } catch (FileNotFoundException ex) {
-                    System.out.println("File "+args[i+1]+" not found !");
-                    System.exit(1);
-                }
-            }
-        }        
 
-        if(saveFile == null){
+        if(args.length == 1){
+            try {
+                saveFile = new FileReader(args[0]);
+                GameEngine gEngine = new GameEngine(saveFile);
+            } catch (FileNotFoundException ex) {
+                System.out.println("File "+args[0]+" not found !");
+                System.exit(1);
+            }
+        } else {
             GameCreator gCreator = new GameCreator();
-        } else{
-            GameEngine gEngine = new GameEngine(saveFile);
-            GameWindow gui = new GameWindow("RogueLike", gEngine);
         }
-    }    
+    }
 }

@@ -19,14 +19,11 @@ package forrogue.game;
 
 import charva.awt.Point;
 import forrogue.character.Player;
-import forrogue.character.Character;
 import forrogue.map.Hub;
 import forrogue.map.Map;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -34,7 +31,7 @@ import java.util.logging.Logger;
  *
  * @author tama
  */
-public class GameEngine {
+public class GameEngine implements Serializable {
 
     private Player player;
     private long seed;
@@ -42,6 +39,7 @@ public class GameEngine {
     private FileReader saveFile;
     private GameWindow gWindow;
     private Hub hub;
+    private Random random;
     
     
     public GameEngine(FileReader saveFile) {
@@ -49,12 +47,14 @@ public class GameEngine {
         this.readFile();
     }
 
-    public GameEngine(Player player, long seed, String fileName) throws FileNotFoundException {
-        this.hub = new Hub();
+    public GameEngine(Player player, long seed, String fileName){
         this.player = player;
         this.seed = seed;
-        this.map = new Map(seed, this.hub.getMatrix());
-        this.player.setPosition(this.map.getPlayerPosition());
+        this.random = new Random();
+        this.random.setSeed(seed);
+        this.hub = new Hub(this);
+        this.map = new Map(this);
+        this.map.setPlayerPosition();
 
         File f = new File(fileName);
         if(f.exists()){
@@ -79,12 +79,20 @@ public class GameEngine {
     }
 
     
-    public Character getPlayer(){
+    public Player getPlayer(){
         return this.player;
     }
 
-    Map getMap() {
+    public Map getMap(){
         return this.map;
+    }
+
+    public Random getRandom() {
+        return this.random;
+    }
+
+    public Hub getHub() {
+        return this.hub;
     }
 
     
@@ -103,12 +111,18 @@ public class GameEngine {
 
 
     public void movePlayer(Point move) {
-        if(this.map.movePlayer(move, this.player.getPosition())){
-            this.player.move(move);
-        }
+        this.map.movePlayer(move);
     }
 
-    public void setGameWindow(GameWindow gWindow){
+    public void sendUpdateInventorySignal() {
+        this.gWindow.updateInventory();
+    }
+
+    public void setGameWindow(GameWindow gWindow) {
         this.gWindow = gWindow;
+    }
+
+    public GameWindow getGameWindow() {
+        return this.gWindow;
     }
 }

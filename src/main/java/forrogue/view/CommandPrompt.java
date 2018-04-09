@@ -18,13 +18,17 @@
 package forrogue.view;
 
 import charva.awt.Component;
+import charva.awt.EventQueue;
 import charva.awt.Point;
 import charva.awt.Toolkit;
+import charva.awt.event.*;
 import charvax.swing.JOptionPane;
 import static charvax.swing.JOptionPane.YES_NO_OPTION;
 import static charvax.swing.JOptionPane.YES_OPTION;
 import charvax.swing.JTextField;
 import forrogue.game.GameWindow;
+
+import java.util.Enumeration;
 
 /**
  *
@@ -69,34 +73,41 @@ public class CommandPrompt extends JTextField{
                 Toolkit.getDefaultToolkit().close();
                 System.exit(0);
             }
-
-            else if("up".equals(cmd)){
-                ((CommandPrompt) ae.getSource()).gWindow.sendMovePlayerSignal(new Point(0,-1));
-                ((CommandPrompt) ae.getSource()).gWindow.refreshMap();
-                ((CommandPrompt) ae.getSource()).setText("");
+            else if("unset weapon".equals(cmd)){
+                this.gWindow.getGameEngine().getPlayer().unsetWeapon();
+                this.setText("");
             }
-
-            else if("down".equals(cmd)){
-                ((CommandPrompt) ae.getSource()).gWindow.sendMovePlayerSignal(new Point(0,1));
-                ((CommandPrompt) ae.getSource()).gWindow.refreshMap();
-                ((CommandPrompt) ae.getSource()).setText("");
+            else if("unset protection".equals(cmd)){
+                this.gWindow.getGameEngine().getPlayer().unsetProtection();
+                this.setText("");
             }
-
-            else if("left".equals(cmd)){
-                ((CommandPrompt) ae.getSource()).gWindow.sendMovePlayerSignal(new Point(-1,0));
-                ((CommandPrompt) ae.getSource()).gWindow.refreshMap();
-                ((CommandPrompt) ae.getSource()).setText("");
-            }
-
-            else if("right".equals(cmd)){
-                ((CommandPrompt) ae.getSource()).gWindow.sendMovePlayerSignal(new Point(1,0));
-                ((CommandPrompt) ae.getSource()).gWindow.refreshMap();
-                ((CommandPrompt) ae.getSource()).setText("");
-            }
-
             else{
                 while(JOptionPane.showConfirmDialog((Component) ae.getSource(), "This command doesn't exist. Are you dumb ?", "UNKNOWN COMMAND", YES_NO_OPTION) != YES_OPTION);
             }
         });
+    }
+
+    @Override
+    public void processKeyEvent(KeyEvent ke_) {
+        int key = ke_.getKeyCode();
+        if (key == KeyEvent.VK_LEFT && ke_.getID() == AWTEvent.KEY_TYPED){
+            this.gWindow.sendMovePlayerSignal(new Point(-1, 0));
+            this.gWindow.refreshMap();
+
+        } else if (key == KeyEvent.VK_RIGHT && ke_.getID() == AWTEvent.KEY_TYPED){
+            this.gWindow.sendMovePlayerSignal(new Point(1, 0));
+            this.gWindow.refreshMap();
+
+        } else if (ke_.getKeyCode() == KeyEvent.VK_UP && ke_.getID() == AWTEvent.KEY_TYPED) {
+            this.gWindow.sendMovePlayerSignal(new Point(0, -1));
+            this.gWindow.refreshMap();
+
+        } else if (ke_.getKeyCode() == KeyEvent.VK_DOWN && ke_.getID() == AWTEvent.KEY_TYPED) {
+            this.gWindow.sendMovePlayerSignal(new Point(0, 1));
+            this.gWindow.refreshMap();
+
+        } else{
+            super.processKeyEvent(ke_);
+        }
     }
 }

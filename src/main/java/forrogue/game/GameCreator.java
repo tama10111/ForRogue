@@ -19,7 +19,6 @@ package forrogue.game;
 
 import charva.awt.BorderLayout;
 import charva.awt.Color;
-import charva.awt.Point;
 import charva.awt.event.KeyEvent;
 import charva.awt.event.KeyListener;
 import charvax.swing.JFrame;
@@ -29,12 +28,7 @@ import charvax.swing.JScrollPane;
 import charvax.swing.JTextField;
 import charvax.swing.border.LineBorder;
 import charvax.swing.border.TitledBorder;
-import forrogue.character.Player;
-import forrogue.item.Item;
-import forrogue.item.protection.IronShield;
-import forrogue.item.weapon.Sword;
 
-import java.io.FileNotFoundException;
 import java.util.Vector;
 
 /**
@@ -81,17 +75,7 @@ public class GameCreator extends JFrame{
                         switch(eForm.getSelected()) {
 
                             case "Create":
-                                try {
-                                    long seed = 84164654154L;
-                                    Player player = new Player("Provençal Le Gaulois", "Male", "Type1", new Point(-1,-1));
-                                    player.getInventory().add(new Sword());
-                                    player.getInventory().add(new IronShield());
-                                    GameEngine gEngine = new GameEngine(player, seed, "filename.save");
-                                    GameWindow gui = new GameWindow("RogueLike", gEngine);
-                                    gEngine.setGameWindow(gui);
-                                } catch (FileNotFoundException e) {
-                                    e.printStackTrace();
-                                }
+                                GameWindow gWindow = new GameWindow("ForRogue");
                                 break;
 
                             case "Exit":
@@ -142,8 +126,8 @@ public class GameCreator extends JFrame{
         this.getContentPane().add(centerPanel, BorderLayout.CENTER);
         this.getContentPane().add(cPanel, BorderLayout.EAST);
         this.getContentPane().add(ePanel, BorderLayout.SOUTH);
-
         this.pack();
+
         this.setVisible(true);
         validate();
     }
