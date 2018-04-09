@@ -13,12 +13,15 @@ import forrogue.item.Item;
  *
  * @author user
  */
+
 public abstract class Protection extends Item {
 
-    public Protection(String name, char skin, int defense, int speed){
+    public Protection(String name, char skin, int defense, int speed, int hp){
         super(name, skin);
+        this.setHp(hp);
         this.setDefense(defense);
         this.setSpeed(speed);
+
     }
 
     @Override

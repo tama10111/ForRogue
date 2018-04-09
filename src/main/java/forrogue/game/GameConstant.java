@@ -35,6 +35,9 @@ public class GameConstant {
     public static final char SKIN_TRIDENT = '+';
     public static final char SKIN_HALBERD = 'µ';
     public static final char SKIN_HAND = '"';
+    public static final char SKIN_AXE = 'œ';
+    public static final char SKIN_KATANA = 'l';
+
 
     /* PROTECTIONS SKINS */
 
@@ -43,6 +46,7 @@ public class GameConstant {
     public static final char SKIN_PLATEARMOR = ';';
     public static final char SKIN_WOODSHIELD = '&';
     public static final char SKIN_UNDERWEAR = '%';
+    public static final char SKIN_LEATHERARMOR = '*';
 
     /* POTIONS SKINS */
     public static final char SKIN_SMALLPOTION = '°';

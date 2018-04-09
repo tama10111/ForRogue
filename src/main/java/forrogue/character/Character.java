@@ -13,6 +13,7 @@ import forrogue.item.protection.UnderWear;
 import forrogue.item.weapon.Hand;
 import forrogue.item.weapon.Mace;
 import forrogue.item.weapon.Weapon;
+import forrogue.item.wearable.Wearable;
 
 /**
  *
@@ -26,6 +27,7 @@ public abstract class Character extends GameObject {
     private Inventory inventory;
     private Weapon weapon;
     private Protection protection;
+    private Wearable wear;
 
     // SOME INFORMATIONS
 
@@ -136,7 +138,7 @@ public abstract class Character extends GameObject {
         if(!(this.weapon instanceof Hand) && this.weapon != null){
             this.attack -= this.weapon.getAttack();
             this.speed -= this.weapon.getSpeed();
-        };
+        }
         this.weapon = weapon;
         this.attack += weapon.getAttack();
         this.speed += weapon.getSpeed();
@@ -156,15 +158,23 @@ public abstract class Character extends GameObject {
         if(!(this.protection instanceof UnderWear) && this.protection != null){
             this.defense -= this.protection.getDefense();
             this.speed -= this.protection.getSpeed();
-        };
+            this.max_hp -= this.protection.getHp();
+        }
         this.protection = protection;
         this.defense += protection.getDefense();
         this.speed += protection.getSpeed();
+        this.max_hp += this.protection.getHp();
     }
 
     public void unsetProtection(){
         this.defense -= this.protection.getDefense();
         this.speed -= this.protection.getSpeed();
+        this.max_hp -= this.protection.getHp();
         this.protection = new UnderWear();
+    }
+
+    public void wear(Wearable wear) {
+        if(this.wear != null)
+            this.wear = wear;
     }
 }
