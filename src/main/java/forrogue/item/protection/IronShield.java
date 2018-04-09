@@ -14,6 +14,6 @@ import forrogue.game.GameConstant;
 public class IronShield extends Protection {
 
     public IronShield(){
-        super("IronShield", GameConstant.SKIN_IRONSHIELD, 3, -1);
+        super("IronShield", GameConstant.SKIN_IRONSHIELD, 0, 0,2);
     }
 }

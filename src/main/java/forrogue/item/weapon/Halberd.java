@@ -16,7 +16,7 @@ public class Halberd extends Weapon {
 
 
     public Halberd(){
-        super("Halberd", GameConstant.SKIN_HALBERD, 5, 0);
+        super("Halberd", GameConstant.SKIN_HALBERD, 2, 1);
     }
 
 }

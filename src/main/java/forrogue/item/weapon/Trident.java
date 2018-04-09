@@ -13,6 +13,6 @@ import forrogue.game.GameConstant;
  */
 public class Trident extends Weapon{
     public Trident(){
-        super("Trident", GameConstant.SKIN_TRIDENT, 4, 0);
+        super("Trident", GameConstant.SKIN_TRIDENT, 1, 0);
     }
 }

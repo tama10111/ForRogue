@@ -14,6 +14,6 @@ import forrogue.game.GameConstant;
 public class WoodShield extends Protection {
 
     public WoodShield(){
-        super("WoodShield", GameConstant.SKIN_WOODSHIELD, 1, 0);
+        super("WoodShield", GameConstant.SKIN_WOODSHIELD, 0, 0, 2);
     }
 }

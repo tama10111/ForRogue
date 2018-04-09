@@ -14,6 +14,6 @@ import forrogue.game.GameConstant;
 public class Sword extends Weapon {
 
     public Sword(){
-        super("Sword", GameConstant.SKIN_SWORD, 3, 0);
+        super("Sword", GameConstant.SKIN_SWORD, 1, 0);
     }
 }

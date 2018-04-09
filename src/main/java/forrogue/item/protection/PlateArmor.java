@@ -14,6 +14,6 @@ import forrogue.game.GameConstant;
 public class PlateArmor extends Protection {
 
     public PlateArmor(){
-        super("PlateArmor", GameConstant.SKIN_PLATEARMOR, 2, 0);
+        super("PlateArmor", GameConstant.SKIN_PLATEARMOR, 2, 0,-6);
     }
 }
