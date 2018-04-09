@@ -44,6 +44,7 @@ public class GameView extends Component{
         this._origin = origin;
         this.term = Toolkit.getDefaultToolkit();
         this._visible = true;
+        this.term.drawBox(_origin, dimension);
     }
 
 
@@ -56,7 +57,6 @@ public class GameView extends Component{
     public void draw() {
 
         Point mem_p = this.term.getCursor();
-        this.term.drawBox(_origin, dimension);
         int max = 0;
         Object[][] matrix = this.gEngine.getMap().getMatrix();
 
@@ -140,5 +140,33 @@ public class GameView extends Component{
 
     public void refreshMap() {
         this.draw();
+    }
+
+    public void clearMap(){
+        Point mem_p = this.term.getCursor();
+        Object[][] matrix = this.gEngine.getMap().getMatrix();
+        int width = 0;
+        for(Object[] line : matrix){
+            if(line.length > width) width = line.length;
+        }
+        int height = matrix.length;
+
+        for(int y = 0; y<height; y++){
+            for(int x = 0; x<width; x++){
+                this.term.setCursor(x,y);
+                this.term.addChar(' ', 0, 0);
+            }
+        }
+
+        this.term.setCursor(mem_p);
+        this.term.redrawWin();
+        this.term.sync();
+    }
+
+    public void addChar(int x, int y, char c){
+        Point mem_p = this.term.getCursor();
+        this.term.setCursor(x, y);
+        this.term.addChar(c,0,0);
+        this.term.setCursor(mem_p);
     }
 }

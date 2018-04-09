@@ -18,12 +18,10 @@
 package forrogue.view;
 
 import charva.awt.Component;
+import charva.awt.EventQueue;
 import charva.awt.Point;
 import charva.awt.Toolkit;
-import charva.awt.event.AWTEvent;
-import charva.awt.event.ActionEvent;
-import charva.awt.event.KeyEvent;
-import charva.awt.event.KeyListener;
+import charva.awt.event.*;
 import charvax.swing.JOptionPane;
 import static charvax.swing.JOptionPane.YES_NO_OPTION;
 import static charvax.swing.JOptionPane.YES_OPTION;
@@ -68,37 +66,21 @@ public class CommandPrompt extends JTextField{
     private void build() {
         this.addActionListener(ae -> {
             String cmd = ((JTextField) ae.getSource()).getText();
-            if("quit".equals(cmd) || "qquuiitt".equals(cmd)){
+            if("quit".equals(cmd)){
                 if(JOptionPane.showConfirmDialog((Component) ae.getSource(), "Do you want to save ?", "EXIT", YES_NO_OPTION) == YES_OPTION){
                 //SAVE//
                 }
                 Toolkit.getDefaultToolkit().close();
                 System.exit(0);
             }
-            else if("up".equals(cmd)){
-                ((CommandPrompt) ae.getSource()).gWindow.sendMovePlayerSignal(new Point(0,-1));
-                ((CommandPrompt) ae.getSource()).gWindow.refreshMap();
-                ((CommandPrompt) ae.getSource()).setText("");
+            else if("unset weapon".equals(cmd)){
+                this.gWindow.getGameEngine().getPlayer().unsetWeapon();
+                this.setText("");
             }
-
-            else if("down".equals(cmd)){
-                ((CommandPrompt) ae.getSource()).gWindow.sendMovePlayerSignal(new Point(0,1));
-                ((CommandPrompt) ae.getSource()).gWindow.refreshMap();
-                ((CommandPrompt) ae.getSource()).setText("");
+            else if("unset protection".equals(cmd)){
+                this.gWindow.getGameEngine().getPlayer().unsetProtection();
+                this.setText("");
             }
-
-            else if("left".equals(cmd)){
-                ((CommandPrompt) ae.getSource()).gWindow.sendMovePlayerSignal(new Point(-1,0));
-                ((CommandPrompt) ae.getSource()).gWindow.refreshMap();
-                ((CommandPrompt) ae.getSource()).setText("");
-            }
-
-            else if("right".equals(cmd)){
-                ((CommandPrompt) ae.getSource()).gWindow.sendMovePlayerSignal(new Point(1,0));
-                ((CommandPrompt) ae.getSource()).gWindow.refreshMap();
-                ((CommandPrompt) ae.getSource()).setText("");
-            }
-
             else{
                 while(JOptionPane.showConfirmDialog((Component) ae.getSource(), "This command doesn't exist. Are you dumb ?", "UNKNOWN COMMAND", YES_NO_OPTION) != YES_OPTION);
             }
@@ -108,22 +90,22 @@ public class CommandPrompt extends JTextField{
     @Override
     public void processKeyEvent(KeyEvent ke_) {
         int key = ke_.getKeyCode();
-        if (key == KeyEvent.VK_LEFT){
+        if (key == KeyEvent.VK_LEFT && ke_.getID() == AWTEvent.KEY_TYPED){
             this.gWindow.sendMovePlayerSignal(new Point(-1, 0));
             this.gWindow.refreshMap();
-            this.setText("");
-        } else if (key == KeyEvent.VK_RIGHT){
+
+        } else if (key == KeyEvent.VK_RIGHT && ke_.getID() == AWTEvent.KEY_TYPED){
             this.gWindow.sendMovePlayerSignal(new Point(1, 0));
             this.gWindow.refreshMap();
-            this.setText("");
-        } else if (ke_.getKeyCode() == KeyEvent.VK_UP) {
+
+        } else if (ke_.getKeyCode() == KeyEvent.VK_UP && ke_.getID() == AWTEvent.KEY_TYPED) {
             this.gWindow.sendMovePlayerSignal(new Point(0, -1));
             this.gWindow.refreshMap();
-            this.setText("");
-        } else if (ke_.getKeyCode() == KeyEvent.VK_DOWN) {
+
+        } else if (ke_.getKeyCode() == KeyEvent.VK_DOWN && ke_.getID() == AWTEvent.KEY_TYPED) {
             this.gWindow.sendMovePlayerSignal(new Point(0, 1));
             this.gWindow.refreshMap();
-            this.setText("");
+
         } else{
             super.processKeyEvent(ke_);
         }

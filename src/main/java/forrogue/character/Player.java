@@ -27,6 +27,7 @@ public class Player extends Character {
 
         //TODO : Associer des stats à un type donné
         this.setHp(999);
+        this.setMaxHp(9999);
         this.setAttack(999);
         this.setDefense(999);
         this.setSpeed(999);

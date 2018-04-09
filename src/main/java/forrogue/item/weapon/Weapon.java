@@ -22,6 +22,6 @@ public abstract class Weapon extends Item {
 
     @Override
     public void use(Character character){
-        character.receiveDamages(this.getAttack());
-    } // TODO : À virer
+        character.setWeapon(this);
+    }
 }

@@ -47,9 +47,7 @@ public abstract class Item extends GameObject {
         return this.getName();
     }
 
-    public void use(Character user){
-        //TO IMPLEMENT//
-    }
+    public abstract void use(Character user);
 
     public int getHp(){
         return this.hp;

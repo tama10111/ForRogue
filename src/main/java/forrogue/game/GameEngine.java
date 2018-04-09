@@ -121,4 +121,8 @@ public class GameEngine implements Serializable {
     public void setGameWindow(GameWindow gWindow) {
         this.gWindow = gWindow;
     }
+
+    public GameWindow getGameWindow() {
+        return this.gWindow;
+    }
 }

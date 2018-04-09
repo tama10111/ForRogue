@@ -20,4 +20,9 @@ public abstract class Protection extends Item {
         this.setDefense(defense);
         this.setSpeed(speed);
     }
+
+    @Override
+    public void use(Character character){
+        character.setProtection(this);
+    }
 }

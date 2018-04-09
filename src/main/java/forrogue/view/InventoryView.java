@@ -19,15 +19,22 @@
 package forrogue.view;
 
 import charva.awt.BorderLayout;
+import charva.awt.Component;
 import charva.awt.event.AWTEvent;
 import charva.awt.event.KeyEvent;
 import charva.awt.event.KeyListener;
 import charvax.swing.JList;
+import charvax.swing.JOptionPane;
 import charvax.swing.JScrollPane;
+import charvax.swing.JViewport;
 import forrogue.Inventory;
+import forrogue.game.GameWindow;
 import forrogue.item.Item;
 
 import java.util.Enumeration;
+
+import static charvax.swing.JOptionPane.YES_NO_OPTION;
+import static charvax.swing.JOptionPane.YES_OPTION;
 
 /**
  *
@@ -38,8 +45,9 @@ public class InventoryView extends JScrollPane {
 
     private JList list;
     private Inventory inventory;
+    private GameWindow gWindow;
     
-    public InventoryView(Inventory inventory, int rows) {
+    public InventoryView(GameWindow gWindow, Inventory inventory, int rows) {
         
         this.setLayout(new BorderLayout());
 
@@ -47,7 +55,8 @@ public class InventoryView extends JScrollPane {
         this.list = new JList();
         this.list.setListData(inventory.getItemList());
         this.list.setVisibleRowCount(rows-5);
-        
+        this.gWindow = gWindow;
+
         int max = 11;
         for(Item item : inventory.getItemList()){
             if(item.getClass().toString().length() > max){
@@ -67,7 +76,12 @@ public class InventoryView extends JScrollPane {
             public void keyTyped(KeyEvent ke) {
                 switch(ke.getKeyCode()){
                     case KeyEvent.VK_ENTER :
-                        // TODO : Implémenter l'utilisation des items
+                        if(JOptionPane.showConfirmDialog((Component) ((InventoryView)((JViewport)((JList) ke.getSource()).getParent()).getParent()).gWindow.getCommandPrompt(), "Use this object ?", "", YES_NO_OPTION) == YES_OPTION){
+                            JList list = (JList) ke.getSource();
+                            Item item = (Item) list.getSelectedValue();
+                            item.use(((InventoryView)(((JViewport) list.getParent()).getParent())).gWindow.getGameEngine().getPlayer());
+                            ((InventoryView)(((JViewport) list.getParent()).getParent())).updateInventory();
+                        };
                         break;
                 }
 
@@ -110,5 +124,6 @@ public class InventoryView extends JScrollPane {
 
     public void updateInventory() {
         this.list.setListData(this.inventory.getItemList());
+        this.repaint();
     }
 }

@@ -30,4 +30,8 @@ public class Inventory {
     public Vector<Item> getItemList() {
         return this.item_list;
     }
+
+    public void remove(int index){
+        this.item_list.remove(index);
+    }
 }

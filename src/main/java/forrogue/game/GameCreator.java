@@ -19,7 +19,6 @@ package forrogue.game;
 
 import charva.awt.BorderLayout;
 import charva.awt.Color;
-import charva.awt.Point;
 import charva.awt.event.KeyEvent;
 import charva.awt.event.KeyListener;
 import charvax.swing.JFrame;
@@ -29,13 +28,7 @@ import charvax.swing.JScrollPane;
 import charvax.swing.JTextField;
 import charvax.swing.border.LineBorder;
 import charvax.swing.border.TitledBorder;
-import forrogue.character.Player;
-import forrogue.item.Item;
-import forrogue.item.protection.IronShield;
-import forrogue.item.weapon.Sword;
 
-import java.awt.*;
-import java.io.FileNotFoundException;
 import java.util.Vector;
 
 /**
@@ -51,9 +44,6 @@ public class GameCreator extends JFrame{
 
     public GameCreator() {
         super("GameCreator -- TAB to switch between panels -- ENTER to select value");                
-
-        this.setBackground(Color.black);
-        this.setForeground(Color.green);
 
         Vector<String> gV = new Vector<>();
         gV.add("Male"); gV.add("Female");

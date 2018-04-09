@@ -49,8 +49,6 @@ public class GameWindow extends JFrame implements Serializable {
 
         super(title+" -- TAB to switch between panels");
         Container mCont = this.getContentPane();
-        mCont.setBackground(Color.black);
-        mCont.setForeground(Color.green);
 
         long seed = 84164654154L;
         Player player = new Player("Provençal Le Gaulois", "Male", "Type1", new Point(-1,-1));
@@ -63,7 +61,7 @@ public class GameWindow extends JFrame implements Serializable {
 
         JPanel iPanel = new JPanel();
         iPanel.setBorder(new TitledBorder("Inventory"));
-        this.iView = new InventoryView(gEngine.getPlayer().getInventory(), this._term.getScreenRows()-2);
+        this.iView = new InventoryView(this, gEngine.getPlayer().getInventory(), this._term.getScreenRows()-2);
         this.iView.setHeight(this._term.getScreenRows()-2);
         iPanel.add(this.iView);
 
@@ -92,10 +90,23 @@ public class GameWindow extends JFrame implements Serializable {
     }
 
     public void refreshMap() {
-        this.gView.refreshMap();
+        this.gView.draw();
     }
 
     public void updateInventory() {
         this.iView.updateInventory();
+    }
+
+    public GameView getGameView() {
+        return this.gView;
+    }
+
+    public GameEngine getGameEngine(){
+        return this.gEngine;
+    }
+
+
+    public CommandPrompt getCommandPrompt() {
+        return this.cmd;
     }
 }

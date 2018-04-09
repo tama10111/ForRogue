@@ -133,6 +133,10 @@ public abstract class Character extends GameObject {
     }
 
     public void setWeapon(Weapon weapon) {
+        if(!(this.weapon instanceof Hand) && this.weapon != null){
+            this.attack -= this.weapon.getAttack();
+            this.speed -= this.weapon.getSpeed();
+        };
         this.weapon = weapon;
         this.attack += weapon.getAttack();
         this.speed += weapon.getSpeed();
@@ -149,6 +153,10 @@ public abstract class Character extends GameObject {
     }
 
     public void setProtection(Protection protection){
+        if(!(this.protection instanceof UnderWear) && this.protection != null){
+            this.defense -= this.protection.getDefense();
+            this.speed -= this.protection.getSpeed();
+        };
         this.protection = protection;
         this.defense += protection.getDefense();
         this.speed += protection.getSpeed();

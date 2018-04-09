@@ -61,11 +61,13 @@ public class Map {
             this.matrix[coord_player.y + move.y][coord_player.x + move.x] = new Dungeon(((Dungeon) target).getDifficulty(), gEngine.getHub(), gEngine.getRandom());
             this.setMatrix(((Dungeon) target).getMatrix());
             this.setPlayerPosition();
+            this.gEngine.getGameWindow().getGameView().repaint();
         }
 
         else if(target instanceof  Hub){
             this.setMatrix(((Hub) target).getMatrix());
             this.setPlayerPosition();
+            this.gEngine.getGameWindow().getGameView().repaint();
         }
 
         else if(target instanceof Ennemy){
