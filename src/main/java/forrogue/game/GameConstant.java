@@ -48,6 +48,12 @@ public class GameConstant {
     public static final char SKIN_SMALLPOTION = '°';
     public static final char SKIN_LARGEPOTION = 'ø';
 
+    /* OTHERSTUFF SKINS*/
+    public static char SKIN_FORCE_POTION = 'f';
+    public static char SKIN_AMULET = 'à';
+    public static char SKIN_RING = '²';
+    public static char SKIN_RELIC = '^';
+
 
     /* OTHER SKINS */
 
