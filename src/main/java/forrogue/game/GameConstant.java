@@ -54,7 +54,11 @@ public class GameConstant {
     public static char SKIN_CHEST = '=';
     public static char SKIN_VOID = '.';
 
-
+    /* OTHERSTUFF SKINS*/
+    public static char SKIN_FORCE_POTION = 'f';
+    public static char SKIN_AMULET = 'à';
+    public static char SKIN_RING = '²';
+    public static char SKIN_RELIC = '^';
     
     public static String market = "\\________/ ________\n" + "|  _oo_  | |Market|\n" + "|   /\\   |    ||\n";
     public static String home;
