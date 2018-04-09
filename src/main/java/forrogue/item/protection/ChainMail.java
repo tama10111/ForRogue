@@ -14,6 +14,6 @@ import forrogue.game.GameConstant;
 public class ChainMail extends Protection {
 
     public ChainMail(){
-        super("ChainMail", GameConstant.SKIN_CHAINMAIL, 1, 0);
+        super("ChainMail", GameConstant.SKIN_CHAINMAIL, 1, 0,0);
     }
 }

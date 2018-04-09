@@ -15,6 +15,6 @@ public class DoubleHandedSword extends Weapon{
 
 
     public DoubleHandedSword(){
-        super("DoubleHandedSword", GameConstant.SKIN_DOUBLEHANDEDSWORD, 7, -1);
+        super("DoubleHandedSword", GameConstant.SKIN_DOUBLEHANDEDSWORD, 2, 0);
     }
 }

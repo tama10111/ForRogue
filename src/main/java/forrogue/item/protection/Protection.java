@@ -15,17 +15,19 @@ import forrogue.item.Item;
 public abstract class Protection extends Item {
 
     private int defense;
-    private int speed_malus;
+    private int speed;
+    private int hp;
 
-    public Protection(String name, char skin, int defense, int speed_malus){
+    public Protection(String name, char skin, int defense, int speed,int hp){
         super(name, skin);
         this.defense = defense;
-        this.speed_malus = speed_malus;
+        this.speed = speed;
+        this.hp=hp;
     }
 
     @Override
     public void use(Character user) {
         this.defense = this.defense;
-
+        this.hp=this.hp;
     }
 }

@@ -14,12 +14,11 @@ import forrogue.item.Item;
  */
 public abstract class Weapon extends Item {
     int power;
-    int speed_malus;
-
-    public Weapon(String name, char skin, int power, int speed_malus){
+    int speed;
+    public Weapon(String name, char skin, int power, int speed){
         super(name, skin);
         this.power=power;
-        this.speed_malus = speed_malus;
+        this.speed= speed;
     }
 
     @Override

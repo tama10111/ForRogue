@@ -11,9 +11,10 @@ import forrogue.game.GameConstant;
  *
  * @author user
  */
-public class Mace extends Weapon {
+public class Katana extends Weapon{
 
-    public Mace(){
-        super("Mace", GameConstant.SKIN_MACE, 3, -2);
+
+    public Katana(){
+        super("Katana", GameConstant.SKIN_KATANA, 0, 2);
     }
 }
