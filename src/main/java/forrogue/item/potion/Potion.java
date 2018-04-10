@@ -15,21 +15,19 @@ import forrogue.item.Item;
 
 public abstract class Potion extends Item {
 
-    int capacity;
+    int hp;
 
-    public Potion (String name, char skin, int capacity){
+    public Potion (String name, char skin, int hp){
         super(name, skin);
-        this.capacity=capacity;
+        this.hp = hp;
     }
 
     @Override
     public void use(Character character){
-        if(this.capacity + character.getHp() >= character.getMaxHp()){
+         if(this.hp + character.getHp() >= character.getMaxHp()){
             character.setHp(character.getMaxHp());
-        }
-
-        else{
-            character.setHp(character.getHp()+this.capacity);
+        } else{
+            character.setHp(character.getHp()+this.hp);
         }
     }
 }

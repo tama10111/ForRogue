@@ -11,6 +11,7 @@ import forrogue.Inventory;
 import forrogue.game.GameConstant;
 import forrogue.item.protection.UnderWear;
 import forrogue.item.weapon.Hand;
+import forrogue.item.wearable.None;
 
 import java.util.HashMap;
 
@@ -27,16 +28,17 @@ public class Player extends Character {
         GameConstant.SKIN_PLAYER = skin;
 
         this.gems = new HashMap<String, Integer>();
-        this.gems.put("white", 0);
-        this.gems.put("black", 0);
-        this.gems.put("blue", 1); // TODO : Remettre à zéro - test
-        this.gems.put("green", 0);
-        this.gems.put("yellow", 0);
-        this.gems.put("red", 0);
+        this.gems.put("white", 999999);
+        this.gems.put("black", 999999);
+        this.gems.put("blue", 999999); // TODO : Remettre à zéro - test
+        this.gems.put("green", 999999);
+        this.gems.put("yellow", 999999);
+        this.gems.put("red", 999999);
 
         // TODO : À virer - test
         this.setWeapon(new Hand());
         this.setProtection(new UnderWear());
+        this.setWear(new None());
 
 
         //TODO : Associer des stats à un type donné

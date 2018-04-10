@@ -22,6 +22,7 @@ import charva.awt.Dimension;
 
 import forrogue.Chest;
 import forrogue.GameObject;
+import forrogue.character.Player;
 import forrogue.character.ennemy.Berserker;
 import forrogue.game.GameConstant;
 
@@ -45,12 +46,6 @@ class Dungeon extends GameObject {
 
     public Dungeon(int difficulty, Hub hub, Random random){
 
-        /**
-         * Chercher dans les ressources aléatoirement
-         * La difficulté déterminera le dossier
-         * Un nombre aléatoire déterminera le fichier
-         */
-
         String path = null;
         int r;
         int mod;
@@ -58,25 +53,26 @@ class Dungeon extends GameObject {
         if(difficulty == 0){
             r = random.nextInt();
             mod = 11;
-            path = "easy/"+Long.toString(Math.abs((r%mod)+1))+".map";
+            path = "easy/"+Long.toString(Math.abs(r%mod)+1)+".map";
             this.setSkin(GameConstant.SKIN_DUNGEON_0);
         }
 
         else if(difficulty == 1){
             r = random.nextInt();
             mod = 6;
-            path = "intermediate/"+Long.toString(Math.abs((r%mod)+1))+".map";
+            path = "intermediate/"+Long.toString(Math.abs(r%mod)+1)+".map";
             this.setSkin(GameConstant.SKIN_DUNGEON_1);
         }
 
         else if(difficulty == 2){
             r = random.nextInt();
             mod = 7;
-            path = "hard/"+Long.toString(Math.abs((r%mod)+1))+".map";
+            path = "hard/"+Long.toString(Math.abs(r%mod)+1)+".map";
             this.setSkin(GameConstant.SKIN_DUNGEON_2);
         }
 
         InputStream stream = getClass().getClassLoader().getResourceAsStream(path);
+
         if(stream == null){
             stream = getClass().getClassLoader().getResourceAsStream("dungeon_failure.map");
         }
@@ -88,7 +84,7 @@ class Dungeon extends GameObject {
         int max = 0, i = 0, j;
         while(f.hasNextLine()){
             lines.add(f.nextLine());
-            if (lines.get(i).length() > max) max = lines.get(i).length();
+            if(lines.get(i).length() > max) max = lines.get(i).length();
             i++;
         }
 

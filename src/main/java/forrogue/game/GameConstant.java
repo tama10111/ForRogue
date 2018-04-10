@@ -24,7 +24,7 @@ package forrogue.game;
 public class GameConstant {
 
     public static final char ENNEMY = 'E';
-    public static char[] ENNEMIES = {'K', 'H', 'S'};
+    public static final char[] ENNEMIES = {'K', 'H', 'S'}; // TODO : Probablement à virer
 
     /* WEAPONS SKINS */
 
@@ -49,14 +49,16 @@ public class GameConstant {
     public static final char SKIN_LEATHERARMOR = '*';
 
     /* POTIONS SKINS */
-    public static final char SKIN_SMALLPOTION = '°';
-    public static final char SKIN_LARGEPOTION = 'ø';
+    public static final char SKIN_SMALLPOTION = '¢';
+    public static final char SKIN_LARGEPOTION = 'Þ';
 
-    /* OTHERSTUFF SKINS*/
-    public static char SKIN_FORCE_POTION = 'f';
-    public static char SKIN_AMULET = 'à';
-    public static char SKIN_RING = '²';
-    public static char SKIN_RELIC = '^';
+    /* WEARABLE SKINS*/
+    public static final char SKIN_AMULET = '\'';
+    public static final char SKIN_RING = '°';
+    public static final char SKIN_RELIC = '^';
+    public static final char SKIN_BRACELET = 'o';
+    public static final char SKIN_BOOTS = 'L';
+    public static final char SKIN_NONE = 'Ø';
 
 
     /* OTHER SKINS */

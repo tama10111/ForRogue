@@ -173,8 +173,17 @@ public abstract class Character extends GameObject {
         this.protection = new UnderWear();
     }
 
-    public void wear(Wearable wear) {
-        if(this.wear != null)
-            this.wear = wear;
+    public Wearable getWear() {
+        return this.wear;
     }
+
+
+    public void setWear(Wearable wear) {
+        this.wear = wear;
+    }
+
+    public void unsetWear(){
+        this.wear = null;
+    }
+
 }

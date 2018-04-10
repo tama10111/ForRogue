@@ -83,6 +83,7 @@ public class CommandPrompt extends JTextField{
             }
             else{
                 while(JOptionPane.showConfirmDialog((Component) ae.getSource(), "This command doesn't exist. Are you dumb ?", "UNKNOWN COMMAND", YES_NO_OPTION) != YES_OPTION);
+                this.setText("");
             }
         });
     }

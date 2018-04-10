@@ -14,6 +14,6 @@ public class Wearable extends Item {
 
     @Override
     public void use(Character character) {
-        character.wear(this);
+        character.setWear(this);
     }
 }

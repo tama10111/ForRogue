@@ -8,10 +8,7 @@ import forrogue.character.friendly.QuestMan;
 import forrogue.game.GameConstant;
 import forrogue.game.GameEngine;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Hub extends GameObject {
@@ -53,7 +50,6 @@ public class Hub extends GameObject {
                     case GameConstant.ENNEMY :
                         this.matrix[i][j] = new Berserker();
                         /* TODO : Faire spawn selon difficulté
-                        int r = random.nextInt();
 
                         if(this.difficulty == 0){
 
@@ -90,7 +86,7 @@ public class Hub extends GameObject {
                         break;
 
                     case GameConstant.SKIN_QUESTMAN :
-                        this.matrix[i][j] = new QuestMan(gEngine.getRandom().nextInt());
+                        this.matrix[i][j] = new QuestMan(gEngine.getRandomNumber());
                         break;
 
                     case '\n' :

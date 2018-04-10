@@ -15,6 +15,6 @@ import forrogue.game.GameConstant;
 public class LargePotion extends Potion {
 
     public LargePotion(){
-        super("LargePotion", GameConstant.SKIN_LARGEPOTION,20);
+        super("LargePotion", GameConstant.SKIN_LARGEPOTION,10);
     }
 }

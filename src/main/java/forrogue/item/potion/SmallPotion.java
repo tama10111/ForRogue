@@ -15,6 +15,6 @@ import forrogue.game.GameConstant;
 public class SmallPotion extends Potion{
 
     public SmallPotion(){
-        super("SmallPotion", GameConstant.SKIN_SMALLPOTION, 10);
+        super("SmallPotion", GameConstant.SKIN_SMALLPOTION, 5);
     }
 }

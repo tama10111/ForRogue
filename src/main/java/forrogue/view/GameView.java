@@ -87,8 +87,7 @@ public class GameView extends Component{
                 player.getGems().get("green"),
                 player.getGems().get("yellow"),
                 player.getGems().get("red")
-                );
-
+        );
 
         String stat = String.format("HP : %s / ATK : %s / DEF : %s / SPD : %s",
                 player.getHp(),
@@ -97,11 +96,13 @@ public class GameView extends Component{
                 player.getSpeed()
         );
 
-        String equip = String.format("Weapon : [%c] %s / Protection : [%c] %s",
+        String equip = String.format("Weapon : [%c] %s / Protection : [%c] %s / Wear : [%c] %s",
                 player.getWeapon().getSkin(),
                 player.getWeapon().getName(),
                 player.getProtection().getSkin(),
-                player.getProtection().getName()
+                player.getProtection().getName(),
+                player.getWear().getSkin(),
+                player.getWear().getName()
         );
 
         String name = String.format("[%s - %s] %s",

@@ -8,6 +8,6 @@ import forrogue.game.GameConstant;
  */
 public abstract class Ring extends Wearable {
     public Ring(){
-        super("Ring",GameConstant.SKIN_RING,0,0,2 );
+        super("Ring", GameConstant.SKIN_RING, 0, 0, 2 );
     }
 }

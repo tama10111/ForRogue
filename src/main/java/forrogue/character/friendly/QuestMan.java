@@ -26,7 +26,7 @@ public class QuestMan extends Character {
     }
 
     public void getReward(Inventory inventory){
-        for(int i = 0; i<5; i++) {
+        for(int i = 0; i<9999; i++) {
             inventory.add(new LargePotion());
         }
     }

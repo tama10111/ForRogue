@@ -136,10 +136,10 @@ public class Map {
                     JOptionPane.showMessageDialog(
                             (Component) gEngine.getGameWindow().getCommandPrompt(),
                             objString,
-                            "The Quest Man",
+                            "The QuestMan",
                             0
                     );
-                    questMan.generateQuest(Math.abs(this.gEngine.getRandom().nextInt()));
+                    questMan.generateQuest(Math.abs(this.gEngine.getRandomNumber()));
                     gEngine.getGameWindow().updateInventory();
 
                 } else{
@@ -149,7 +149,7 @@ public class Map {
                     JOptionPane.showMessageDialog(
                             (Component) gEngine.getGameWindow().getCommandPrompt(),
                             objString,
-                            "The Quest Man",
+                            "The QuestMan",
                             0
                     );
                 }
@@ -159,7 +159,7 @@ public class Map {
                 JOptionPane.showMessageDialog(
                         (Component) gEngine.getGameWindow().getCommandPrompt(),
                         objString,
-                        "The Quest Man",
+                        "The QuestMan",
                         0
                 );
             }
