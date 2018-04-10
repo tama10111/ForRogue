@@ -229,9 +229,14 @@ public class GameCreator extends JFrame{
                              */
 
                             case "Create":
+
+                                String gender = gForm.getSelected() == null ? "Male" : gForm.getSelected();
+                                String classs = cForm.getSelected() == null ? "Type1" : cForm.getSelected(); // TODO : À modifier
+                                char skin   = skForm.getSelected() == null ? 'Ö' : skForm.getSelected().charAt(0);
+
                                 GameWindow gWindow = new GameWindow(
                                         "ForRogue",
-                                        new Player(playerNameField.getText(), gForm.getSelected(), cForm.getSelected(), new Point(0,0), skForm.getSelected().charAt(0)),
+                                        new Player(playerNameField.getText(), gender, classs, new Point(0,0), skin),
                                         Long.parseLong(seedField.getText())
                                 );
                                 break;
