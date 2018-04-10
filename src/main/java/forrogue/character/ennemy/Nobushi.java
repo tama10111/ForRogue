@@ -11,7 +11,7 @@ import charva.awt.Point;
  *
  * @author user
  */
-public class Nobushi extends Assassin{
+public class Nobushi extends Samurais{
     
     public Nobushi(Point position){
         this.setHp(11);

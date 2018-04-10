@@ -8,7 +8,7 @@ package forrogue.character.ennemy;
  *
  * @author user
  */
-public class Berserker extends Assassin{
+public class Berserker extends Vikings{
     
     public Berserker(){
         this.setHp(6);

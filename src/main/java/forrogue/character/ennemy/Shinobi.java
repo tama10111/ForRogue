@@ -9,7 +9,7 @@ package forrogue.character.ennemy;
  *
  * @author user
  */
-public class Shinobi extends Assassin{
+public class Shinobi extends Samurais{
     
     public Shinobi(){
         this.setHp(6);

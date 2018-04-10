@@ -9,7 +9,7 @@ package forrogue.character.ennemy;
  *
  * @author user
  */
-public class Gladiateur extends Eclaireur{
+public class Gladiateur extends Chevaliers{
     
     public Gladiateur(){
         this.setHp(6);

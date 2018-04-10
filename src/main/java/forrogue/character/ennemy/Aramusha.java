@@ -9,7 +9,7 @@ package forrogue.character.ennemy;
  *
  * @author user
  */
-public class Aramusha extends Eclaireur{
+public class Aramusha extends Samurais{
     
     public Aramusha(){
         this.setHp(8);

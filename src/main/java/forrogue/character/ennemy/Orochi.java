@@ -9,7 +9,7 @@ package forrogue.character.ennemy;
  *
  * @author user
  */
-public class Orochi extends Assassin{
+public class Orochi extends Samurais{
     
     public Orochi(){
         this.setHp(9);

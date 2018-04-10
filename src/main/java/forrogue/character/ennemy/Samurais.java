@@ -9,7 +9,7 @@ package forrogue.character.ennemy;
  *
  * @author user
  */
-public abstract class Assassin extends Ennemy{
+public abstract class Samurais extends Ennemy{
     //Classe de difficulté moyenne
     //Speed=3
     

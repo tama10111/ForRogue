@@ -9,7 +9,7 @@ package forrogue.character.ennemy;
  *
  * @author user
  */
-public class Sentinelle extends Eclaireur{
+public class Sentinelle extends Chevaliers{
     
     public Sentinelle(){
         this.setHp(10);

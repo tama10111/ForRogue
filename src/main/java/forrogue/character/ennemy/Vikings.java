@@ -10,7 +10,7 @@ package forrogue.character.ennemy;
  * @author user, tama
  */
 
-public abstract class Lourds extends Ennemy {
+public abstract class Vikings extends Ennemy {
 
     //Classe de difficulté "difficile"
     //Speed=0

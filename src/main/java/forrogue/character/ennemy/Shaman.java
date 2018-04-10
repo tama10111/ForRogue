@@ -9,7 +9,7 @@ package forrogue.character.ennemy;
  *
  * @author user
  */
-public class Shaman extends Assassin{
+public class Shaman extends Vikings{
     
     public Shaman(){
         this.setHp(11);

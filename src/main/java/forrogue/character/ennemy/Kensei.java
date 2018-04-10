@@ -9,7 +9,7 @@ package forrogue.character.ennemy;
  *
  * @author maurice
  */
-public class Kensei extends Eclaireur{
+public class Kensei extends Samurais{
     
     public Kensei(){
         this.setHp(12);

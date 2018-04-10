@@ -9,7 +9,7 @@ package forrogue.character.ennemy;
  *
  * @author user
  */
-public class GardePaix extends Assassin{
+public class GardePaix extends Chevaliers{
     
     public GardePaix(){
         this.setHp(8);

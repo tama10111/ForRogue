@@ -9,7 +9,7 @@ package forrogue.character.ennemy;
  *
  * @author user
  */
-public class Shugoki extends Lourds {
+public class Shugoki extends Samurais {
     
     public Shugoki(){
         this.setHp(20);

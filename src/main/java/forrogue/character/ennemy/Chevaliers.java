@@ -9,7 +9,7 @@ package forrogue.character.ennemy;
  *
  * @author maurice
  */
-public abstract class Eclaireur extends Ennemy {
+public abstract class Chevaliers extends Ennemy {
     
     //Classe de difficulté "facile"
     //Speed=1

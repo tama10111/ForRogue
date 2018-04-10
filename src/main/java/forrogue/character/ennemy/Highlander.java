@@ -9,7 +9,7 @@ package forrogue.character.ennemy;
  *
  * @author user
  */
-public class Highlander extends Lourds {
+public class Highlander extends Vikings {
     
     public Highlander(){
         this.setHp(12);

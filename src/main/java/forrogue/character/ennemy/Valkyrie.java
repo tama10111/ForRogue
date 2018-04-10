@@ -9,7 +9,7 @@ package forrogue.character.ennemy;
  *
  * @author user
  */
-public class Valkyrie extends Lourds {
+public class Valkyrie extends Vikings {
     
     public Valkyrie(){
         this.setHp(10);

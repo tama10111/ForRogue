@@ -9,7 +9,7 @@ package forrogue.character.ennemy;
  *
  * @author user
  */
-public class Fanatique extends Lourds {
+public class Fanatique extends Chevaliers {
     
     public Fanatique(){
         this.setHp(6);
