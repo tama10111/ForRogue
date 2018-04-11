@@ -3,7 +3,7 @@ package forrogue.map;
 import charva.awt.Dimension;
 import forrogue.Chest;
 import forrogue.GameObject;
-import forrogue.character.enemy.Berserker;
+import forrogue.character.enemy.vikings.Berserker;
 import forrogue.character.friendly.QuestMan;
 import forrogue.game.GameConstant;
 import forrogue.game.GameEngine;

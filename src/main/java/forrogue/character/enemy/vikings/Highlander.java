@@ -3,23 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package forrogue.character.enemy;
+package forrogue.character.enemy.vikings;
 
-import charva.awt.Point;
+import forrogue.character.enemy.vikings.Vikings;
 
 /**
  *
  * @author user
  */
-public class Nobushi extends Samurais{
+public class Highlander extends Vikings {
     
-    public Nobushi(Point position){
-        this.setHp(11);
-        this.setMaxHp(11);
+    public Highlander(){
+        this.setHp(12);
+        this.setMaxHp(12);
         this.setAttack(4);
-        this.setDefense(1);
-        this.setName("Nobushi");
-        this.setGender("Female");
+        this.setDefense(0);
+        this.setName("Highlander");
+        this.setGender("Male");
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }
     

@@ -3,22 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package forrogue.character.enemy;
+package forrogue.character.enemy.vikings;
+
+import forrogue.character.enemy.vikings.Vikings;
 
 /**
  *
  * @author user
  */
-public class Aramusha extends Samurais{
+public class Shaman extends Vikings {
     
-    public Aramusha(){
-        this.setHp(8);
-        this.setMaxHp(8);
-        this.setAttack(4);
-        this.setDefense(2);
-        this.setName("Aramusha");
+    public Shaman(){
+        this.setHp(11);
+        this.setMaxHp(11);
+        this.setAttack(3);
+        this.setDefense(1);
+        this.setName("Shaman");
         this.setGender("Male");
-        this.setSkin('A');
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }
     

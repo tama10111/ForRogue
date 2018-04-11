@@ -3,21 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package forrogue.character.enemy;
+package forrogue.character.enemy.vikings;
+
+import forrogue.character.enemy.vikings.Vikings;
 
 /**
  *
- * @author maurice
+ * @author user
  */
-public class Kensei extends Samurais{
+public class Valkyrie extends Vikings {
     
-    public Kensei(){
-        this.setHp(12);
-        this.setMaxHp(12);
-        this.setAttack(4);
+    public Valkyrie(){
+        this.setHp(10);
+        this.setMaxHp(10);
+        this.setAttack(3);
         this.setDefense(1);
-        this.setName("Kensei");
-        this.setGender("Male");
+        this.setName("Valkyrie");
+        this.setGender("Female");
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }
     

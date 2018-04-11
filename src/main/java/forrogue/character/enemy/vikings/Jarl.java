@@ -3,22 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package forrogue.character.enemy;
+package forrogue.character.enemy.vikings;
+
+import forrogue.character.enemy.vikings.Vikings;
 
 /**
  *
  * @author user
  */
-public class Conquerant extends Chevaliers {
+public class Jarl extends Vikings {
     
-    public Conquerant(){
-        this.setHp(14);
-        this.setMaxHp(14);
+    public Jarl(){
+        this.setHp(16);
+        this.setMaxHp(16);
         this.setAttack(2);
-        this.setDefense(1);
-        this.setName("Conquerant");
+        this.setDefense(0);
+        this.setName("Jarl");
         this.setGender("Male");
-        this.setSkin('c');
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }
     

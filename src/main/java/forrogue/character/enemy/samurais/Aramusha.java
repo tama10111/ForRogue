@@ -3,21 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package forrogue.character.enemy;
+package forrogue.character.enemy.samurais;
+
+import forrogue.character.enemy.samurais.Samurais;
 
 /**
  *
  * @author user
  */
-public class Shinobi extends Samurais{
+public class Aramusha extends Samurais {
     
-    public Shinobi(){
-        this.setHp(6);
-        this.setMaxHp(6);
-        this.setAttack(6);
-        this.setDefense(-1);
-        this.setName("Shinobi");
+    public Aramusha(){
+        this.setHp(8);
+        this.setMaxHp(8);
+        this.setAttack(4);
+        this.setDefense(2);
+        this.setName("Aramusha");
         this.setGender("Male");
+        this.setSkin('A');
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }
     

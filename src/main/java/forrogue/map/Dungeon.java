@@ -22,14 +22,11 @@ import charva.awt.Dimension;
 
 import forrogue.Chest;
 import forrogue.GameObject;
-import forrogue.character.Player;
-import forrogue.character.enemy.Berserker;
+import forrogue.character.enemy.vikings.Berserker;
 import forrogue.game.GameConstant;
 
-import java.io.File;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 

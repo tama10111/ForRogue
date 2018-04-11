@@ -3,21 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package forrogue.character.enemy;
+package forrogue.character.enemy.chevalier;
+
+import forrogue.character.enemy.chevalier.Chevaliers;
 
 /**
  *
  * @author user
  */
-public class GardePaix extends Chevaliers{
+public class Fanatique extends Chevaliers {
     
-    public GardePaix(){
-        this.setHp(8);
-        this.setMaxHp(8);
-        this.setAttack(5);
-        this.setDefense(0);
-        this.setName("Garde-Paix");
+    public Fanatique(){
+        this.setHp(6);
+        this.setMaxHp(6);
+        this.setAttack(4);
+        this.setDefense(2);
+        this.setName("Fanatique");
         this.setGender("Male");
+        this.setSkin('F');
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }
     

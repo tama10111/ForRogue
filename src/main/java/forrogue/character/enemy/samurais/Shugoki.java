@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package forrogue.character.enemy;
+package forrogue.character.enemy.samurais;
+
+import forrogue.character.enemy.samurais.Samurais;
 
 /**
  *

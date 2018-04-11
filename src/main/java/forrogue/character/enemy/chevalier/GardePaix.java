@@ -3,24 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package forrogue.character.enemy;
+package forrogue.character.enemy.chevalier;
+
+import forrogue.character.enemy.chevalier.Chevaliers;
+
 /**
  *
  * @author user
  */
-public class Berserker extends Vikings{
+public class GardePaix extends Chevaliers {
     
-    public Berserker(){
-        this.setHp(6);
-        this.setMaxHp(6);
+    public GardePaix(){
+        this.setHp(8);
+        this.setMaxHp(8);
         this.setAttack(5);
         this.setDefense(0);
-        this.setName("Berseker");
+        this.setName("Garde-Paix");
         this.setGender("Male");
-        this.setSkin('B'); // Pour mes tests (tama)
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }
-    
-    
     
 }

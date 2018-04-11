@@ -3,22 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package forrogue.character.enemy;
+package forrogue.character.enemy.samurais;
+
+import charva.awt.Point;
+import forrogue.character.enemy.samurais.Samurais;
 
 /**
  *
  * @author user
  */
-public class Centurion extends Chevaliers{
+public class Nobushi extends Samurais {
     
-    public Centurion(){
+    public Nobushi(Point position){
         this.setHp(11);
         this.setMaxHp(11);
-        this.setAttack(3);
+        this.setAttack(4);
         this.setDefense(1);
-        this.setName("Centurion");
-        this.setGender("Male");
-        this.setSkin('C');
+        this.setName("Nobushi");
+        this.setGender("Female");
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }
     

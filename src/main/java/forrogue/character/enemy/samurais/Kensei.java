@@ -3,20 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package forrogue.character.enemy;
+package forrogue.character.enemy.samurais;
+
+import forrogue.character.enemy.samurais.Samurais;
 
 /**
  *
- * @author user
+ * @author maurice
  */
-public class Shaman extends Vikings{
+public class Kensei extends Samurais {
     
-    public Shaman(){
-        this.setHp(11);
-        this.setMaxHp(11);
-        this.setAttack(3);
+    public Kensei(){
+        this.setHp(12);
+        this.setMaxHp(12);
+        this.setAttack(4);
         this.setDefense(1);
-        this.setName("Shaman");
+        this.setName("Kensei");
         this.setGender("Male");
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }

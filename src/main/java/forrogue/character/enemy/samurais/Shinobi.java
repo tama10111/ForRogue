@@ -3,20 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package forrogue.character.enemy;
+package forrogue.character.enemy.samurais;
+
+import forrogue.character.enemy.samurais.Samurais;
 
 /**
  *
  * @author user
  */
-public class Highlander extends Vikings {
+public class Shinobi extends Samurais {
     
-    public Highlander(){
-        this.setHp(12);
-        this.setMaxHp(12);
-        this.setAttack(4);
-        this.setDefense(0);
-        this.setName("Highlander");
+    public Shinobi(){
+        this.setHp(6);
+        this.setMaxHp(6);
+        this.setAttack(6);
+        this.setDefense(-1);
+        this.setName("Shinobi");
         this.setGender("Male");
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }

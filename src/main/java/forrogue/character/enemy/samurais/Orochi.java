@@ -3,19 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package forrogue.character.enemy;
+package forrogue.character.enemy.samurais;
+
+import forrogue.character.enemy.samurais.Samurais;
 
 /**
  *
  * @author user
  */
-public class Gladiateur extends Chevaliers{
+public class Orochi extends Samurais {
     
-    public Gladiateur(){
-        this.setHp(6);
-        this.setMaxHp(6);
-        this.setAttack(4);
-        this.setDefense(0);
+    public Orochi(){
+        this.setHp(9);
+        this.setMaxHp(9);
+        this.setAttack(3);
+        this.setDefense(1);
         this.setName("Orochi");
         this.setGender("Male");
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
