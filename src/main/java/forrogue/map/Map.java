@@ -99,6 +99,12 @@ public class Map {
             if(gEngine.getPlayer().getHp() <= 0){
                 // TODO : Prévoir le cas où le joueur meurt
             }
+
+            /**
+             * Pour chaque monstre sur la map :
+             * Le déplacer
+             */
+
         }
 
         else if(target instanceof Chest){

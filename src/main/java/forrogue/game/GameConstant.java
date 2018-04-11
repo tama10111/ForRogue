@@ -60,7 +60,6 @@ public class GameConstant {
     public static final char SKIN_BOOTS = 'L';
     public static final char SKIN_NONE = 'Ø';
 
-
     /* OTHER SKINS */
 
     public static final char SKIN_WALL = '#';

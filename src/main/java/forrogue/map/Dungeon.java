@@ -20,10 +20,12 @@ package forrogue.map;
 
 import charva.awt.Dimension;
 
+import charva.awt.Point;
 import forrogue.Chest;
 import forrogue.GameObject;
 import forrogue.character.Player;
 import forrogue.character.ennemy.Berserker;
+import forrogue.character.ennemy.Ennemy;
 import forrogue.game.GameConstant;
 
 import java.io.File;
@@ -106,6 +108,7 @@ class Dungeon extends GameObject {
 
                     case GameConstant.ENNEMY :
                         this.matrix[i][j] = new Berserker();
+                        ((Ennemy) this.matrix[i][j]).setPosition(new Point(j,i));
                         /*
                         int r = random.nextInt();
 
