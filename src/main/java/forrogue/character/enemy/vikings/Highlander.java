@@ -7,6 +7,8 @@ package forrogue.character.enemy.vikings;
 
 import forrogue.character.enemy.vikings.Vikings;
 
+import forrogue.game.GameConstant;
+
 /**
  *
  * @author user
@@ -20,6 +22,7 @@ public class Highlander extends Vikings {
         this.setDefense(0);
         this.setName("Highlander");
         this.setGender("Male");
+        this.setSkin(GameConstant.SKIN_HIGHLANDER);
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }
     

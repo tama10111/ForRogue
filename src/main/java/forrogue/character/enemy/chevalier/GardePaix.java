@@ -7,6 +7,8 @@ package forrogue.character.enemy.chevalier;
 
 import forrogue.character.enemy.chevalier.Chevaliers;
 
+import forrogue.game.GameConstant;
+
 /**
  *
  * @author user
@@ -20,6 +22,7 @@ public class GardePaix extends Chevaliers {
         this.setDefense(0);
         this.setName("Garde-Paix");
         this.setGender("Male");
+        this.setSkin(GameConstant.SKIN_GARDEPAIX);
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }
     
