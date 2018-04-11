@@ -11,7 +11,5 @@ package forrogue.character.ennemy;
  */
 public abstract class Chevaliers extends Ennemy {
     
-    //Classe de difficulté "facile"
-    //Speed=1
-    
+
 }
