@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package forrogue.character.ennemy;
+package forrogue.character.enemy;
 
 import charva.awt.Point;
 import forrogue.character.Character;
@@ -24,9 +24,9 @@ import forrogue.character.Character;
  *
  * @author tama
  */
-public abstract class Ennemy extends Character {
+public abstract class Enemy extends Character {
     
-    public void findPath(int[][] matrix, Point monster_pos, Point ennemy_pos){
+    public void findPath(int[][] matrix, Point monster_pos, Point enemy_pos){
 
         /** 
          * We fill the matrix with 0 and 1
@@ -36,7 +36,7 @@ public abstract class Ennemy extends Character {
 
         for(int i = 0; i<matrix.length ; i++){
             for(int j = 0; j<matrix[i].length; j++){
-                if(i == ennemy_pos.x && j == ennemy_pos.y) matrix[i][j] = 2;
+                if(i == enemy_pos.x && j == enemy_pos.y) matrix[i][j] = 2;
                 else if(matrix[i][j] > 0) matrix[i][j] = 1; 
             }
         }

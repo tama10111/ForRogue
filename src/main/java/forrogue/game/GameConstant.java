@@ -23,9 +23,13 @@ package forrogue.game;
  */
 public class GameConstant {
 
-    public static final char ENNEMY = 'E';
-    public static final char[] ENNEMIES = {'K', 'H', 'S'}; // TODO : Probablement à virer
-
+    public static final char ENEMY = 'E';
+    public static final char[] ENEMIES = {'K', 'H', 'S'}; // TODO : Probablement à virer
+    
+    
+    /* ENEMYS SKINS */
+    
+    
     /* WEAPONS SKINS */
 
     public static final char SKIN_SWORD = '|';
@@ -59,6 +63,7 @@ public class GameConstant {
     public static final char SKIN_BRACELET = 'o';
     public static final char SKIN_BOOTS = 'L';
     public static final char SKIN_NONE = 'Ø';
+    
 
     /* OTHER SKINS */
 

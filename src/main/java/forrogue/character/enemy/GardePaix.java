@@ -3,20 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package forrogue.character.ennemy;
+package forrogue.character.enemy;
 
 /**
  *
  * @author user
  */
-public class Shinobi extends Samurais{
+public class GardePaix extends Chevaliers{
     
-    public Shinobi(){
-        this.setHp(6);
-        this.setMaxHp(6);
-        this.setAttack(6);
-        this.setDefense(-1);
-        this.setName("Shinobi");
+    public GardePaix(){
+        this.setHp(8);
+        this.setMaxHp(8);
+        this.setAttack(5);
+        this.setDefense(0);
+        this.setName("Garde-Paix");
         this.setGender("Male");
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }

@@ -3,24 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package forrogue.character.ennemy;
+package forrogue.character.enemy;
+
 /**
  *
  * @author user
  */
-public class Berserker extends Vikings{
+public class Orochi extends Samurais{
     
-    public Berserker(){
-        this.setHp(6);
-        this.setMaxHp(6);
-        this.setAttack(5);
-        this.setDefense(0);
-        this.setName("Berseker");
+    public Orochi(){
+        this.setHp(9);
+        this.setMaxHp(9);
+        this.setAttack(3);
+        this.setDefense(1);
+        this.setName("Orochi");
         this.setGender("Male");
-        this.setSkin('B'); // Pour mes tests (tama)
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }
-    
-    
     
 }

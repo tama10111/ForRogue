@@ -3,20 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package forrogue.character.ennemy;
+package forrogue.character.enemy;
 
 /**
  *
  * @author user
  */
-public class Shaman extends Vikings{
+public class Shugoki extends Samurais {
     
-    public Shaman(){
-        this.setHp(11);
-        this.setMaxHp(11);
+    public Shugoki(){
+        this.setHp(20);
+        this.setMaxHp(20);
         this.setAttack(3);
         this.setDefense(1);
-        this.setName("Shaman");
+        this.setName("Shugoki");
         this.setGender("Male");
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }

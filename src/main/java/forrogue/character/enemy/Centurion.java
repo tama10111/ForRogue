@@ -3,21 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package forrogue.character.ennemy;
+package forrogue.character.enemy;
 
 /**
  *
  * @author user
  */
-public class Gladiateur extends Chevaliers{
+public class Centurion extends Chevaliers{
     
-    public Gladiateur(){
-        this.setHp(6);
-        this.setMaxHp(6);
-        this.setAttack(4);
-        this.setDefense(0);
-        this.setName("Orochi");
+    public Centurion(){
+        this.setHp(11);
+        this.setMaxHp(11);
+        this.setAttack(3);
+        this.setDefense(1);
+        this.setName("Centurion");
         this.setGender("Male");
+        this.setSkin('C');
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }
     

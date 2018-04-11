@@ -3,20 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package forrogue.character.ennemy;
+package forrogue.character.enemy;
 
 /**
  *
  * @author user
  */
-public class Highlander extends Vikings {
+public class Jarl extends Vikings {
     
-    public Highlander(){
-        this.setHp(12);
-        this.setMaxHp(12);
-        this.setAttack(4);
+    public Jarl(){
+        this.setHp(16);
+        this.setMaxHp(16);
+        this.setAttack(2);
         this.setDefense(0);
-        this.setName("Highlander");
+        this.setName("Jarl");
         this.setGender("Male");
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }

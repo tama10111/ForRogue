@@ -3,25 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package forrogue.character.ennemy;
+package forrogue.character.enemy;
 
 /**
  *
- * @author user
+ * @author maurice
  */
-public class Sentinelle extends Chevaliers{
+public class Kensei extends Samurais{
     
-    public Sentinelle(){
-        this.setHp(10);
-        this.setMaxHp(10);
+    public Kensei(){
+        this.setHp(12);
+        this.setMaxHp(12);
         this.setAttack(4);
         this.setDefense(1);
-        this.setName("Sentinelle");
+        this.setName("Kensei");
         this.setGender("Male");
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }
-    
-    
-    
     
 }

@@ -24,7 +24,7 @@ import charvax.swing.JOptionPane;
 import forrogue.Chest;
 import forrogue.GameObject;
 import forrogue.character.Player;
-import forrogue.character.ennemy.Ennemy;
+import forrogue.character.enemy.Enemy;
 import forrogue.character.friendly.QuestMan;
 import forrogue.game.GameConstant;
 import forrogue.game.GameEngine;
@@ -77,18 +77,18 @@ public class Map {
             this.gEngine.getGameWindow().getGameView().repaint();
         }
 
-        else if(target instanceof Ennemy){
-            Ennemy ennemy = (Ennemy) target;
+        else if(target instanceof Enemy){
+            Enemy enemy = (Enemy) target;
 
-            if(ennemy.getSpeed() > gEngine.getPlayer().getSpeed()){
-                ennemy.attack(gEngine.getPlayer());
-                gEngine.getPlayer().attack(ennemy);
+            if(enemy.getSpeed() > gEngine.getPlayer().getSpeed()){
+                enemy.attack(gEngine.getPlayer());
+                gEngine.getPlayer().attack(enemy);
             } else{
-                gEngine.getPlayer().attack(ennemy);
-                ennemy.attack(gEngine.getPlayer());
+                gEngine.getPlayer().attack(enemy);
+                enemy.attack(gEngine.getPlayer());
             }
 
-            if(ennemy.getHp() <= 0){
+            if(enemy.getHp() <= 0){
                 this.matrix[coord_player.y + move.y][coord_player.x + move.x] = GameConstant.SKIN_VOID;
                 this.gEngine.getPlayer().addGems(
                         Gem.values()[this.gEngine.getRandomNumber()%Gem.values().length].getColor(),
