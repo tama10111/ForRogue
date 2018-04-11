@@ -5,6 +5,8 @@
  */
 package forrogue.character.enemy;
 
+import forrogue.game.GameConstant;
+
 /**
  *
  * @author user
@@ -18,7 +20,7 @@ public class Centurion extends Chevaliers{
         this.setDefense(1);
         this.setName("Centurion");
         this.setGender("Male");
-        this.setSkin('C');
+        this.setSkin(GameConstant.SKIN_CENTURION);
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }
     

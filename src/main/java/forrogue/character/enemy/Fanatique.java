@@ -5,6 +5,8 @@
  */
 package forrogue.character.enemy;
 
+import forrogue.game.GameConstant;
+
 /**
  *
  * @author user
@@ -18,7 +20,7 @@ public class Fanatique extends Chevaliers {
         this.setDefense(2);
         this.setName("Fanatique");
         this.setGender("Male");
-        this.setSkin('F');
+        this.setSkin(GameConstant.SKIN_FANATIQUE);
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }
     

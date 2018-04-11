@@ -5,6 +5,8 @@
  */
 package forrogue.character.enemy;
 
+import forrogue.game.GameConstant;
+
 /**
  *
  * @author maurice
@@ -18,6 +20,7 @@ public class Kensei extends Samurais{
         this.setDefense(1);
         this.setName("Kensei");
         this.setGender("Male");
+        this.setSkin(GameConstant.SKIN_KENSEI);
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }
     

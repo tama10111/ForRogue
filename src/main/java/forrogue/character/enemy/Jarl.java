@@ -5,6 +5,8 @@
  */
 package forrogue.character.enemy;
 
+import forrogue.game.GameConstant;
+
 /**
  *
  * @author user
@@ -18,6 +20,7 @@ public class Jarl extends Vikings {
         this.setDefense(0);
         this.setName("Jarl");
         this.setGender("Male");
+        this.setSkin(GameConstant.SKIN_JARL);
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }
     

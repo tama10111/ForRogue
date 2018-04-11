@@ -5,6 +5,8 @@
  */
 package forrogue.character.enemy;
 
+import forrogue.game.GameConstant;
+
 /**
  *
  * @author user
@@ -18,6 +20,7 @@ public class Valkyrie extends Vikings {
         this.setDefense(1);
         this.setName("Valkyrie");
         this.setGender("Female");
+        this.setSkin(GameConstant.SKIN_VALKYRIE);
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }
     

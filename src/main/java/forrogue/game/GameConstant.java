@@ -24,12 +24,28 @@ package forrogue.game;
 public class GameConstant {
 
     public static final char ENEMY = 'E';
-    public static final char[] ENEMIES = {'K', 'H', 'S'}; // TODO : Probablement à virer
-    
+
     
     /* ENEMYS SKINS */
-    
-    
+
+    public static final char SKIN_ARAMUSHA = 'A';
+    public static final char SKIN_CENTURION = 'C';
+    public static final char SKIN_CONQUERANT = 'c';
+    public static final char SKIN_FANATIQUE = 'F';
+    public static final char SKIN_GARDEPAIX = 'G';
+    public static final char SKIN_BERSERKER = 'B';
+    public static final char SKIN_GLADIATEUR = 'G';
+    public static final char SKIN_HIGHLANDER = 'H';
+    public static final char SKIN_JARL = 'J';
+    public static final char SKIN_KENSEI = 'K';
+    public static final char SKIN_NOBUSHI = 'N';
+    public static final char SKIN_OROCHI = 'O';
+    public static final char SKIN_SENTINELLE = 'S';
+    public static final char SKIN_SHAMAN = 's';
+    public static final char SKIN_SHINOBI = 'š';
+    public static final char SKIN_SHUGOKI = 'u';
+    public static final char SKIN_VALKYRIE = 'V';
+
     /* WEAPONS SKINS */
 
     public static final char SKIN_SWORD = '|';

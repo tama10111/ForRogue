@@ -5,6 +5,8 @@
  */
 package forrogue.character.enemy;
 
+import forrogue.game.GameConstant;
+
 /**
  *
  * @author user
@@ -18,6 +20,7 @@ public class Sentinelle extends Chevaliers{
         this.setDefense(1);
         this.setName("Sentinelle");
         this.setGender("Male");
+        this.setSkin(GameConstant.SKIN_SENTINELLE);
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }
     

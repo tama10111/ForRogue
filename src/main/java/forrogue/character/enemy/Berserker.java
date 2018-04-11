@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package forrogue.character.enemy;
+
+import forrogue.game.GameConstant;
+
 /**
  *
  * @author user
@@ -17,7 +20,7 @@ public class Berserker extends Vikings{
         this.setDefense(0);
         this.setName("Berseker");
         this.setGender("Male");
-        this.setSkin('B'); // Pour mes tests (tama)
+        this.setSkin(GameConstant.SKIN_BERSERKER); // Pour mes tests (tama)
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }
     

@@ -5,6 +5,8 @@
  */
 package forrogue.character.enemy;
 
+import forrogue.game.GameConstant;
+
 /**
  *
  * @author user
@@ -18,6 +20,7 @@ public class Gladiateur extends Chevaliers{
         this.setDefense(0);
         this.setName("Orochi");
         this.setGender("Male");
+        this.setSkin(GameConstant.SKIN_GLADIATEUR);
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }
     

@@ -6,6 +6,7 @@
 package forrogue.character.enemy;
 
 import charva.awt.Point;
+import forrogue.game.GameConstant;
 
 /**
  *
@@ -20,6 +21,7 @@ public class Nobushi extends Samurais{
         this.setDefense(1);
         this.setName("Nobushi");
         this.setGender("Female");
+        this.setSkin(GameConstant.SKIN_NOBUSHI);
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }
     

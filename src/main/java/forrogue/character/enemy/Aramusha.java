@@ -5,6 +5,8 @@
  */
 package forrogue.character.enemy;
 
+import forrogue.game.GameConstant;
+
 /**
  *
  * @author user
@@ -18,7 +20,7 @@ public class Aramusha extends Samurais{
         this.setDefense(2);
         this.setName("Aramusha");
         this.setGender("Male");
-        this.setSkin('A');
+        this.setSkin(GameConstant.SKIN_ARAMUSHA);
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }
     
