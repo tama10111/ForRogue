@@ -23,7 +23,7 @@ import charva.awt.Dimension;
 import forrogue.Chest;
 import forrogue.GameObject;
 import forrogue.character.Player;
-import forrogue.character.ennemy.Berserker;
+import forrogue.character.enemy.Berserker;
 import forrogue.game.GameConstant;
 
 import java.io.File;
@@ -104,7 +104,7 @@ class Dungeon extends GameObject {
                         this.matrix[i][j] = GameConstant.SKIN_VOID;
                         break;
 
-                    case GameConstant.ENNEMY :
+                    case GameConstant.ENEMY :
                         this.matrix[i][j] = new Berserker();
                         /*
                         int r = random.nextInt();

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package forrogue.character.ennemy;
+package forrogue.character.enemy;
 
 /**
  *
@@ -18,6 +18,7 @@ public class Fanatique extends Chevaliers {
         this.setDefense(2);
         this.setName("Fanatique");
         this.setGender("Male");
+        this.setSkin('F');
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }
     

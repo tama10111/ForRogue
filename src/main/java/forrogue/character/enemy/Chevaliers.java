@@ -3,16 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package forrogue.character.ennemy;
+package forrogue.character.enemy;
 
 /**
  *
- * @author user, tama
+ * @author maurice
  */
-
-public abstract class Vikings extends Ennemy {
-
-    //Classe de difficulté "difficile"
-    //Speed=0
+public abstract class Chevaliers extends Enemy {
     
+
 }

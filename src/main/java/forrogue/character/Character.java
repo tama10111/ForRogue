@@ -120,8 +120,8 @@ public abstract class Character extends GameObject {
         this.getPosition().y += move.y;
     }
 
-    public void attack(Character ennemy){
-        ennemy.receiveDamages(this.attack);
+    public void attack(Character enemy){
+        enemy.receiveDamages(this.attack);
     }
 
     public void receiveDamages(int damages){

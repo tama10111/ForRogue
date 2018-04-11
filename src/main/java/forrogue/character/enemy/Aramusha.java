@@ -3,21 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package forrogue.character.ennemy;
+package forrogue.character.enemy;
 
 /**
  *
  * @author user
  */
-public class Conquerant extends Chevaliers {
+public class Aramusha extends Samurais{
     
-    public Conquerant(){
-        this.setHp(14);
-        this.setMaxHp(14);
-        this.setAttack(2);
-        this.setDefense(1);
-        this.setName("Conquerant");
+    public Aramusha(){
+        this.setHp(8);
+        this.setMaxHp(8);
+        this.setAttack(4);
+        this.setDefense(2);
+        this.setName("Aramusha");
         this.setGender("Male");
+        this.setSkin('A');
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }
     

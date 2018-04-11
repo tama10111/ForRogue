@@ -3,7 +3,7 @@ package forrogue.map;
 import charva.awt.Dimension;
 import forrogue.Chest;
 import forrogue.GameObject;
-import forrogue.character.ennemy.Berserker;
+import forrogue.character.enemy.Berserker;
 import forrogue.character.friendly.QuestMan;
 import forrogue.game.GameConstant;
 import forrogue.game.GameEngine;
@@ -47,7 +47,7 @@ public class Hub extends GameObject {
                         this.matrix[i][j] = GameConstant.SKIN_VOID;
                         break;
 
-                    case GameConstant.ENNEMY :
+                    case GameConstant.ENEMY :
                         this.matrix[i][j] = new Berserker();
                         /* TODO : Faire spawn selon difficulté
 
