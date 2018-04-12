@@ -26,10 +26,11 @@ import charva.awt.event.KeyListener;
 import charvax.swing.JList;
 import charvax.swing.JOptionPane;
 import charvax.swing.JScrollPane;
-import charvax.swing.JViewport;
 import forrogue.Inventory;
 import forrogue.game.GameWindow;
 import forrogue.item.Item;
+import forrogue.item.ItemStack;
+import forrogue.item.potion.Potion;
 
 import java.util.Enumeration;
 
@@ -57,13 +58,13 @@ public class InventoryView extends JScrollPane {
         this.list.setVisibleRowCount(rows-5);
         this.gWindow = gWindow;
 
-        int max = 11;
-        for(Item item : inventory.getItemList()){
-            if(item.getClass().toString().length() > max){
-                max = item.toString().length();
+        int max = 20;
+        for(ItemStack iStack : inventory.getItemList()){
+            if(iStack.toString().length() > max){
+                max = iStack.toString().length();
             }
         }
-        
+
         this.setWidth(max+3);
         this.list.setColumns(max);
         this.setViewportView(this.list);
@@ -76,14 +77,17 @@ public class InventoryView extends JScrollPane {
             public void keyTyped(KeyEvent ke) {
                 switch(ke.getKeyCode()){
                     case KeyEvent.VK_ENTER :
-                        if(JOptionPane.showConfirmDialog((Component) gWindow.getCommandPrompt(), "Use this object ?", "", YES_NO_OPTION) == YES_OPTION){
-                            Item item = (Item) list.getSelectedValue();
-                            item.use(gWindow.getGameEngine().getPlayer());
-                            gWindow.updateInventory();
-                        };
-                        break;
-                }
+                        if(inventory.getItemList().size() != 0){
+                            if(JOptionPane.showConfirmDialog((Component) gWindow.getCommandPrompt(), "Use this object ?", "", YES_NO_OPTION) == YES_OPTION){
+                                ItemStack item = (ItemStack) list.getSelectedValue();
+                                item.use(gWindow.getGameEngine().getPlayer());
 
+                                if(item.getQuantity() == 0){
+                                    inventory.remove(list.getSelectedIndex());
+                                }
+                            } gWindow.updateInventory();
+                        } break;
+                }
             }
 
             @Override
@@ -123,6 +127,17 @@ public class InventoryView extends JScrollPane {
 
     public void updateInventory() {
         this.list.setListData(this.inventory.getItemList());
+        int max = 11;
+        for(ItemStack iStack : inventory.getItemList()){
+            if(iStack.toString().length() > max){
+                max = iStack.toString().length();
+            }
+        }
+        this.setWidth(max+3);
         this.repaint();
+    }
+
+    public JList getList() {
+        return this.list;
     }
 }

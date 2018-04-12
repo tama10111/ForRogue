@@ -18,7 +18,7 @@
 package forrogue;
 
 import forrogue.game.GameConstant;
-import forrogue.item.Item;
+import forrogue.item.ItemStack;
 import forrogue.item.protection.*;
 import forrogue.item.weapon.*;
 import forrogue.item.potion.*;
@@ -41,12 +41,12 @@ public class Chest extends GameObject{
     public Chest(int level){
         this.setSkin(GameConstant.SKIN_CHEST);
         this.inventory = new Inventory();
-        this.inventory.add(new Sword());
-        this.inventory.add(new IronShield());
-        this.inventory.add(new LargePotion());
+        this.inventory.addOne(new Sword());
+        this.inventory.addOne(new IronShield());
+        this.inventory.addOne(new LargePotion());
     }
 
-    public Vector<Item> getChestContent(){
+    public Vector<ItemStack> getChestContent(){
         return this.inventory.getItemList();
     }
 

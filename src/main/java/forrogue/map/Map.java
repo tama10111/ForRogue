@@ -29,6 +29,7 @@ import forrogue.character.friendly.QuestMan;
 import forrogue.game.GameConstant;
 import forrogue.game.GameEngine;
 import forrogue.item.Item;
+import forrogue.item.ItemStack;
 import forrogue.item.quest.Gem;
 
 import static charvax.swing.JOptionPane.YES_NO_OPTION;
@@ -109,8 +110,8 @@ public class Map {
 
         else if(target instanceof Chest){
             Player player = gEngine.getPlayer();
-            for(Item item : ((Chest) target).getChestContent()){
-                player.getInventory().add(item);
+            for(ItemStack iStack : ((Chest) target).getChestContent()){
+                player.getInventory().addStack(iStack);
             }
             this.matrix[coord_player.y + move.y][coord_player.x + move.x] = GameConstant.SKIN_VOID;
             this.gEngine.sendUpdateInventorySignal();

@@ -138,6 +138,7 @@ public abstract class Character extends GameObject {
         if(!(this.weapon instanceof Hand) && this.weapon != null){
             this.attack -= this.weapon.getAttack();
             this.speed -= this.weapon.getSpeed();
+            this.inventory.addOne(this.weapon);
         }
         this.weapon = weapon;
         this.attack += weapon.getAttack();
@@ -145,9 +146,12 @@ public abstract class Character extends GameObject {
     }
 
     public void unsetWeapon(){
-        this.attack -= this.weapon.getAttack();
-        this.speed -= this.weapon.getSpeed();
-        this.weapon = new Hand();
+        if(!(this.weapon instanceof Hand)) {
+            this.inventory.addOne(this.weapon);
+            this.attack -= this.weapon.getAttack();
+            this.speed -= this.weapon.getSpeed();
+            this.weapon = new Hand();
+        }
     }
 
     public Protection getProtection(){
@@ -159,6 +163,7 @@ public abstract class Character extends GameObject {
             this.defense -= this.protection.getDefense();
             this.speed -= this.protection.getSpeed();
             this.max_hp -= this.protection.getHp();
+            this.inventory.addOne(this.protection);
         }
         this.protection = protection;
         this.defense += protection.getDefense();
@@ -167,10 +172,13 @@ public abstract class Character extends GameObject {
     }
 
     public void unsetProtection(){
-        this.defense -= this.protection.getDefense();
-        this.speed -= this.protection.getSpeed();
-        this.max_hp -= this.protection.getHp();
-        this.protection = new UnderWear();
+        if(!(this.protection instanceof UnderWear)){
+            this.inventory.addOne(this.protection);
+            this.defense -= this.protection.getDefense();
+            this.speed -= this.protection.getSpeed();
+            this.max_hp -= this.protection.getHp();
+            this.protection = new UnderWear();
+        }
     }
 
     public Wearable getWear() {
@@ -179,11 +187,23 @@ public abstract class Character extends GameObject {
 
 
     public void setWear(Wearable wear) {
-        this.wear = wear;
+        if(this.wear == null){
+            this.hp += wear.getHp();
+            this.attack += wear.getAttack();
+            this.defense += wear.getDefense();
+            this.speed += wear.getSpeed();
+            this.wear = wear;
+        }
     }
 
     public void unsetWear(){
-        this.wear = null;
+        if(this.wear != null){
+            this.hp -= wear.getHp();
+            this.attack -= wear.getAttack();
+            this.defense-= wear.getDefense();
+            this.speed -= wear.getSpeed();
+            this.inventory.addOne(this.wear);
+        } this.wear = null;
     }
 
 }

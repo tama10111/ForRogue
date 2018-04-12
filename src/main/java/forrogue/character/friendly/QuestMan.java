@@ -26,9 +26,7 @@ public class QuestMan extends Character {
     }
 
     public void getReward(Inventory inventory){
-        for(int i = 0; i<9999; i++) {
-            inventory.add(new LargePotion());
-        }
+        inventory.add(new LargePotion(), 5);
     }
 
     public boolean checkPlayerGems(Inventory inventory, HashMap<String, Integer> gems){

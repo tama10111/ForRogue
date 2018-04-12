@@ -6,6 +6,7 @@
 package forrogue;
 
 import forrogue.item.Item;
+import forrogue.item.ItemStack;
 
 import java.util.Vector;
 
@@ -17,21 +18,46 @@ import java.util.Vector;
 
 public class Inventory {
 
-    private Vector<Item> item_list;
+    private Vector<ItemStack> item_list;
 
     public Inventory(){
-        this.item_list = new Vector<Item>();
+        this.item_list = new Vector<ItemStack>();
     }
 
-    public void add(Item item){
-        this.item_list.add(item);
+    public void add(Item item, int n){
+        for(ItemStack iStack : this.item_list){
+            if(iStack.getItemName() == item.getName()){
+                iStack.add(n);
+                return;
+            }
+        }
+        this.item_list.add(new ItemStack(item, n));
     }
 
-    public Vector<Item> getItemList() {
+    public void addOne(Item item){
+        for(ItemStack iStack : this.item_list){
+            if(iStack.getItemName() == item.getName()){
+                iStack.addOne();
+                return;
+            }
+        } this.item_list.add(new ItemStack(item));
+
+    }
+
+    public Vector<ItemStack> getItemList() {
         return this.item_list;
     }
 
     public void remove(int index){
         this.item_list.remove(index);
+    }
+
+    public void addStack(ItemStack iStack) {
+        for(ItemStack iSt : this.item_list){
+            if(iSt.getItemName() == iStack.getItemName()){
+                iSt.add(iStack.getQuantity());
+                return;
+            }
+        } this.item_list.add(iStack);
     }
 }

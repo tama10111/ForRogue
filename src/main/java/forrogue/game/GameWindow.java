@@ -103,4 +103,6 @@ public class GameWindow extends JFrame implements Serializable {
     public CommandPrompt getCommandPrompt() {
         return this.cmd;
     }
+
+    public InventoryView getInventoryView() { return this.iView; }
 }

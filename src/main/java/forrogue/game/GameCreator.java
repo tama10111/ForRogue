@@ -20,6 +20,7 @@ package forrogue.game;
 import charva.awt.BorderLayout;
 import charva.awt.Color;
 import charva.awt.Point;
+import charva.awt.Toolkit;
 import charva.awt.event.KeyEvent;
 import charva.awt.event.KeyListener;
 import charvax.swing.JFrame;
@@ -31,6 +32,7 @@ import charvax.swing.border.LineBorder;
 import charvax.swing.border.TitledBorder;
 import forrogue.character.Player;
 
+import javax.tools.Tool;
 import java.util.Vector;
 
 /**
@@ -45,7 +47,7 @@ public class GameCreator extends JFrame{
      */
 
     public GameCreator() {
-        super("GameCreator -- TAB to switch between panels -- ENTER to select value");                
+        super("GameCreator -- TAB to switch between panels -- ENTER to select value");
 
         Vector<String> gV = new Vector<>();
 
@@ -225,7 +227,6 @@ public class GameCreator extends JFrame{
 
                             /**
                              * TODO : Rajouter fileNameField quand la save sera ok
-                             * TODO : Gérer le cas où l'utilisateur ne saisi rien
                              */
 
                             case "Create":
@@ -264,8 +265,7 @@ public class GameCreator extends JFrame{
         centerPanel.add(sPanel, BorderLayout.SOUTH);
         centerPanel.add(pPanel, BorderLayout.WEST);
         centerPanel.add(skPanel, BorderLayout.EAST);
-        
-        
+
         this.getContentPane().add(gPanel, BorderLayout.WEST);
         this.getContentPane().add(centerPanel, BorderLayout.CENTER);
         this.getContentPane().add(cPanel, BorderLayout.EAST);

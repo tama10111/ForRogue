@@ -76,11 +76,14 @@ public class CommandPrompt extends JTextField{
             else if("unset weapon".equals(cmd)){
                 this.gWindow.getGameEngine().getPlayer().unsetWeapon();
                 this.setText("");
+                this.gWindow.updateInventory();
             }
             else if("unset protection".equals(cmd)){
                 this.gWindow.getGameEngine().getPlayer().unsetProtection();
                 this.setText("");
+                this.gWindow.updateInventory();
             }
+            else if("".equals(cmd));
             else{
                 while(JOptionPane.showConfirmDialog((Component) ae.getSource(), "This command doesn't exist. Are you dumb ?", "UNKNOWN COMMAND", YES_NO_OPTION) != YES_OPTION);
                 this.setText("");

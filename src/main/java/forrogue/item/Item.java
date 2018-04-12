@@ -82,6 +82,4 @@ public abstract class Item extends GameObject {
     public void setSpeed(int speed){
         this.speed = speed;
     }
-
-
 }
