@@ -18,40 +18,93 @@
 package forrogue.character.enemy;
 
 import charva.awt.Point;
+
+import forrogue.GameObject;
+import forrogue.MyComparator;
+import forrogue.MyPriorityQueue;
+import forrogue.Triplet;
 import forrogue.character.Character;
+import forrogue.character.Player;
+import forrogue.game.GameConstant;
+
+import java.util.Stack;
+
 
 /**
  *
  * @author tama
  */
 public abstract class Enemy extends Character {
-    
-    public void findPath(int[][] matrix, Point monster_pos, Point enemy_pos){
 
-        /** 
-         * We fill the matrix with 0 and 1
-         * 0 means there is nothing in this area
-         * 1 means there is something that's blocking this area (other monster, chest, wall, ...)
-         */
+    public Point pathFinder(Point player, Object[][] matrix) {
 
-        for(int i = 0; i<matrix.length ; i++){
-            for(int j = 0; j<matrix[i].length; j++){
-                if(i == enemy_pos.x && j == enemy_pos.y) matrix[i][j] = 2;
-                else if(matrix[i][j] > 0) matrix[i][j] = 1; 
+        MyPriorityQueue open = new MyPriorityQueue(new MyComparator());
+        MyPriorityQueue closed = new MyPriorityQueue(new MyComparator());
+        Point[] move = { new Point(1,0), new Point(-1,0), new Point(0,1), new Point(0,-1) };
+
+        Triplet start = new Triplet(this.getPosition(), 0, 0, 0);
+        Triplet u, v, tmp;
+        Triplet[][] t_matrix;
+
+        t_matrix = new Triplet[matrix.length][];
+
+        Stack<Point> pile = new Stack<>();
+
+        int i = 0, j;
+
+        for(Object[] line : matrix){
+            t_matrix[i] = new Triplet[line.length];
+            for(j = 0; j<t_matrix[i].length; j++){
+                t_matrix[i][j] = new Triplet(new Point(j,i), -1, 0, 0);
             }
+            i++;
         }
-        
-        
-    }
-    
-    private Point pathFinder(Point p){
-        //TO IMPLEMENT//
-        return p;
-    }
 
-    public Point findPath(){
-        Point p = new Point(0,0);
-        //TO IMPLEMENT//
-        return p;
+        double min_reverse;
+
+        open.add(start);
+
+        while (!open.isEmpty()){
+            u = open.poll();
+
+            if (u.point.equals(player)){
+                pile.push(new Point(0,0));
+                min_reverse = Double.POSITIVE_INFINITY;
+                for(Point dir : move){
+                    for(Object t : closed.toArray()){
+                        if(((Triplet) t).reverse + ((Triplet) t).cost + ((Triplet) t).heuristique < min_reverse
+                                && ((Triplet) t).cost != 0
+                                && ((Triplet) t).point.x - dir.x == start.point.x
+                                && ((Triplet) t).point.y - dir.y == start.point.y){
+                            min_reverse = ((Triplet) t).reverse + ((Triplet) t).cost + ((Triplet) t).heuristique;
+                            pile.push(dir);
+                        }
+                    }
+                } return pile.pop();
+            }
+
+            for(Point dir : move){
+
+                v = t_matrix[u.point.y+dir.y][u.point.x+dir.x];
+
+                if(!(closed.isInQueueWithLowerCost(v) || open.isInQueueWithLowerCost(v))){
+                    if(!(matrix[v.point.y][v.point.x] instanceof GameObject)){
+                        if(((char) matrix[v.point.y][v.point.x]) == GameConstant.SKIN_VOID){
+                            v.cost = u.cost + 1;
+                            v.heuristique = v.cost + Math.sqrt(Math.pow(v.point.x - player.x, 2) + Math.pow(v.point.y - player.y, 2));
+                            v.reverse = v.cost + Math.sqrt(Math.pow(v.point.x - this.getPosition().x, 2) + Math.pow(v.point.y - this.getPosition().y, 2));
+                            open.add(v);
+                            t_matrix[u.point.y+dir.y][u.point.x+dir.x].cost += 1;
+                        }
+                    } else if(matrix[v.point.y][v.point.x] instanceof Player){
+                        v.cost = u.cost + 1;
+                        v.heuristique = v.cost + Math.sqrt(Math.pow(v.point.x - player.x, 2) + Math.pow(v.point.y - player.y, 2));
+                        v.reverse = v.cost + Math.sqrt(Math.pow(v.point.x - this.getPosition().x, 2) + Math.pow(v.point.y - this.getPosition().y, 2));
+                        open.add(v);
+                        t_matrix[u.point.y+dir.y][u.point.x+dir.x].cost += 1;
+                    }
+                }
+            } closed.add(u);
+        } return new Point(0,0);
     }
 }

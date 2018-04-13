@@ -32,6 +32,8 @@ import forrogue.item.Item;
 import forrogue.item.ItemStack;
 import forrogue.item.quest.Gem;
 
+import java.util.ArrayList;
+
 import static charvax.swing.JOptionPane.YES_NO_OPTION;
 import static charvax.swing.JOptionPane.YES_OPTION;
 
@@ -44,10 +46,14 @@ public class Map {
 
     private Object[][] matrix;
     private GameEngine gEngine;
+    private ArrayList<Enemy> l_enemy;
 
     public Map(GameEngine gEngine){
         this.gEngine = gEngine;
         this.matrix = gEngine.getHub().getMatrix();
+        this.setPlayerPosition();
+        this.l_enemy = new ArrayList<>();
+        this.setEnemyList();
     }
 
     public void movePlayer(Point move) {
@@ -59,7 +65,7 @@ public class Map {
         if(!(target instanceof GameObject)){
             if((char) target == GameConstant.SKIN_VOID) {
                 this.matrix[coord_player.y][coord_player.x] = GameConstant.SKIN_VOID;
-                this.matrix[coord_player.y + move.y][coord_player.x + move.x] = GameConstant.SKIN_PLAYER;
+                this.matrix[coord_player.y + move.y][coord_player.x + move.x] = this.gEngine.getPlayer();
                 this.gEngine.getPlayer().move(move);
             }
         }
@@ -69,6 +75,7 @@ public class Map {
             this.matrix[coord_player.y + move.y][coord_player.x + move.x] = new Dungeon(((Dungeon) target).getDifficulty(), gEngine.getHub(), gEngine.getRandom());
             this.setMatrix(((Dungeon) target).getMatrix());
             this.setPlayerPosition();
+            this.setEnemyList();
             this.gEngine.getGameWindow().getGameView().repaint();
         }
 
@@ -76,6 +83,7 @@ public class Map {
             this.setMatrix(((Hub) target).getMatrix());
             this.setPlayerPosition();
             this.gEngine.getGameWindow().getGameView().repaint();
+            this.l_enemy.clear();
         }
 
         else if(target instanceof Enemy){
@@ -95,16 +103,12 @@ public class Map {
                         Gem.values()[this.gEngine.getRandomNumber()%Gem.values().length].getColor(),
                         this.gEngine.getRandomNumber()%5+1
                 );
+                this.l_enemy.remove(enemy);
             }
 
             if(gEngine.getPlayer().getHp() <= 0){
                 // TODO : Prévoir le cas où le joueur meurt
             }
-
-            /**
-             * Pour chaque monstre sur la map :
-             * Le déplacer
-             */
 
         }
 
@@ -171,17 +175,33 @@ public class Map {
                 );
             }
         }
+
+        if(!this.l_enemy.isEmpty() && !(target instanceof Dungeon)){
+            for(Enemy e : this.l_enemy){
+                this.moveEnemy(e, e.pathFinder(gEngine.getPlayer().getPosition(), this.matrix));
+            }
+        }
     }
 
-    public Point getPlayerPosition() {
-        int x = 0, y = 0;
+    public void moveEnemy(Enemy enemy, Point move){
+        if(!(this.matrix[enemy.getPosition().y+move.y][enemy.getPosition().x+move.x] instanceof GameObject)){
+            if((char) this.matrix[enemy.getPosition().y+move.y][enemy.getPosition().x+move.x] != GameConstant.SKIN_WALL){
+                this.matrix[enemy.getPosition().y][enemy.getPosition().x] = GameConstant.SKIN_VOID;
+                this.matrix[enemy.getPosition().y+move.y][enemy.getPosition().x+move.x] = enemy;
+                enemy.move(move);
+            }
+        }
+    }
+
+    private void setEnemyList() {
+        this.l_enemy.clear();
         for(Object[] line : this.matrix){
             for(Object o : line){
-                if(o.getClass() == Player.class){
-                    return new Point(x, y);
-                } x++;
-            } y++; x = 0;
-        } return new Point(-1,-1);
+                if(o instanceof Enemy){
+                    this.l_enemy.add((Enemy) o);
+                }
+            }
+        }
     }
 
     public void setPlayerPosition(){
@@ -194,8 +214,7 @@ public class Map {
                             this.gEngine.getPlayer().setPosition(new Point(x, y));
                             this.matrix[y][x] = this.gEngine.getPlayer();
                         }
-                    }
-                    x++;
+                    } x++;
                 }
             } y++; x = 0;
         }

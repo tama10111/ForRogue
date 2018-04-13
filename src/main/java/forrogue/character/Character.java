@@ -116,8 +116,7 @@ public abstract class Character extends GameObject {
     }
 
     public void move(Point move) {
-        this.getPosition().x += move.x;
-        this.getPosition().y += move.y;
+        this.setPosition(this.getPosition().addOffset(move));
     }
 
     public void attack(Character enemy){

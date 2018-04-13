@@ -1,6 +1,7 @@
 package forrogue.map;
 
 import charva.awt.Dimension;
+import charva.awt.Point;
 import forrogue.Chest;
 import forrogue.GameObject;
 import forrogue.character.enemy.vikings.Berserker;
@@ -20,6 +21,8 @@ public class Hub extends GameObject {
     public Hub(GameEngine gEngine){
         this.gEngine = gEngine;
         this.setSkin(GameConstant.SKIN_HUB);
+
+        Berserker b; // TODO à virer
 
         Scanner f = new Scanner(getClass().getClassLoader().getResourceAsStream("hub.map"));
         ArrayList<String> lines = new ArrayList();
@@ -48,7 +51,9 @@ public class Hub extends GameObject {
                         break;
 
                     case GameConstant.ENEMY :
-                        this.matrix[i][j] = new Berserker();
+                        b = new Berserker(); // TODO à virer
+                        b.setPosition(new Point(j,i));
+                        this.matrix[i][j] = b;
                         /* TODO : Faire spawn selon difficulté
 
                         if(this.difficulty == 0){

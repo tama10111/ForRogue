@@ -20,6 +20,7 @@ package forrogue.map;
 
 import charva.awt.Dimension;
 
+import charva.awt.Point;
 import forrogue.Chest;
 import forrogue.GameObject;
 import forrogue.character.enemy.vikings.Berserker;
@@ -46,6 +47,7 @@ class Dungeon extends GameObject {
         String path = null;
         int r;
         int mod;
+        Berserker b; //TODO à virer
 
         if(difficulty == 0){
             r = random.nextInt();
@@ -102,7 +104,9 @@ class Dungeon extends GameObject {
                         break;
 
                     case GameConstant.ENEMY :
-                        this.matrix[i][j] = new Berserker();
+                        b = new Berserker(); // TODO à virer
+                        b.setPosition(new Point(j,i));
+                        this.matrix[i][j] = b;
                         /*
                         int r = random.nextInt();
 
