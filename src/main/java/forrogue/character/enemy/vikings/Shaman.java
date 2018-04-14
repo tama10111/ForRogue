@@ -20,6 +20,7 @@ public class Shaman extends Vikings {
         this.setMaxHp(11);
         this.setAttack(3);
         this.setDefense(1);
+        this.setPerception(10);
         this.setName("Shaman");
         this.setGender("Male");
         this.setSkin(GameConstant.SKIN_SHAMAN);

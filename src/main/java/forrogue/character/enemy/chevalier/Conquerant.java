@@ -20,6 +20,7 @@ public class Conquerant extends Chevaliers {
         this.setMaxHp(14);
         this.setAttack(2);
         this.setDefense(1);
+        this.setPerception(13);
         this.setName("Conquerant");
         this.setGender("Male");
         this.setSkin(GameConstant.SKIN_CONQUERANT);

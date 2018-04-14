@@ -42,6 +42,7 @@ public abstract class Character extends GameObject {
     private int attack;
     private int defense;
     private int speed;
+    private int perception;
 
     public Inventory getInventory(){
         return this.inventory;
@@ -115,12 +116,20 @@ public abstract class Character extends GameObject {
         this.speed = speed;
     }
 
+    public int getPerception(){
+        return this.perception;
+    }
+
+    public void setPerception(int perception){
+        this.perception = perception;
+    }
+
     public void move(Point move) {
         this.setPosition(this.getPosition().addOffset(move));
     }
 
-    public void attack(Character enemy){
-        enemy.receiveDamages(this.attack);
+    public void attack(Character character){
+        character.receiveDamages(this.attack);
     }
 
     public void receiveDamages(int damages){

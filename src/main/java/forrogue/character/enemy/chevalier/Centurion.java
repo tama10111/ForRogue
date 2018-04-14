@@ -20,6 +20,7 @@ public class Centurion extends Chevaliers {
         this.setMaxHp(11);
         this.setAttack(3);
         this.setDefense(1);
+        this.setPerception(10);
         this.setName("Centurion");
         this.setGender("Male");
         this.setSkin(GameConstant.SKIN_CENTURION);

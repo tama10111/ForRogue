@@ -20,6 +20,7 @@ public class Fanatique extends Chevaliers {
         this.setMaxHp(6);
         this.setAttack(4);
         this.setDefense(2);
+        this.setPerception(5);
         this.setName("Fanatique");
         this.setGender("Male");
         this.setSkin(GameConstant.SKIN_FANATIQUE);

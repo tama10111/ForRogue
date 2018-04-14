@@ -20,6 +20,7 @@ public class Shugoki extends Samurais {
         this.setMaxHp(20);
         this.setAttack(3);
         this.setDefense(1);
+        this.setPerception(19);
         this.setName("Shugoki");
         this.setGender("Male");
         this.setSkin(GameConstant.SKIN_SHUGOKI);

@@ -6,6 +6,7 @@
 package forrogue.character.enemy.vikings;
 
 import forrogue.character.enemy.vikings.Vikings;
+import forrogue.game.GameConstant;
 
 /**
  *
@@ -18,9 +19,10 @@ public class Berserker extends Vikings {
         this.setMaxHp(6);
         this.setAttack(5);
         this.setDefense(0);
+        this.setPerception(5);
         this.setName("Berseker");
         this.setGender("Male");
-        this.setSkin('B'); // Pour mes tests (tama)
+        this.setSkin(GameConstant.SKIN_BERSERKER); // Pour mes tests (tama)
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes
     }
     

@@ -177,19 +177,21 @@ public class Map {
         }
 
         if(!this.l_enemy.isEmpty() && !(target instanceof Dungeon)){
-            for(Enemy e : this.l_enemy){
-                this.moveEnemy(e, e.pathFinder(gEngine.getPlayer().getPosition(), this.matrix));
-            }
+            for(Enemy e : this.l_enemy) this.moveEnemy(e, e.pathFinder(gEngine.getPlayer().getPosition(), this.matrix));
         }
     }
 
     public void moveEnemy(Enemy enemy, Point move){
-        if(!(this.matrix[enemy.getPosition().y+move.y][enemy.getPosition().x+move.x] instanceof GameObject)){
+        Object target = this.matrix[enemy.getPosition().y+move.y][enemy.getPosition().x+move.x];
+
+        if(!(target instanceof GameObject)){
             if((char) this.matrix[enemy.getPosition().y+move.y][enemy.getPosition().x+move.x] != GameConstant.SKIN_WALL){
                 this.matrix[enemy.getPosition().y][enemy.getPosition().x] = GameConstant.SKIN_VOID;
                 this.matrix[enemy.getPosition().y+move.y][enemy.getPosition().x+move.x] = enemy;
                 enemy.move(move);
             }
+        } else if(target instanceof Player){
+            enemy.attack((Player) target);
         }
     }
 
@@ -197,9 +199,7 @@ public class Map {
         this.l_enemy.clear();
         for(Object[] line : this.matrix){
             for(Object o : line){
-                if(o instanceof Enemy){
-                    this.l_enemy.add((Enemy) o);
-                }
+                if(o instanceof Enemy) this.l_enemy.add((Enemy) o);
             }
         }
     }

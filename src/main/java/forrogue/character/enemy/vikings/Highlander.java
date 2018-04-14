@@ -20,6 +20,7 @@ public class Highlander extends Vikings {
         this.setMaxHp(12);
         this.setAttack(4);
         this.setDefense(0);
+        this.setPerception(11);
         this.setName("Highlander");
         this.setGender("Male");
         this.setSkin(GameConstant.SKIN_HIGHLANDER);

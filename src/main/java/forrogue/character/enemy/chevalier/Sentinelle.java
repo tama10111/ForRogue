@@ -20,6 +20,7 @@ public class Sentinelle extends Chevaliers {
         this.setMaxHp(10);
         this.setAttack(4);
         this.setDefense(1);
+        this.setPerception(9);
         this.setName("Sentinelle");
         this.setGender("Male");
         this.setSkin(GameConstant.SKIN_SENTINELLE);

@@ -20,6 +20,7 @@ public class Gladiateur extends Chevaliers {
         this.setMaxHp(6);
         this.setAttack(4);
         this.setDefense(0);
+        this.setPerception(5);
         this.setName("Orochi");
         this.setGender("Male");
         this.setSkin(GameConstant.SKIN_GLADIATEUR);

@@ -20,6 +20,7 @@ public class Kensei extends Samurais {
         this.setMaxHp(12);
         this.setAttack(4);
         this.setDefense(1);
+        this.setPerception(11);
         this.setName("Kensei");
         this.setGender("Male");
         this.setSkin(GameConstant.SKIN_KENSEI);

@@ -20,6 +20,7 @@ public class Orochi extends Samurais {
         this.setMaxHp(9);
         this.setAttack(3);
         this.setDefense(1);
+        this.setPerception(8);
         this.setName("Orochi");
         this.setGender("Male");
         this.setSkin(GameConstant.SKIN_OROCHI);

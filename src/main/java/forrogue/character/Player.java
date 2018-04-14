@@ -45,7 +45,7 @@ public class Player extends Character {
         this.setHp(999);
         this.setMaxHp(9999);
         this.setAttack(999);
-        this.setDefense(999);
+        this.setDefense(0);
         this.setSpeed(999);
 
         this.setInventory(new Inventory());

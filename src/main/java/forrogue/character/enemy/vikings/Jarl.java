@@ -21,6 +21,7 @@ public class Jarl extends Vikings {
         this.setAttack(2);
         this.setDefense(0);
         this.setName("Jarl");
+        this.setPerception(15);
         this.setGender("Male");
         this.setSkin(GameConstant.SKIN_JARL);
         // Rajouter l'inventaire quand Pierre aura implémenté toute les armes

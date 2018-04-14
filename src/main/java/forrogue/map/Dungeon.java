@@ -23,7 +23,10 @@ import charva.awt.Dimension;
 import charva.awt.Point;
 import forrogue.Chest;
 import forrogue.GameObject;
-import forrogue.character.enemy.vikings.Berserker;
+import forrogue.character.enemy.Enemy;
+import forrogue.character.enemy.chevalier.*;
+import forrogue.character.enemy.samurais.*;
+import forrogue.character.enemy.vikings.*;
 import forrogue.game.GameConstant;
 
 import java.io.InputStream;
@@ -47,7 +50,7 @@ class Dungeon extends GameObject {
         String path = null;
         int r;
         int mod;
-        Berserker b; //TODO à virer
+        Enemy enemy = null;
 
         if(difficulty == 0){
             r = random.nextInt();
@@ -104,24 +107,92 @@ class Dungeon extends GameObject {
                         break;
 
                     case GameConstant.ENEMY :
-                        b = new Berserker(); // TODO à virer
-                        b.setPosition(new Point(j,i));
-                        this.matrix[i][j] = b;
-                        /*
-                        int r = random.nextInt();
+                        r = random.nextInt();
 
                         if(this.difficulty == 0){
+                            switch(r%4){
+                                case 0 :
+                                    enemy = new Gladiateur();
+                                    break;
+
+                                case 1 :
+                                    enemy = new Shinobi();
+                                    break;
+
+                                case 2 :
+                                    enemy = new Berserker();
+                                    break;
+
+                                case 3 :
+                                    enemy = new Fanatique();
+                                    break;
+                            }
+                        }
+
+                        else if(this.difficulty == 1){
+                            switch(r%10){
+                                case 0 :
+                                    enemy = new GardePaix();
+                                    break;
+
+                                case 1 :
+                                    enemy = new Aramusha();
+                                    break;
+
+                                case 2 :
+                                    enemy = new Orochi();
+                                    break;
+
+                                case 3 :
+                                    enemy = new Valkyrie();
+                                    break;
+
+                                case 4 :
+                                    enemy = new Shaman();
+                                    break;
+
+                                case 5 :
+                                    enemy = new Highlander();
+                                    break;
+
+                                case 6 :
+                                    enemy = new Kensei();
+                                    break;
+
+                                case 7 :
+                                    enemy = new Centurion();
+                                    break;
+
+                                case 8 :
+                                    enemy = new Sentinelle();
+                                    break;
+
+                                case 9 :
+                                    enemy = new Nobushi();
+                                    break;
+
+                            }
 
                         }
 
-                        if(this.difficulty == 1){
+                        else if(this.difficulty == 2){
+                            switch(r%3){
+                                case 0 :
+                                    enemy = new Jarl();
+                                    break;
 
+                                case 1 :
+                                    enemy = new Shugoki();
+                                    break;
+
+                                case 2 :
+                                    enemy = new Conquerant();
+                                    break;
+                            }
                         }
 
-                        if(this.difficulty == 2){
-
-                        }*/
-
+                        enemy.setPosition(new Point(j,i));
+                        this.matrix[i][j] = enemy;
                         break;
 
                     case GameConstant.SKIN_HUB :

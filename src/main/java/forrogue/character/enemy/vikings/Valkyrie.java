@@ -20,6 +20,7 @@ public class Valkyrie extends Vikings {
         this.setMaxHp(10);
         this.setAttack(3);
         this.setDefense(1);
+        this.setPerception(9);
         this.setName("Valkyrie");
         this.setGender("Female");
         this.setSkin(GameConstant.SKIN_VALKYRIE);

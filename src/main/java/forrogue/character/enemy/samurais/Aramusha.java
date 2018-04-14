@@ -20,6 +20,7 @@ public class Aramusha extends Samurais {
         this.setMaxHp(8);
         this.setAttack(4);
         this.setDefense(2);
+        this.setPerception(7);
         this.setName("Aramusha");
         this.setGender("Male");
         this.setSkin(GameConstant.SKIN_ARAMUSHA);

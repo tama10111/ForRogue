@@ -20,6 +20,7 @@ public class GardePaix extends Chevaliers {
         this.setMaxHp(8);
         this.setAttack(5);
         this.setDefense(0);
+        this.setPerception(7);
         this.setName("Garde-Paix");
         this.setGender("Male");
         this.setSkin(GameConstant.SKIN_GARDEPAIX);

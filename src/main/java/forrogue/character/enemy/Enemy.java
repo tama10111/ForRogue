@@ -38,6 +38,8 @@ public abstract class Enemy extends Character {
 
     public Point pathFinder(Point player, Object[][] matrix) {
 
+        if(this.getPerception() < Math.sqrt(Math.pow(this.getPosition().x - player.x, 2) + Math.pow(this.getPosition().y - player.y, 2))) return new Point(0,0);
+
         MyPriorityQueue open = new MyPriorityQueue(new MyComparator());
         MyPriorityQueue closed = new MyPriorityQueue(new MyComparator());
         Point[] move = { new Point(1,0), new Point(-1,0), new Point(0,1), new Point(0,-1) };
@@ -56,8 +58,7 @@ public abstract class Enemy extends Character {
             t_matrix[i] = new Triplet[line.length];
             for(j = 0; j<t_matrix[i].length; j++){
                 t_matrix[i][j] = new Triplet(new Point(j,i), -1, 0, 0);
-            }
-            i++;
+            } i++;
         }
 
         double min_reverse;
@@ -66,22 +67,6 @@ public abstract class Enemy extends Character {
 
         while (!open.isEmpty()){
             u = open.poll();
-
-            if (u.point.equals(player)){
-                pile.push(new Point(0,0));
-                min_reverse = Double.POSITIVE_INFINITY;
-                for(Point dir : move){
-                    for(Object t : closed.toArray()){
-                        if(((Triplet) t).reverse + ((Triplet) t).cost + ((Triplet) t).heuristique < min_reverse
-                                && ((Triplet) t).cost != 0
-                                && ((Triplet) t).point.x - dir.x == start.point.x
-                                && ((Triplet) t).point.y - dir.y == start.point.y){
-                            min_reverse = ((Triplet) t).reverse + ((Triplet) t).cost + ((Triplet) t).heuristique;
-                            pile.push(dir);
-                        }
-                    }
-                } return pile.pop();
-            }
 
             for(Point dir : move){
 
@@ -105,6 +90,22 @@ public abstract class Enemy extends Character {
                     }
                 }
             } closed.add(u);
+
+            if (u.point.equals(player)){
+                pile.push(new Point(0,0));
+                min_reverse = Double.POSITIVE_INFINITY;
+                for(Point dir : move){
+                    for(Object t : closed.toArray()){
+                        if(((Triplet) t).reverse + ((Triplet) t).cost + ((Triplet) t).heuristique < min_reverse
+                                && ((Triplet) t).cost != 0
+                                && ((Triplet) t).point.x - dir.x == start.point.x
+                                && ((Triplet) t).point.y - dir.y == start.point.y){
+                            min_reverse = ((Triplet) t).reverse + ((Triplet) t).cost + ((Triplet) t).heuristique;
+                            pile.push(dir);
+                        }
+                    }
+                } return pile.pop();
+            }
         } return new Point(0,0);
     }
 }

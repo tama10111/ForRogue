@@ -20,6 +20,7 @@ public class Shinobi extends Samurais {
         this.setMaxHp(6);
         this.setAttack(6);
         this.setDefense(-1);
+        this.setPerception(5);
         this.setName("Shinobi");
         this.setGender("Male");
         this.setSkin(GameConstant.SKIN_SHINOBI);
