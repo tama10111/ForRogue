@@ -35,6 +35,7 @@ import forrogue.item.protection.IronShield;
 import forrogue.item.weapon.Sword;
 import forrogue.view.*;
 
+import java.io.IOException;
 import java.io.Serializable;
 
 
@@ -45,7 +46,7 @@ public class GameWindow extends JFrame implements Serializable {
     private final GameEngine gEngine;
     private final GameView gView;
 
-    public GameWindow(String title, Player player, long seed){
+    public GameWindow(String title, Player player, long seed) {
 
         super(title+" -- TAB to switch between panels");
         Container mCont = this.getContentPane();

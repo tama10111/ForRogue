@@ -110,7 +110,7 @@ public class GameEngine implements Serializable {
     }
 
 
-    public void movePlayer(Point move) {
+    public void movePlayer(Point move){
         this.map.movePlayer(move);
     }
 

@@ -32,6 +32,7 @@ import forrogue.item.Item;
 import forrogue.item.ItemStack;
 import forrogue.item.quest.Gem;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import static charvax.swing.JOptionPane.YES_NO_OPTION;
@@ -56,7 +57,7 @@ public class Map {
         this.setEnemyList();
     }
 
-    public void movePlayer(Point move) {
+    public void movePlayer(Point move){
 
         Point coord_player = this.gEngine.getPlayer().getPosition();
 
@@ -79,11 +80,11 @@ public class Map {
             this.gEngine.getGameWindow().getGameView().repaint();
         }
 
-        else if(target instanceof  Hub){
+        else if(target instanceof Hub){
             this.setMatrix(((Hub) target).getMatrix());
             this.setPlayerPosition();
+            this.setEnemyList();
             this.gEngine.getGameWindow().getGameView().repaint();
-            this.l_enemy.clear();
         }
 
         else if(target instanceof Enemy){
@@ -178,6 +179,7 @@ public class Map {
 
         if(!this.l_enemy.isEmpty() && !(target instanceof Dungeon)){
             for(Enemy e : this.l_enemy) this.moveEnemy(e, e.pathFinder(gEngine.getPlayer().getPosition(), this.matrix));
+//            for(Enemy e : this.l_enemy) e.pathFinder(gEngine.getPlayer().getPosition(), this.matrix);
         }
     }
 

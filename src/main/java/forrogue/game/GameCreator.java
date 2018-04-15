@@ -198,7 +198,7 @@ public class GameCreator extends JFrame{
         skPanel.add(skForm);
 
 
-        JTextField seedField = new JTextField("84164654154");
+        JTextField seedField = new JTextField("84164454154");
         JPanel sPanel = new JPanel();
         sPanel.setBorder(new TitledBorder("Seed"));
         sPanel.add(seedField);

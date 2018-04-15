@@ -29,6 +29,7 @@ import forrogue.character.enemy.samurais.*;
 import forrogue.character.enemy.vikings.*;
 import forrogue.game.GameConstant;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Random;
@@ -50,7 +51,6 @@ class Dungeon extends GameObject {
         String path = null;
         int r;
         int mod;
-        Enemy enemy = null;
 
         if(difficulty == 0){
             r = random.nextInt();
@@ -93,7 +93,7 @@ class Dungeon extends GameObject {
         this.dimension = new Dimension(max, lines.size());
         this.matrix = new Object[lines.size()][max];
 
-        i = j = 0;
+        i = 0; j = 0;
         for(String str : lines){
             for(char c : str.toCharArray()){
                 switch(c){
@@ -107,92 +107,85 @@ class Dungeon extends GameObject {
                         break;
 
                     case GameConstant.ENEMY :
-                        r = random.nextInt();
+                        r = Math.abs(random.nextInt());
 
                         if(this.difficulty == 0){
                             switch(r%4){
                                 case 0 :
-                                    enemy = new Gladiateur();
+                                    this.matrix[i][j] = new Gladiateur();
                                     break;
 
                                 case 1 :
-                                    enemy = new Shinobi();
+                                    this.matrix[i][j] = new Shinobi();
                                     break;
 
                                 case 2 :
-                                    enemy = new Berserker();
+                                    this.matrix[i][j] = new Berserker();
                                     break;
 
                                 case 3 :
-                                    enemy = new Fanatique();
+                                    this.matrix[i][j] = new Fanatique();
                                     break;
                             }
-                        }
-
-                        else if(this.difficulty == 1){
+                        } else if(this.difficulty == 1){
                             switch(r%10){
                                 case 0 :
-                                    enemy = new GardePaix();
+                                    this.matrix[i][j] = new GardePaix();
                                     break;
 
                                 case 1 :
-                                    enemy = new Aramusha();
+                                    this.matrix[i][j] = new Aramusha();
                                     break;
 
                                 case 2 :
-                                    enemy = new Orochi();
+                                    this.matrix[i][j] = new Orochi();
                                     break;
 
                                 case 3 :
-                                    enemy = new Valkyrie();
+                                    this.matrix[i][j] = new Valkyrie();
                                     break;
 
                                 case 4 :
-                                    enemy = new Shaman();
+                                    this.matrix[i][j] = new Shaman();
                                     break;
 
                                 case 5 :
-                                    enemy = new Highlander();
+                                    this.matrix[i][j] = new Highlander();
                                     break;
 
                                 case 6 :
-                                    enemy = new Kensei();
+                                    this.matrix[i][j] = new Kensei();
                                     break;
 
                                 case 7 :
-                                    enemy = new Centurion();
+                                    this.matrix[i][j] = new Centurion();
                                     break;
 
                                 case 8 :
-                                    enemy = new Sentinelle();
+                                    this.matrix[i][j] = new Sentinelle();
                                     break;
 
                                 case 9 :
-                                    enemy = new Nobushi();
+                                    this.matrix[i][j] = new Nobushi();
                                     break;
 
                             }
-
-                        }
-
-                        else if(this.difficulty == 2){
+                        } else if(this.difficulty == 2){
                             switch(r%3){
                                 case 0 :
-                                    enemy = new Jarl();
+                                    this.matrix[i][j] = new Jarl();
                                     break;
 
                                 case 1 :
-                                    enemy = new Shugoki();
+                                    this.matrix[i][j] = new Shugoki();
                                     break;
 
                                 case 2 :
-                                    enemy = new Conquerant();
+                                    this.matrix[i][j] = new Conquerant();
                                     break;
                             }
                         }
-
-                        enemy.setPosition(new Point(j,i));
-                        this.matrix[i][j] = enemy;
+                        ((Enemy) this.matrix[i][j]).setPosition(new Point(j,i));
                         break;
 
                     case GameConstant.SKIN_HUB :

@@ -9,6 +9,7 @@ import forrogue.character.friendly.QuestMan;
 import forrogue.game.GameConstant;
 import forrogue.game.GameEngine;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -48,26 +49,6 @@ public class Hub extends GameObject {
 
                     case GameConstant.SKIN_VOID :
                         this.matrix[i][j] = GameConstant.SKIN_VOID;
-                        break;
-
-                    case GameConstant.ENEMY :
-                        b = new Berserker(); // TODO à virer
-                        b.setPosition(new Point(j,i));
-                        this.matrix[i][j] = b;
-                        /* TODO : Faire spawn selon difficulté
-
-                        if(this.difficulty == 0){
-
-                        }
-
-                        if(this.difficulty == 1){
-
-                        }
-
-                        if(this.difficulty == 2){
-
-                        }*/
-
                         break;
 
                     case GameConstant.SKIN_CHEST :
