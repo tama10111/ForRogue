@@ -29,7 +29,6 @@ import forrogue.character.enemy.samurais.*;
 import forrogue.character.enemy.vikings.*;
 import forrogue.game.GameConstant;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Random;

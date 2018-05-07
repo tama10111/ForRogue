@@ -11,11 +11,6 @@ if (!hasProperty('mainClass')) {
     ext.mainClass = 'forrogue.Main'
 }
 
-
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile files('./libs/charva.jar')
@@ -24,7 +19,7 @@ dependencies {
 }
 
 jar {
-
+    from configurations.compile.collect{ zipTree it}
     destinationDir = file('./jar')
     archiveName = new File('ForRogue.jar')
 
