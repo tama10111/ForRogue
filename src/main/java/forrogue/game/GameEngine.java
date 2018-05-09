@@ -36,18 +36,15 @@ public class GameEngine implements Serializable {
     private Player player;
     private long seed;
     private Map map;
-    private FileReader saveFile;
-    private GameWindow gWindow;
+
+    private transient GameWindow gWindow;
     private Hub hub;
     private Random random;
-    
-    
-    public GameEngine(FileReader saveFile) {
-        this.saveFile = saveFile;
-        this.readFile();
-    }
 
-    public GameEngine(Player player, long seed, String fileName){
+
+
+
+    public GameEngine(Player player, long seed) {
         this.player = player;
         this.seed = seed;
         this.random = new Random();
@@ -55,30 +52,9 @@ public class GameEngine implements Serializable {
         this.hub = new Hub(this);
         this.map = new Map(this);
         this.map.setPlayerPosition();
-
-        File f = new File(fileName);
-        if(f.exists()){
-            try {
-                this.saveFile = new FileReader(fileName);
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(GameEngine.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else{
-            try {
-                f.createNewFile();
-            } catch (IOException ex) {
-                Logger.getLogger(GameEngine.class.getName()).log(Level.SEVERE, null, ex);
-                System.exit(1);
-            }
-            try {
-                this.saveFile = new FileReader(fileName);
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(GameEngine.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
     }
 
-    
+
     public Player getPlayer(){
         return this.player;
     }
@@ -95,19 +71,8 @@ public class GameEngine implements Serializable {
         return this.hub;
     }
 
-    
-    public void doSave(){
-        
-    }
-    
-    private void readFile(){
-        char[] buffer = null;
-        try {
-            saveFile.read(buffer);
-        } catch (IOException ex) {
-            Logger.getLogger(GameEngine.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+
+
 
 
     public void movePlayer(Point move){

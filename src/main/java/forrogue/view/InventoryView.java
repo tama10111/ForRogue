@@ -32,6 +32,7 @@ import forrogue.item.Item;
 import forrogue.item.ItemStack;
 import forrogue.item.potion.Potion;
 
+import java.io.Serializable;
 import java.util.Enumeration;
 
 import static charvax.swing.JOptionPane.YES_NO_OPTION;
@@ -42,7 +43,7 @@ import static charvax.swing.JOptionPane.YES_OPTION;
  * @author tama
  */
 
-public class InventoryView extends JScrollPane {
+public class InventoryView extends JScrollPane implements Serializable {
 
     private JList list;
     private Inventory inventory;

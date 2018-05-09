@@ -27,12 +27,14 @@ import forrogue.GameObject;
 import forrogue.character.Player;
 import forrogue.game.GameEngine;
 
+import java.io.Serializable;
+
 /**
  *
  * @author tama
  */
 
-public class GameView extends Component{
+public class GameView extends Component implements Serializable{
 
     private Dimension dimension;
     private Toolkit term;

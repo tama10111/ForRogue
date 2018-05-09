@@ -33,6 +33,7 @@ import forrogue.item.ItemStack;
 import forrogue.item.quest.Gem;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import static charvax.swing.JOptionPane.YES_NO_OPTION;
@@ -43,10 +44,9 @@ import static charvax.swing.JOptionPane.YES_OPTION;
  * @author tama
  */
 
-public class Map {
-
-    private Object[][] matrix;
-    private GameEngine gEngine;
+public class Map implements Serializable {
+    private  Object[][] matrix;
+    private  GameEngine gEngine;
     private ArrayList<Enemy> l_enemy;
 
     public Map(GameEngine gEngine){

@@ -21,15 +21,20 @@ package forrogue;
 import charva.awt.Point;
 import forrogue.item.Item;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
 /**
  *
  * @author tama
  */
-public abstract class GameObject {
+public abstract class GameObject implements Serializable {
 
     private String name;
     private char skin;
-    private Point position;
+    protected transient Point position;
 
     public char getSkin(){
         return this.skin;
@@ -54,4 +59,12 @@ public abstract class GameObject {
     public void setName(String name){
         this.name = name;
     }
+
+    //Changement 15h56
+
+
+
+
+
+
 }

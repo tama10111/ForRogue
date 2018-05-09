@@ -1,7 +1,6 @@
 package forrogue.map;
 
 import charva.awt.Dimension;
-import charva.awt.Point;
 import forrogue.Chest;
 import forrogue.GameObject;
 import forrogue.character.enemy.vikings.Berserker;
@@ -10,14 +9,17 @@ import forrogue.game.GameConstant;
 import forrogue.game.GameEngine;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class Hub extends GameObject {
 
-    private Dimension dimension;
+    private transient Dimension dimension;
     private Object[][] matrix;
-    private GameEngine gEngine;
+    private  GameEngine gEngine;
 
     public Hub(GameEngine gEngine){
         this.gEngine = gEngine;
@@ -98,4 +100,25 @@ public class Hub extends GameObject {
     public Object[][] getMatrix(){
         return this.matrix;
     }
+
+    private void writeObject(ObjectOutputStream oos)throws IOException {
+
+
+        oos.defaultWriteObject();
+
+
+    }
+
+    private void readObject(ObjectInputStream ois)throws ClassNotFoundException,IOException{
+
+
+        ois.defaultReadObject();
+
+
+
+    }
+
+
+
+
 }

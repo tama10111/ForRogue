@@ -29,7 +29,10 @@ import forrogue.character.enemy.samurais.*;
 import forrogue.character.enemy.vikings.*;
 import forrogue.game.GameConstant;
 
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -41,7 +44,7 @@ import java.util.Scanner;
 
 class Dungeon extends GameObject {
     
-    private Dimension dimension;
+    private transient Dimension dimension;
     private Object[][] matrix;
     private int difficulty;
 
@@ -226,4 +229,24 @@ class Dungeon extends GameObject {
     public int getDifficulty(){
         return this.difficulty;
     }
+
+    private void writeObject(ObjectOutputStream oos)throws IOException {
+
+
+        oos.defaultWriteObject();
+
+    }
+
+    private void readObject(ObjectInputStream ois)throws ClassNotFoundException,IOException{
+
+
+        ois.defaultReadObject();
+
+
+
+    }
+
+
+
+
 }

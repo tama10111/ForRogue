@@ -2,7 +2,9 @@ package forrogue.item;
 
 import forrogue.character.Character;
 
-public class ItemStack {
+import java.io.Serializable;
+
+public class ItemStack implements Serializable {
 
     Item item;
     int quantity;

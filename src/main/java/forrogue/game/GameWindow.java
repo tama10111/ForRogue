@@ -30,11 +30,13 @@ import charvax.swing.JFrame;
 import charvax.swing.JPanel;
 import charvax.swing.border.TitledBorder;
 
+import forrogue.SerializationDriver;
 import forrogue.character.Player;
 import forrogue.item.protection.IronShield;
 import forrogue.item.weapon.Sword;
 import forrogue.view.*;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 
@@ -42,7 +44,7 @@ import java.io.Serializable;
 public class GameWindow extends JFrame implements Serializable {
 
     private final InventoryView iView;
-    private final CommandPrompt cmd;
+    private final transient CommandPrompt cmd;
     private final GameEngine gEngine;
     private final GameView gView;
 
@@ -50,9 +52,14 @@ public class GameWindow extends JFrame implements Serializable {
 
         super(title+" -- TAB to switch between panels");
         Container mCont = this.getContentPane();
-
-        this.gEngine = new GameEngine(player, seed, "filename.save");
-        this.gEngine.setGameWindow(this);
+        File f=new File("file.save");
+        if(f.exists()) {
+            SerializationDriver save = new SerializationDriver();
+            save.Deserialize();
+            this.gEngine = save.g;
+        }
+       else{this.gEngine=new GameEngine(player,seed);}
+       this.gEngine.setGameWindow(this);
 
         JPanel iPanel = new JPanel();
         iPanel.setBorder(new TitledBorder("Inventory"));

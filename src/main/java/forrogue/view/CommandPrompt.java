@@ -26,15 +26,18 @@ import charvax.swing.JOptionPane;
 import static charvax.swing.JOptionPane.YES_NO_OPTION;
 import static charvax.swing.JOptionPane.YES_OPTION;
 import charvax.swing.JTextField;
+import forrogue.SerializationDriver;
 import forrogue.game.GameWindow;
 
+import java.io.File;
+import java.io.Serializable;
 import java.util.Enumeration;
 
 /**
  *
  * @author tama
  */
-public class CommandPrompt extends JTextField{
+public class CommandPrompt extends JTextField implements Serializable{
 
     private GameWindow gWindow;
     
@@ -68,8 +71,14 @@ public class CommandPrompt extends JTextField{
             String cmd = ((JTextField) ae.getSource()).getText();
             if("quit".equals(cmd)){
                 if(JOptionPane.showConfirmDialog((Component) ae.getSource(), "Do you want to save ?", "EXIT", YES_NO_OPTION) == YES_OPTION){
-                //SAVE//
+                    SerializationDriver save = new SerializationDriver();
+                    save.Serializer(this.gWindow.getGameEngine());
+
+
                 }
+
+
+
                 Toolkit.getDefaultToolkit().close();
                 System.exit(0);
             }

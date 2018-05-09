@@ -8,6 +8,7 @@ package forrogue;
 import forrogue.item.Item;
 import forrogue.item.ItemStack;
 
+import java.io.Serializable;
 import java.util.Vector;
 
 
@@ -16,7 +17,7 @@ import java.util.Vector;
  * @author tama
  */
 
-public class Inventory {
+public class Inventory implements Serializable{
 
     private Vector<ItemStack> item_list;
 

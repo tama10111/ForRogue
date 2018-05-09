@@ -15,6 +15,10 @@ import forrogue.item.weapon.Mace;
 import forrogue.item.weapon.Weapon;
 import forrogue.item.wearable.Wearable;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 /**
  *
  * @author tama
@@ -213,5 +217,14 @@ public abstract class Character extends GameObject {
             this.inventory.addOne(this.wear);
         } this.wear = null;
     }
+
+
+
+
+
+
+
+
+
 
 }

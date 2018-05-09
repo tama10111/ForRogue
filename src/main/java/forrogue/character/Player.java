@@ -13,6 +13,10 @@ import forrogue.item.protection.UnderWear;
 import forrogue.item.weapon.Hand;
 import forrogue.item.wearable.None;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
@@ -21,12 +25,10 @@ import java.util.HashMap;
  */
 public class Player extends Character {
 
-    HashMap<String, Integer> gems;
+    private HashMap<String, Integer> gems;
 
-    public Player(String name, String gender, String type, Point position, char skin) {
-
+    public Player(String name, String gender, String type,  Point position, char skin) {
         GameConstant.SKIN_PLAYER = skin;
-
         this.gems = new HashMap<String, Integer>();
         this.gems.put("white", 999999);
         this.gems.put("black", 999999);
@@ -64,4 +66,34 @@ public class Player extends Character {
     public void addGems(String color, int i) {
         this.gems.replace(color, this.gems.get(color) + i);
     }
+
+    private void writeObject(ObjectOutputStream oos)throws IOException {
+
+
+        oos.defaultWriteObject();
+
+        oos.writeInt(position.x);
+        oos.writeInt(position.y);
+
+
+
+
+    }
+
+    private void readObject(ObjectInputStream ois)throws ClassNotFoundException,IOException{
+
+        int a,b;
+        ois.defaultReadObject();
+        a=ois.readInt();
+        b=ois.readInt();
+        position=new Point(a,b);
+
+
+
+    }
+
+
+
+
+
 }

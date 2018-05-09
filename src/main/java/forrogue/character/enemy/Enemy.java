@@ -27,6 +27,9 @@ import forrogue.character.Character;
 import forrogue.character.Player;
 import forrogue.game.GameConstant;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Stack;
 
 
@@ -108,4 +111,32 @@ public abstract class Enemy extends Character {
             }
         } return new Point(0,0);
     }
+
+    private void writeObject(ObjectOutputStream oos)throws IOException {
+
+
+        oos.defaultWriteObject();
+
+        oos.writeInt(position.x);
+        oos.writeInt(position.y);
+
+
+
+
+    }
+
+    private void readObject(ObjectInputStream ois)throws ClassNotFoundException,IOException{
+
+        int a,b;
+        ois.defaultReadObject();
+        a=ois.readInt();
+        b=ois.readInt();
+        position=new Point(a,b);
+
+
+
+    }
+
+
+
 }
