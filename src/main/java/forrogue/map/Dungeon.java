@@ -37,10 +37,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-/**
- *
- * @author tama
- */
+
 
 class Dungeon extends GameObject {
     

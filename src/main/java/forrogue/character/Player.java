@@ -30,12 +30,12 @@ public class Player extends Character {
     public Player(String name, String gender, String type,  Point position, char skin) {
         GameConstant.SKIN_PLAYER = skin;
         this.gems = new HashMap<String, Integer>();
-        this.gems.put("white", 999999);
-        this.gems.put("black", 999999);
-        this.gems.put("blue", 999999); // TODO : Remettre à zéro - test
-        this.gems.put("green", 999999);
-        this.gems.put("yellow", 999999);
-        this.gems.put("red", 999999);
+        this.gems.put("white", 0);
+        this.gems.put("black", 0);
+        this.gems.put("blue", 0); // TODO : Remettre à zéro - test
+        this.gems.put("green", 0);
+        this.gems.put("yellow", 0);
+        this.gems.put("red", 0);
 
         // TODO : À virer - test
         this.setWeapon(new Hand());
@@ -44,11 +44,11 @@ public class Player extends Character {
 
 
         //TODO : Associer des stats à un type donné
-        this.setHp(999);
+        this.setHp(10);
         this.setMaxHp(9999);
-        this.setAttack(999);
+        this.setAttack(10);
         this.setDefense(0);
-        this.setSpeed(999);
+        this.setSpeed(10);
 
         this.setInventory(new Inventory());
 

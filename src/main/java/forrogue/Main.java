@@ -6,10 +6,6 @@ import forrogue.game.GameCreator;
 
 import java.io.*;
 
-/**
- *
- * @author tama
- */
 
 public class Main {
 

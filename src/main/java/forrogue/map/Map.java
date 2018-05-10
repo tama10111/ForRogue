@@ -39,10 +39,6 @@ import java.util.ArrayList;
 import static charvax.swing.JOptionPane.YES_NO_OPTION;
 import static charvax.swing.JOptionPane.YES_OPTION;
 
-/**
- *
- * @author tama
- */
 
 public class Map implements Serializable {
     private  Object[][] matrix;
@@ -108,7 +104,20 @@ public class Map implements Serializable {
             }
 
             if(gEngine.getPlayer().getHp() <= 0){
-                // TODO : Prévoir le cas où le joueur meurt
+
+                this.setMatrix(gEngine.getHub().getMatrix());
+                this.setPlayerPosition();
+                this.setEnemyList();
+                gEngine.getPlayer().unsetWeapon();
+                gEngine.getPlayer().unsetProtection();
+                gEngine.getPlayer().setHp(10);
+                gEngine.getPlayer().setAttack(10);
+                gEngine.getPlayer().setDefense(0);
+                gEngine.getPlayer().setSpeed(10);
+                gEngine.getPlayer().getInventory().removeAll();
+                this.gEngine.getGameWindow().getGameView().repaint();
+                this.gEngine.getGameWindow().getInventoryView().updateInventory();
+
             }
 
         }

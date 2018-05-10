@@ -53,6 +53,11 @@ public class Inventory implements Serializable{
         this.item_list.remove(index);
     }
 
+    public void removeAll(){
+        this.item_list.removeAllElements();
+    }
+
+
     public void addStack(ItemStack iStack) {
         for(ItemStack iSt : this.item_list){
             if(iSt.getItemName() == iStack.getItemName()){

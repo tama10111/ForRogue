@@ -26,10 +26,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-/**
- *
- * @author tama
- */
+
 public abstract class GameObject implements Serializable {
 
     private String name;

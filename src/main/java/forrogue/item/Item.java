@@ -21,10 +21,7 @@ package forrogue.item;
 import forrogue.GameObject;
 import forrogue.character.Character;
 
-/**
- *
- * @author tama
- */
+
 
 public abstract class Item extends GameObject {
 

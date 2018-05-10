@@ -33,10 +33,7 @@ import java.io.ObjectOutputStream;
 import java.util.Stack;
 
 
-/**
- *
- * @author tama
- */
+
 public abstract class Enemy extends Character {
 
     public Point pathFinder(Point player, Object[][] matrix) {
