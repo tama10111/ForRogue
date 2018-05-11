@@ -56,7 +56,7 @@ En jeu dans le menu équipement :
 Manuel technique :
 
 -Game generator est une classe qui ouvre le menu de départ et qui crée une Game Window avec un GameEngine., ainsi que
-la map.
+la map.\n
 -La map est une matrice d'objet avec des items, des coffres, des donjons et une liste d'ennemis.
 -La classe personnage contient deux autres classes, enemy et player qui les matérialise par un symbole et leur donne
 un inventaire c'est à dire un vector (structure similaire à une liste) d'item. Le player a en plus des gems qui
