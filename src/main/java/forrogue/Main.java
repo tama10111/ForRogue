@@ -15,6 +15,10 @@ public class Main {
      */
 
     public static void main(String[] args){
+
+        Home h = new Home();
+        h.draw();
+
         if(args.length == 1) {
             GameWindow gameWindow = new GameWindow("ForRogue",
                     null,
