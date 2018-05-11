@@ -63,46 +63,45 @@ Lorsque le joueur souhaite arréter de jouer il entre la commande quit et on lui
 
 ## **Manuel technique :**
 
-Game generator est une classe qui ouvre le menu de départ et qui crée une Game Window avec un GameEngine., ainsi que
+-Game generator est une classe qui ouvre le menu de départ et qui crée une Game Window avec un GameEngine., ainsi que
 la map.\
 
-La map est une matrice d'objet avec des items, des coffres, des donjons et une liste d'ennemis.\
+-La map est une matrice d'objet avec des items, des coffres, des donjons et une liste d'ennemis.\
 
-La classe personnage contient deux autres classes, enemy et player qui les matérialise par un symbole et leur donne
+-La classe personnage contient deux autres classes, enemy et player qui les matérialise par un symbole et leur donne
 un inventaire c'est à dire un vector (structure similaire à une liste) d'item. Le player a en plus des gems qui
 représentent une monnaie d'échange chez un marchand vendant des potions.\
 
-Les commandes sont gérées par la classe command Prompt et l'ensemble des caractères ascii correspondant à des skin
+-Les commandes sont gérées par la classe command Prompt et l'ensemble des caractères ascii correspondant à des skin
 sont stockés dans GameConstant.\
 
-Les ennemis suivent l'agorithme a* qui leur permettent de se déplacer vers le personnage. Ils ont cependant une limite
+-Les ennemis suivent l'agorithme a* qui leur permettent de se déplacer vers le personnage. Ils ont cependant une limite
 de perception du joueur qui les empêches de suivre le joueur de trop loin.\
 
-La classe Serialization Driver permet de sauvegarder le GameEngine (contenant toutes les données de jeu ) dans le
+-La classe Serialization Driver permet de sauvegarder le GameEngine (contenant toutes les données de jeu ) dans le
 fichier "file.save", puis de le relire pour charger la partie.\
 
-Il y a 3 types de donjons correspondant à des 3 niveaux de difficultés. Lorsque l'on choisit une difficulté la classe
+-Il y a 3 types de donjons correspondant à des 3 niveaux de difficultés. Lorsque l'on choisit une difficulté la classe
 donjon ouvre un dossier contenant une succession de fichier de niveau avec des objets et des ennemis plus ou moins rares.
 L'ordre d'affichage dépend du numéro de génération de niveau à choisir au début(la seed).\
 
-La GameWIndow utilise la bibliothèque charva et particulièrement les fonctions de JPanle pour afficher séparément
+-La GameWIndow utilise la bibliothèque charva et particulièrement les fonctions de JPanle pour afficher séparément
 l'inventaire , le gestionnaire de commande et la Game View( le jeu ).\
 
-La GameView est un parcours de la matrice pour afficher un point s'il n'y a rien ou le skin correspondant si il y a
+-La GameView est un parcours de la matrice pour afficher un point s'il n'y a rien ou le skin correspondant si il y a
 un PJ,un PNJ, un mur ou un coffre.\
 
-La GameView affiche également les stats du joueur , ses gems(argent du jeu), le nom du personnage et son genre ainsi
-que son équipement sous la forme d'un string. Cette écriture est possible grace au curseur de la classe Toolkit
-de charva.\
+-La GameView affiche également les stats du joueur , ses gems(argent du jeu), le nom du personnage et son genre ainsi
+que son équipement sous la forme d'un string. On utilise ici la classe Toolkit qui implémente les fonctions de la lib ncurses.\
 
-Les item: Classe avec des attributs (int) de vie, d'attaque, de défense et de vitesse . Chaque type d'item(Potion,
+-Les item: Classe avec des attributs (int) de vie, d'attaque, de défense et de vitesse . Chaque type d'item(Potion,
 Arme, armure ), modifie des stats différentes(attaque pour les armes ...). La méthode use permet d'attacher au
 personnage l'objet et de modifier en conséquence ses stats.\
 
-Chaque fois que l'on déplace le personnage, avec la méthode movePlayer de la Classe map on vérifie ce qu'il y a sur
+-Chaque fois que l'on déplace le personnage, avec la méthode movePlayer de la Classe map on vérifie ce qu'il y a sur
 l'emplacement sur lequel le personnage se dirige. Sur une porte de donjon(on entre dedans ou on en sort en redéfinissant
 une nouvelle matrice correspondant au fichier du niveau choisi), un ennemi (on vérifie alors la vitesse pour voir qui
-attaque en premier, puis execute la méthode attack ).Si à la suite du combat cet ennemi a moins de 0 de vie alors  il
+attaque en premier, puis execute la méthode attack ). Si à la suite du combat cet ennemi a moins de 0 de vie alors il
 est effacé et on récupère des gems.\
 
-La classe Hub est la matrice de départ avec le marchand et les portes menants aux différents donjons.
+-La classe Hub est la matrice de départ avec le marchand et les portes menants aux différents donjons.
