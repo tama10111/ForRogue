@@ -20,6 +20,7 @@ package forrogue.map;
 
 import charva.awt.Component;
 import charva.awt.Point;
+import charva.awt.Toolkit;
 import charvax.swing.JOptionPane;
 import forrogue.Chest;
 import forrogue.GameObject;
@@ -104,23 +105,10 @@ public class Map implements Serializable {
             }
 
             if(gEngine.getPlayer().getHp() <= 0){
-                Player player = gEngine.getPlayer();
 
-                this.setMatrix(gEngine.getHub().getMatrix());
-                this.setPlayerPosition();
-                this.setEnemyList();
-
-                player.unsetWeapon();
-                player.unsetProtection();
-                player.setHp(10);
-                player.setAttack(10);
-                player.setDefense(0);
-                player.setSpeed(10);
-                player.getInventory().removeAll();
-
-                this.gEngine.getGameWindow().getGameView().repaint();
-                this.gEngine.getGameWindow().getInventoryView().updateInventory();
-
+                Toolkit.getDefaultToolkit().close();
+                System.out.println("Vous êtes mort");
+                System.exit(0);
             }
 
         }
@@ -206,6 +194,7 @@ public class Map implements Serializable {
         } else if(target instanceof Player){
             enemy.attack((Player) target);
             Point coord_player = this.gEngine.getPlayer().getPosition();
+
             if(enemy.getHp() <= 0){
                 this.matrix[coord_player.y + move.y][coord_player.x + move.x] = GameConstant.SKIN_VOID;
                 this.gEngine.getPlayer().addGems(
@@ -215,24 +204,10 @@ public class Map implements Serializable {
                 this.l_enemy.remove(enemy);
             }
 
-            if(gEngine.getPlayer().getHp() <= 0){
-                Player player = gEngine.getPlayer();
-
-                this.setMatrix(gEngine.getHub().getMatrix());
-                this.setPlayerPosition();
-                this.setEnemyList();
-
-                player.unsetWeapon();
-                player.unsetProtection();
-                player.setHp(10);
-                player.setAttack(10);
-                player.setDefense(0);
-                player.setSpeed(10);
-                player.getInventory().removeAll();
-
-                this.gEngine.getGameWindow().getGameView().repaint();
-                this.gEngine.getGameWindow().getInventoryView().updateInventory();
-
+            if(((Player) target).getHp() <= 0){
+                Toolkit.getDefaultToolkit().close();
+                System.out.println("Vous êtes mort");
+                System.exit(0);
             }
         }
     }
