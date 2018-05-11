@@ -22,7 +22,8 @@ import forrogue.item.ItemStack;
 import forrogue.item.protection.*;
 import forrogue.item.weapon.*;
 import forrogue.item.potion.*;
-
+import forrogue.item.wearable.*;
+import java.util.Random;
 import java.util.Vector;
 
 /**
@@ -41,9 +42,196 @@ public class Chest extends GameObject{
     public Chest(int level){
         this.setSkin(GameConstant.SKIN_CHEST);
         this.inventory = new Inventory();
-        this.inventory.addOne(new Sword());
-        this.inventory.addOne(new IronShield());
-        this.inventory.addOne(new LargePotion());
+        Random rand = new Random();
+        int aleaValue = rand.nextInt(7);
+
+        if (level == 0) {
+
+            if (aleaValue == 0) {
+                this.inventory.addOne(new LargePotion());
+
+            }
+
+            if (aleaValue == 1) {
+                this.inventory.addOne(new Sword());
+
+            }
+
+            if (aleaValue == 2) {
+                this.inventory.addOne(new IronShield());
+
+            }
+
+            if (aleaValue == 3) {
+                this.inventory.addOne(new LargePotion());
+                this.inventory.addOne(new Sword());
+            }
+            if (aleaValue == 4) {
+                this.inventory.addOne(new WoodShield());
+                this.inventory.addOne(new Sword());
+            }
+
+            if (aleaValue == 5) {
+                this.inventory.addOne(new WoodShield());
+                this.inventory.addOne(new Sword());
+                this.inventory.addOne(new LargePotion());
+
+            }
+
+            if (aleaValue == 6) {
+                this.inventory.addOne(new IronShield());
+                this.inventory.addOne(new Sword());
+                this.inventory.addOne(new SmallPotion());
+
+            }
+
+            if (aleaValue == 7) {
+                this.inventory.addOne(new IronShield());
+                this.inventory.addOne(new Sword());
+                this.inventory.addOne(new SmallPotion());
+                this.inventory.addOne(new WoodShield());
+
+            }
+
+
+        }
+
+
+        if (level == 1) {
+
+            if (aleaValue == 0) {
+                this.inventory.addOne(new DoubleShortSword());
+
+
+            }
+
+            if (aleaValue == 1) {
+
+                this.inventory.addOne(new Mace());
+
+
+            }
+
+            if (aleaValue == 2) {
+
+                this.inventory.addOne(new LeatherArmor());
+
+            }
+
+            if (aleaValue == 3) {
+
+                this.inventory.addOne(new Trident());
+                this.inventory.addOne(new LeatherArmor());
+            }
+            if (aleaValue == 4) {
+                this.inventory.addOne(new Mace());
+                this.inventory.addOne(new LeatherArmor());
+            }
+
+            if (aleaValue == 5) {
+
+                this.inventory.addOne(new Mace());
+                this.inventory.addOne(new LeatherArmor());
+                this.inventory.addOne(new LargePotion());
+
+            }
+
+            if (aleaValue == 6) {
+
+                this.inventory.addOne(new Mace());
+                this.inventory.addOne(new LeatherArmor());
+                this.inventory.addOne(new SmallPotion());
+
+            }
+
+            if (aleaValue == 7) {
+                this.inventory.addOne(new DoubleShortSword());
+                this.inventory.addOne(new Mace());
+                this.inventory.addOne(new Trident());
+                this.inventory.addOne(new LeatherArmor());
+                this.inventory.addOne(new SmallPotion());
+
+
+            }
+
+
+        }
+
+
+        if (level == 2) {
+
+            if (aleaValue == 0) {
+                this.inventory.addOne(new Halberd());
+                this.inventory.addOne(new ChainMail());
+                this.inventory.addOne(new Boots());
+
+
+            }
+
+            if (aleaValue == 1) {
+
+                this.inventory.addOne(new Axe());
+                this.inventory.addOne(new ChainMail());
+                this.inventory.addOne(new Bracelet());
+
+
+            }
+
+            if (aleaValue == 2) {
+
+                this.inventory.addOne(new DoubleHandedSword());
+                this.inventory.addOne(new ChainMail());
+
+
+            }
+
+            if (aleaValue == 3) {
+                this.inventory.addOne(new LargePotion());
+                this.inventory.addOne(new Halberd());
+                this.inventory.addOne(new PlateArmor());
+            }
+            if (aleaValue == 4) {
+                this.inventory.addOne(new Halberd());
+                this.inventory.addOne(new Axe());
+                this.inventory.addOne(new DoubleHandedSword());
+                this.inventory.addOne(new ChainMail());
+
+            }
+
+            if (aleaValue == 5) {
+                this.inventory.addOne(new Halberd());
+                this.inventory.addOne(new Axe());
+                this.inventory.addOne(new ChainMail());
+                this.inventory.addOne(new LargePotion());
+
+            }
+
+            if (aleaValue == 6) {
+                this.inventory.addOne(new Halberd());
+                this.inventory.addOne(new DoubleHandedSword());
+                this.inventory.addOne(new PlateArmor());
+                this.inventory.addOne(new LargePotion());
+
+            }
+
+            if (aleaValue == 7) {
+                this.inventory.addOne(new Halberd());
+                this.inventory.addOne(new Axe());
+                this.inventory.addOne(new DoubleHandedSword());
+                this.inventory.addOne(new ChainMail());
+                this.inventory.addOne(new PlateArmor());
+
+            }
+
+
+        }
+
+
+
+
+
+
+
     }
 
     public Vector<ItemStack> getChestContent(){
@@ -51,3 +239,8 @@ public class Chest extends GameObject{
     }
 
 }
+
+
+
+
+
