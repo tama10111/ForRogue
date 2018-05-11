@@ -45,14 +45,14 @@ Lorsque le joueur souhaite arréter de jouer il entre la commande quit et on lui
 
 ### Général :
 -TAB pour se déplacer entre les différents menus\
--ENTREE pour selectionner une option\
+-ENTREE pour selectionner une option
 
 ### En jeu dans l'invite de commande :
 -FLECHE DU HAUT pour monter\
 -FLECHE DU BAS pour descendre\
 -FLECHE GAUCHE pour aller a gauche\
 -FLECHE DROITE pour aller a droite\
--"quit" pour quitter le jeu\
+-"quit" pour quitter le jeu
 
 ### En jeu dans le menu équipement :
 -ENTREE pour selectionner un equipement/potion\
