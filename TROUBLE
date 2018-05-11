@@ -1,0 +1,3 @@
+Si archlinux : sudo pacman -S ncurses ncurses5-compat-libs
+Puis créer un lien symbolique : sudo ln -s /usr/lib/libncursesw.so.5 libtinfo.so.5
+export TERM=xterm sera peut être nécessaire
