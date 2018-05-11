@@ -1,7 +1,7 @@
 # ForRogue
 # ForRogue
 
-**/!\ ATTENTION /!\\\**
+/!\ ATTENTION /!\\\
 Il peut y avoir des problèmes d'affichage.\
 Affichage correcte sur Debian 9.\
 Affichage incorrecte sur ArchLinux (probablement un problème de version avec la libncurses), voir TROUBLE
@@ -11,10 +11,10 @@ Affichage incorrecte sur ArchLinux (probablement un problème de version avec la
 -NAPPEE Thomas\
 -LONGUEVILLE Edouard\
 -DEMONTI Pierre\
--BOUVET Mathieu\
+-BOUVET Mathieu
 
 
-## **Caractéristiques du projet :\**
+## **Caractéristiques du projet :**
 
 Fait dans le projet :\
 -Univers de jeu généré aléatoirement\
@@ -23,22 +23,22 @@ Fait dans le projet :\
 -stats et équipements pour le PJ et les PNJ\
 -Interaction avec l'environnement : combat, loot, ect...\
 -Sauvegarde de la partie\
--Interface de création de personnage\
+-Interface de création de personnage
 
 
-## **Compilation et exécution :**\
+## **Compilation et exécution :**
 
 Invite de commande à la racine du projet puis entrez gradle build pour compiler et ./ForRogue pour exécuter
 Il est possible de préciser un fichier de sauvegarde : ./ForRogue [FILENAME]
 
-## **Scénario de démonstration :**\
+## **Scénario de démonstration :**
 
 L'utilisateur selectionne son genre, la sauvegarde qu'il souhaite charger, la seed de la carte, le nom du joueur et
 le skin du joueur puis il appuie sur le bouton create.\
 On se retrouve dans le hub du donjon où l'on peut choisir parmi 3 portes qui ouvrent chacune un donjon d'une difficulté
 différente. Une fois dans le donjon le but est de tuer les monstres pour récupérer des gemmes et de récupérer de
 l'équipement dans les coffres. On peut échanger les gemmes contre des potions dans le hub.\
-Lorsque le joueur souhaite arréter de jouer il entre la commande quit et on lui propose de sauvegarder.\
+Lorsque le joueur souhaite arréter de jouer il entre la commande quit et on lui propose de sauvegarder.
 
 
 ## **Manuel de l'utilisateur :**
@@ -57,7 +57,7 @@ En jeu dans l'invite de commande :\
 En jeu dans le menu équipement :\
 -ENTREE pour selectionner un equipement/potion\
 -FLECHE DU HAUT pour monter dans le menu\
--FLECHE DU BAS pour descendre dans le menu\
+-FLECHE DU BAS pour descendre dans le menu
 
 
 ## **Manuel technique :**
@@ -104,4 +104,4 @@ une nouvelle matrice correspondant au fichier du niveau choisi), un ennemi (on v
 attaque en premier, puis execute la méthode attack ).Si à la suite du combat cet ennemi a moins de 0 de vie alors  il
 est effacé et on récupère des gems.\
 
-La classe Hub est la matrice de départ avec le marchand et les portes menants aux différents donjons.\
+La classe Hub est la matrice de départ avec le marchand et les portes menants aux différents donjons.
