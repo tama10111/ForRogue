@@ -13,6 +13,7 @@ import forrogue.item.protection.UnderWear;
 import forrogue.item.weapon.Hand;
 import forrogue.item.weapon.Mace;
 import forrogue.item.weapon.Weapon;
+import forrogue.item.wearable.None;
 import forrogue.item.wearable.Wearable;
 
 import java.io.IOException;
@@ -195,7 +196,7 @@ public abstract class Character extends GameObject {
 
 
     public void setWear(Wearable wear) {
-        if(this.wear == null){
+        if(this.wear instanceof None || this.wear == null){
             this.hp += wear.getHp();
             this.attack += wear.getAttack();
             this.defense += wear.getDefense();
@@ -205,13 +206,13 @@ public abstract class Character extends GameObject {
     }
 
     public void unsetWear(){
-        if(this.wear != null){
+        if(this.wear != null && !(this.wear instanceof None)){
             this.hp -= wear.getHp();
             this.attack -= wear.getAttack();
             this.defense-= wear.getDefense();
             this.speed -= wear.getSpeed();
             this.inventory.addOne(this.wear);
-        } this.wear = null;
+        } this.wear = new None();
     }
 
 

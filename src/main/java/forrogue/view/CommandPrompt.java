@@ -87,6 +87,11 @@ public class CommandPrompt extends JTextField implements Serializable{
                 this.setText("");
                 this.gWindow.updateInventory();
             }
+            else if("unset wear".equals(cmd)){
+                this.gWindow.getGameEngine().getPlayer().unsetWear();
+                this.setText("");
+                this.gWindow.updateInventory();
+            }
             else if("".equals(cmd));
             else{
                 while(JOptionPane.showConfirmDialog((Component) ae.getSource(), "This command doesn't exist. Are you dumb ?", "UNKNOWN COMMAND", YES_NO_OPTION) != YES_OPTION);
