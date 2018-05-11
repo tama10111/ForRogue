@@ -73,12 +73,7 @@ public class CommandPrompt extends JTextField implements Serializable{
                 if(JOptionPane.showConfirmDialog((Component) ae.getSource(), "Do you want to save ?", "EXIT", YES_NO_OPTION) == YES_OPTION){
                     SerializationDriver save = new SerializationDriver();
                     save.Serializer(this.gWindow.getGameEngine());
-
-
                 }
-
-
-
                 Toolkit.getDefaultToolkit().close();
                 System.exit(0);
             }

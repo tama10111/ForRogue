@@ -32,6 +32,7 @@ public class GameEngine implements Serializable {
     private Player player;
     private long seed;
     private Map map;
+    private String savefile_name;
 
     private transient GameWindow gWindow;
     private Hub hub;
@@ -40,9 +41,10 @@ public class GameEngine implements Serializable {
 
 
 
-    public GameEngine(Player player, long seed) {
+    public GameEngine(Player player, long seed, String file) {
         this.player = player;
         this.seed = seed;
+        this.savefile_name = file;
         this.random = new Random();
         this.random.setSeed(seed);
         this.hub = new Hub(this);
@@ -90,4 +92,6 @@ public class GameEngine implements Serializable {
     public int getRandomNumber() {
         return Math.abs(this.random.nextInt());
     }
+
+    public String getSaveFileName() { return savefile_name; }
 }

@@ -45,18 +45,28 @@ public class GameWindow extends JFrame implements Serializable {
     private final GameEngine gEngine;
     private final GameView gView;
 
-    public GameWindow(String title, Player player, long seed) {
+    public GameWindow(String title, Player player, long seed, String savefile_name, boolean LOAD) {
 
         super(title+" -- TAB to switch between panels");
         Container mCont = this.getContentPane();
-        File f=new File("file.save");
-        if(f.exists()) {
-            SerializationDriver save = new SerializationDriver();
-            save.Deserialize();
-            this.gEngine = save.g;
+
+        if(LOAD) {
+            File f=new File(savefile_name);
+            if(f.exists()) {
+                SerializationDriver save = new SerializationDriver();
+                save.Deserialize(savefile_name);
+                this.gEngine = save.g;
+            } else{
+                this.gEngine = null; // Inutile mais bon, c'est Java...
+                Toolkit.getDefaultToolkit().close();
+                System.out.println("Le fichier n'existe pas");
+                System.exit(1);
+            }
+        } else{
+            this.gEngine=new GameEngine(player,seed, savefile_name);
         }
-       else{this.gEngine=new GameEngine(player,seed);}
-       this.gEngine.setGameWindow(this);
+
+        this.gEngine.setGameWindow(this);
 
         JPanel iPanel = new JPanel();
         iPanel.setBorder(new TitledBorder("Inventory"));

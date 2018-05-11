@@ -19,19 +19,17 @@ public class Hub extends GameObject {
 
     private transient Dimension dimension;
     private Object[][] matrix;
-    private  GameEngine gEngine;
+    private GameEngine gEngine;
 
-    public Hub(GameEngine gEngine){
+    public Hub(GameEngine gEngine) {
         this.gEngine = gEngine;
         this.setSkin(GameConstant.SKIN_HUB);
-
-        Berserker b; // TODO à virer
 
         Scanner f = new Scanner(getClass().getClassLoader().getResourceAsStream("hub.map"));
         ArrayList<String> lines = new ArrayList();
         int max = 0, i = 0, j;
 
-        while(f.hasNextLine()) {
+        while (f.hasNextLine()) {
             lines.add(f.nextLine());
             if (lines.get(i).length() > max) max = lines.get(i).length();
             i++;
@@ -41,84 +39,74 @@ public class Hub extends GameObject {
         this.matrix = new Object[lines.size()][max];
 
         i = j = 0;
-        for(String str : lines){
-            for(char c : str.toCharArray()){
-                switch(c){
+        for (String str : lines) {
+            for (char c : str.toCharArray()) {
+                switch (c) {
 
-                    case GameConstant.SKIN_WALL :
+                    case GameConstant.SKIN_WALL:
                         this.matrix[i][j] = GameConstant.SKIN_WALL;
                         break;
 
-                    case GameConstant.SKIN_VOID :
+                    case GameConstant.SKIN_VOID:
                         this.matrix[i][j] = GameConstant.SKIN_VOID;
                         break;
 
-                    case GameConstant.SKIN_CHEST :
+                    case GameConstant.SKIN_CHEST:
                         this.matrix[i][j] = new Chest(0);
                         break;
 
-                    case GameConstant.SKIN_DUNGEON_0 :
+                    case GameConstant.SKIN_DUNGEON_0:
                         this.matrix[i][j] = new Dungeon(0, this, this.gEngine.getRandom());
                         break;
 
-                    case GameConstant.SKIN_DUNGEON_1 :
+                    case GameConstant.SKIN_DUNGEON_1:
                         this.matrix[i][j] = new Dungeon(1, this, this.gEngine.getRandom());
                         break;
 
-                    case GameConstant.SKIN_DUNGEON_2 :
+                    case GameConstant.SKIN_DUNGEON_2:
                         this.matrix[i][j] = new Dungeon(2, this, this.gEngine.getRandom());
                         break;
 
-                    case GameConstant.DUNGEON_PLAYER_POS :
+                    case GameConstant.DUNGEON_PLAYER_POS:
                         this.matrix[i][j] = GameConstant.DUNGEON_PLAYER_POS;
                         break;
 
-                    case GameConstant.SKIN_QUESTMAN :
+                    case GameConstant.SKIN_QUESTMAN:
                         this.matrix[i][j] = new QuestMan(gEngine.getRandomNumber());
                         break;
 
-                    case '\n' :
+                    case '\n':
                         this.matrix[i][j] = ' ';
                         break;
 
-                    case ' ' :
+                    case ' ':
                         this.matrix[i][j] = ' ';
                         break;
 
                     default:
                         this.matrix[i][j] = '?';
                         break;
-                } j++;
-            } i++; j = 0;
+                }
+                j++;
+            }
+            i++;
+            j = 0;
         }
     }
 
-    public Dimension getDimension(){
+    public Dimension getDimension() {
         return this.dimension;
     }
 
-    public Object[][] getMatrix(){
+    public Object[][] getMatrix() {
         return this.matrix;
     }
 
-    private void writeObject(ObjectOutputStream oos)throws IOException {
-
-
+    private void writeObject(ObjectOutputStream oos) throws IOException {
         oos.defaultWriteObject();
-
-
     }
 
-    private void readObject(ObjectInputStream ois)throws ClassNotFoundException,IOException{
-
-
+    private void readObject(ObjectInputStream ois) throws ClassNotFoundException, IOException {
         ois.defaultReadObject();
-
-
-
     }
-
-
-
-
 }

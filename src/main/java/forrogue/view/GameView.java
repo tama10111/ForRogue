@@ -70,7 +70,7 @@ public class GameView extends Component implements Serializable{
         for(int y = 0; y < matrix.length; y++){
             for(int x = 0; x < matrix[y].length; x++){
                 this.term.setCursor(x+cx, y+cy);
-                if(matrix[y][x] != null) { // TODO : Vérifier pourquoi ça fait null
+                if(matrix[y][x] != null) {
                     if (matrix[y][x] instanceof GameObject) {
                         this.term.addChar(((GameObject) matrix[y][x]).getSkin(), 0, 0);
                     } else {
@@ -107,9 +107,10 @@ public class GameView extends Component implements Serializable{
                 player.getWear().getName()
         );
 
-        String name = String.format("[%s - %s] %s",
+        String name = String.format("[%s - %s - %s] %s",
                 player.getSkin(),
                 player.getGender().charAt(0),
+                player.getType().charAt(0),
                 player.getName()
         );
 

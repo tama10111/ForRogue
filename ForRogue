@@ -1,2 +1,3 @@
 #!/bin/sh
-java -jar -Djava.library.path="libs" ./jar/ForRogue.jar
+java -jar -Djava.library.path="libs" ./jar/ForRogue.jar $1
+

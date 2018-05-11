@@ -174,7 +174,7 @@ public class GameCreator extends JFrame{
         gPanel.add(gForm);
         
         Vector<String> cV = new Vector<>();
-        cV.add("Type1"); cV.add("Type2");
+        cV.add("Chevalier"); cV.add("Samurai"); cV.add("Viking");
         Form cForm = new Form(cV);
         JPanel cPanel = new JPanel();
         cPanel.setBorder(new TitledBorder("Class"));
@@ -203,7 +203,7 @@ public class GameCreator extends JFrame{
         sPanel.setBorder(new TitledBorder("Seed"));
         sPanel.add(seedField);
         
-        JTextField fileNameField = new JTextField("filename.save");
+        JTextField fileNameField = new JTextField("default_save.save");
         JPanel fPanel = new JPanel();
         fPanel.setBorder(new TitledBorder("File name"));
         fPanel.add(fileNameField);
@@ -232,13 +232,15 @@ public class GameCreator extends JFrame{
                             case "Create":
 
                                 String gender = gForm.getSelected() == null ? "Male" : gForm.getSelected();
-                                String classs = cForm.getSelected() == null ? "Type1" : cForm.getSelected(); // TODO : À modifier
+                                String classs = cForm.getSelected() == null ? "Chevalier" : cForm.getSelected();
                                 char skin   = skForm.getSelected() == null ? 'Ö' : skForm.getSelected().charAt(0);
 
                                 GameWindow gWindow = new GameWindow(
                                         "ForRogue",
                                         new Player(playerNameField.getText(), gender, classs, new Point(0,0), skin),
-                                        Long.parseLong(seedField.getText())
+                                        Long.parseLong(seedField.getText()),
+                                        fileNameField.getText(),
+                                        false
                                 );
                                 break;
 

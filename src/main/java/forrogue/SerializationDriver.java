@@ -12,16 +12,16 @@ public class SerializationDriver {
 
     {
         try{
-            File f= new File("file.save");
+            File f= new File(ge.getSaveFileName());
             if(f.exists()) {
-                FileOutputStream fos = new FileOutputStream("file.save");
+                FileOutputStream fos = new FileOutputStream(ge.getSaveFileName());
                 ObjectOutputStream oos = new ObjectOutputStream(fos);
                 oos.writeObject(ge);
                 oos.close();
             }
             else{
                 f.createNewFile();
-                FileOutputStream fos= new FileOutputStream("file.save");
+                FileOutputStream fos= new FileOutputStream(ge.getSaveFileName());
                 ObjectOutputStream oos =new ObjectOutputStream(fos);
                 oos.writeObject(ge);
                 oos.close();
@@ -39,12 +39,12 @@ public class SerializationDriver {
     }
 
 
-    public void Deserialize()
+    public void Deserialize(String file_name)
 
     {
 
         try{
-            FileInputStream fis= new FileInputStream("file.save");
+            FileInputStream fis= new FileInputStream(file_name);
             ObjectInputStream ois=new ObjectInputStream(fis);
             this.g=(GameEngine) ois.readObject();
             ois.close();
