@@ -52,7 +52,8 @@ Lorsque le joueur souhaite arréter de jouer il entre la commande quit et on lui
 -FLECHE DU BAS pour descendre\
 -FLECHE GAUCHE pour aller a gauche\
 -FLECHE DROITE pour aller a droite\
--"quit" pour quitter le jeu
+-"quit" pour quitter le jeu\
+-"unset [stuff]" pour se déséquiper d'un item (stuff peut être weapon, protection ou wear)
 
 ### En jeu dans le menu équipement :
 -ENTREE pour selectionner un equipement/potion\
