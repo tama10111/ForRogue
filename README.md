@@ -1,6 +1,6 @@
 # ForRogue
 
-/!\ ATTENTION /!\
+/!\ ATTENTION /!\\
 Il peut y avoir des problèmes d'affichage.
 Affichage correcte sur Debian 9.
 Affichage incorrecte sur ArchLinux (probablement un problème de version avec la libncurses), voir TROUBLE
