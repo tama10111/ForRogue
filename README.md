@@ -22,7 +22,7 @@ Fait dans le projet :
 Compilation et exécution :
 
 Invite de commande à la racine du projet puis entrez gradle build pour compiler et ./ForRogue pour exécuter
-
+Il est possible de préciser un fichier de sauvegarde : ./ForRogue [FILENAME]
 
 Scénario de démonstration :
 
